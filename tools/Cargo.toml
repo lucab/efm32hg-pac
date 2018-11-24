@@ -1,0 +1,17 @@
+
+[package]
+name = "tools"
+version = "0.1.0"
+authors = []
+# We never publish our tasks
+publish = false
+edition = "2018"
+
+[dependencies]
+svd2rust = {path  = "../../svd2rust"}
+rustfmt-nightly = { git = "https://github.com/rust-lang/rustfmt", commit="1.0.0" }
+form = { git = "https://github.com/jacobrosenthal/form", branch="lib" }
+failure = "0.1.1"
+svd-parser = "0.6"
+quote = "0.3.15"
+glob = "0.2"
