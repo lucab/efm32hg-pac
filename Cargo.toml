@@ -1,0 +1,20 @@
+[package]
+name = "efm32"
+version = "0.1.0"
+authors = ["Jacob Rosenthal <jacobrosenthal@gmail.com>"]
+edition = "2018"
+keywords = ["no-std", "arm", "cortex-m", "efm32"]
+readme = "readme.md"
+repository = "https://github.com/jacobrosenthal/efm32"
+
+[dependencies]
+bare-metal = "0.2.0"
+cortex-m = "0.5.8"
+vcell = "0.1.0"
+
+[dependencies.cortex-m-rt]
+optional = true
+version = "0.6.5"
+
+[features]
+rt = ["cortex-m-rt/device"]
