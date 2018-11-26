@@ -14,4 +14,3 @@ form = { git = "https://github.com/jacobrosenthal/form", branch="lib" }
 failure = "0.1.1"
 svd-parser = "0.6"
 quote = "0.3.15"
-glob = "0.2"

@@ -15,9 +15,6 @@ extern crate svd_parser as svd;
 extern crate quote;
 use quote::{multi_zip_expr, nested_tuples_pat, pounded_var_names, quote, quote_each_token};
 
-extern crate glob;
-use glob::glob;
-
 extern crate rustfmt_nightly;
 use rustfmt_nightly::{Config, Input, Session};
 
@@ -44,15 +41,13 @@ pub fn main() -> Result<(), SvdError> {
     let input = format!("{}", quote!(#(#items)*));
     create_directory_structure(output_dir, input)?;
 
-    //glob src and rustfmt
-    let config = Config::default();
+    //rustfmt saved files
+    let files = ["build.rs", "src/lib.rs"].iter().map(|a| PathBuf::from(a));
     let mut buf = Vec::<u8>::new();
-    let mut session = Session::new(config, Some(&mut buf));
+    let mut session = Session::new(Config::default(), Some(&mut buf));
 
-    for path in glob("src/**/*.rs").unwrap().filter_map(Result::ok) {
-        println!("{:?}", path);
-        let input = Input::File(PathBuf::from(path));
-        let _something = session.format(input).unwrap();
+    for path in files {
+        session.format(Input::File(path)).unwrap();
     }
 
     Ok(())
