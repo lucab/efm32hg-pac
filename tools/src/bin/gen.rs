@@ -1,25 +1,16 @@
+use form::create_directory_structure;
+use quote::{multi_zip_expr, nested_tuples_pat, pounded_var_names, quote, quote_each_token};
+use rustfmt_nightly::{Config, Input, Session};
 use std::fs::{read_to_string, File};
 use std::io::Write;
 use std::path::PathBuf;
-
-extern crate svd_parser as svd;
-
-extern crate svd2rust;
 use svd2rust::{generate, target::Target, util::build_rs, util::SvdError};
-
-extern crate form;
-use form::create_directory_structure;
-
-extern crate quote;
-use quote::{multi_zip_expr, nested_tuples_pat, pounded_var_names, quote, quote_each_token};
-
-extern crate rustfmt_nightly;
-use rustfmt_nightly::{Config, Input, Session};
+use svd_parser;
 
 pub fn main() -> Result<(), SvdError> {
     //parse xml
     let xml = read_to_string("svd/EFM32HG309F64.svd")?;
-    let device = svd::parse(&xml);
+    let device = svd_parser::parse(&xml);
 
     //parse svd
     let mut device_x = String::new();
