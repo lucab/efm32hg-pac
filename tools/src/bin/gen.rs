@@ -4,25 +4,25 @@ use rustfmt_nightly::{Config, Input, Session};
 use std::fs::{read_to_string, File};
 use std::io::Write;
 use std::path::PathBuf;
-use svd2rust::{generate, target::Target, util::build_rs, util::SvdError};
+use svd2rust::{generate, target::Target, util::build_rs};
 use svd_parser;
 
-pub fn main() -> Result<(), SvdError> {
+pub fn main() -> () {
     //parse xml
-    let xml = read_to_string("svd/EFM32HG309F64.svd")?;
+    let xml = read_to_string("svd/EFM32HG309F64.svd").unwrap();
     let device = svd_parser::parse(&xml);
 
     //parse svd
     let mut device_x = String::new();
-    let items = generate::device::render(&device, &Target::CortexM, true, &mut device_x)?;
+    let items = generate::device::render(&device, &Target::CortexM, true, &mut device_x).unwrap();
 
     //save other files
-    writeln!(File::create("device.x")?, "{}", device_x)?;
-    writeln!(File::create("build.rs")?, "{}", build_rs())?;
+    writeln!(File::create("device.x").unwrap(), "{}", device_x).unwrap();
+    writeln!(File::create("build.rs").unwrap(), "{}", build_rs()).unwrap();
 
     //form lib.rs and save
     let lib = format!("{}", quote!(#(#items)*));
-    create_directory_structure("src/", lib)?;
+    create_directory_structure("src/", lib).unwrap();
 
     //rustfmt saved files
     let files = ["build.rs", "src/lib.rs"].iter().map(|a| PathBuf::from(a));
@@ -32,6 +32,4 @@ pub fn main() -> Result<(), SvdError> {
     for path in files {
         session.format(Input::File(path)).unwrap();
     }
-
-    Ok(())
 }

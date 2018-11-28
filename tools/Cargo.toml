@@ -8,7 +8,7 @@ publish = false
 edition = "2018"
 
 [dependencies]
-svd2rust = {path  = "../../svd2rust"}
+svd2rust = { git = "https://github.com/jacobrosenthal/svd2rust", branch="lib3" }
 rustfmt-nightly = { git = "https://github.com/rust-lang/rustfmt", tag="1.0.0" }
 form = { git = "https://github.com/jacobrosenthal/form", branch="lib" }
 failure = "0.1.1"
