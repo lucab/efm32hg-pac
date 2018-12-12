@@ -10,13 +10,25 @@ pub fn main() -> () {
     let xml = read_to_string("svd/EFM32HG309F64.svd").unwrap();
     let Generation {
         lib_rs,
-        device_x,
-        build_rs,
+        device_specific,
+        ..
     } = generate(&xml, &CortexM, true).unwrap();
 
+    let device_specific = device_specific.unwrap();
+
     //save other files
-    writeln!(File::create("device.x").unwrap(), "{}", device_x).unwrap();
-    writeln!(File::create("build.rs").unwrap(), "{}", build_rs).unwrap();
+    writeln!(
+        File::create("device.x").unwrap(),
+        "{}",
+        device_specific.device_x
+    )
+    .unwrap();
+    writeln!(
+        File::create("build.rs").unwrap(),
+        "{}",
+        device_specific.build_rs
+    )
+    .unwrap();
 
     //form lib.rs and save
     create_directory_structure("src/", lib_rs).unwrap();
