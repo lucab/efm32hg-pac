@@ -1,5 +1,5 @@
 [package]
-name = "efm32"
+name = "efm32hg309f64-pac"
 version = "0.1.0"
 authors = ["Jacob Rosenthal <jacobrosenthal@gmail.com>"]
 edition = "2018"
