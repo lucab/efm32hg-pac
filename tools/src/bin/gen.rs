@@ -1,6 +1,7 @@
 use form::create_directory_structure;
 use rustfmt_nightly::{Config, Input, Session};
-use std::fs::{read_to_string, File};
+use std::env::set_current_dir;
+use std::fs::{create_dir_all, read_to_string, remove_dir_all, rename, File};
 use std::io::Write;
 use std::path::PathBuf;
 use svd2rust::{generate, Generation, Target::CortexM};
@@ -15,6 +16,9 @@ pub fn main() -> () {
     } = generate(&xml, &CortexM, true).unwrap();
 
     let device_specific = device_specific.unwrap();
+
+    create_dir_all(".tmp/src").unwrap();
+    set_current_dir(".tmp").unwrap();
 
     //save other files
     writeln!(
@@ -41,4 +45,11 @@ pub fn main() -> () {
     for path in files {
         session.format(Input::File(path)).unwrap();
     }
+
+    set_current_dir("..").unwrap();
+    remove_dir_all("./src").unwrap_or_else(|err| println!("./src: {} [ignored]", err));
+    rename(".tmp/build.rs", "./build.rs").unwrap();
+    rename(".tmp/device.x", "./device.x").unwrap();
+    rename(".tmp/src", "./src").unwrap();
+    remove_dir_all(".tmp").unwrap();
 }
