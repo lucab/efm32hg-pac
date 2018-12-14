@@ -13,7 +13,7 @@ pub fn main() -> () {
         lib_rs,
         device_specific,
         ..
-    } = generate(&xml, &CortexM, true).unwrap();
+    } = generate(&xml, &CortexM, false).unwrap();
 
     let device_specific = device_specific.unwrap();
 

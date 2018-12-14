@@ -9,5 +9,5 @@ edition = "2018"
 
 [dependencies]
 svd2rust = { git = "https://github.com/tones111/svd2rust", branch="lib_generate" }
-rustfmt-nightly = { git = "https://github.com/rust-lang/rustfmt", tag="1.0.0" }
-form = { git = "https://github.com/djmcgill/form", rev="04af5b23fca92876d512b68a8d42223253b2baef" }
+rustfmt-nightly = "1.0.0"
+form = "0.5.0"
