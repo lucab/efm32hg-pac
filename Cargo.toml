@@ -7,6 +7,10 @@ keywords = ["no-std", "arm", "cortex-m", "efm32"]
 readme = "readme.md"
 repository = "https://github.com/jacobrosenthal/efm32"
 
+[[bin]]
+name = "gen"
+path = "tools/src/bin/gen.rs"
+
 [dependencies]
 bare-metal = "0.2.0"
 cortex-m = "0.5.8"

@@ -47,7 +47,7 @@ pub fn main() -> () {
     }
 
     set_current_dir("..").unwrap();
-    remove_dir_all("./src").unwrap();
+    remove_dir_all("./src").unwrap_or_else(|err| println!("./src: {} [ignored]", err));
     rename(".tmp/build.rs", "./build.rs").unwrap();
     rename(".tmp/device.x", "./device.x").unwrap();
     rename(".tmp/src", "./src").unwrap();
