@@ -1,19 +1,16 @@
-# `efm32`
+# `efm32hg309f64-pac`
 
-board support package for EFM32 Happy Gecko series from Silicon Labs
+Peripheral access API for efm32hg309f64 microcontroller from Silicon Labs.
 
-The EFM32HG register definitions are from from keil.com and provided here in /svd.
+The efm32hg309f64 register definitions were retrieved from from keil.com and provided here in ./svd as a convenience only.
 
-documentation
---
-Overview for peripheral access usage can be found [here](https://docs.rs/svd2rust/0.12.0/svd2rust/#peripheral-api).
+## [Documentation](https://docs.rs/efm32hg309f64-pac)
 
-regenerate
---
-This will require Rust 1.31 or newer.
-```
-cargo gen
-```
+## Requirements
+The crate can be used with Rust v1.31 or newer. However `cargo gen` will require Rust nightly due to its `rustfmt-nightly` dependency.
+
+## Regenerate
+The src directory is generated. If you want to upstream changes here, don't manually edit, but rather send a PR to one of the upstream tools used in tools/gen. However if you have tools or svd version bumps you can regenerate this pac by running `cargo gen`.
 
 ## License
 
