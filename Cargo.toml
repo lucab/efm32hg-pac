@@ -3,9 +3,9 @@ name = "efm32hg309f64-pac"
 version = "0.1.0"
 authors = ["Jacob Rosenthal <jacobrosenthal@gmail.com>"]
 edition = "2018"
-keywords = ["no-std", "arm", "cortex-m", "efm32"]
+keywords = ["no-std", "arm", "cortex-m", "efm32", "efm32hg", "efm32hg309", "efm32hg309f64", "pac"]
 readme = "readme.md"
-repository = "https://github.com/jacobrosenthal/efm32"
+repository = "https://github.com/jacobrosenthal/efm32hg309f64-pac"
 
 [[bin]]
 name = "gen"
