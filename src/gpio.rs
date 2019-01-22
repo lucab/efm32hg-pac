@@ -109,7 +109,7 @@ pub struct RegisterBlock {
     pub pf_din: PF_DIN,
     #[doc = "0xd4 - Port Unlocked Pins Register"]
     pub pf_pinlockn: PF_PINLOCKN,
-    _reserved54: [u8; 40usize],
+    _reserved0: [u8; 40usize],
     #[doc = "0x100 - External Interrupt Port Select Low Register"]
     pub extipsell: EXTIPSELL,
     #[doc = "0x104 - External Interrupt Port Select High Register"]

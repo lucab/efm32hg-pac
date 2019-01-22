@@ -37,10 +37,10 @@ pub struct RegisterBlock {
     pub freeze: FREEZE,
     #[doc = "0x44 - Synchronization Busy Register"]
     pub syncbusy: SYNCBUSY,
-    _reserved18: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x54 - I/O Routing Register"]
     pub route: ROUTE,
-    _reserved19: [u8; 84usize],
+    _reserved1: [u8; 84usize],
     #[doc = "0xac - LEUART Input Register"]
     pub input: INPUT,
 }

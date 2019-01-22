@@ -7,7 +7,7 @@ pub struct RegisterBlock {
     pub swlevel: SWLEVEL,
     #[doc = "0x08 - I/O Routing Register"]
     pub route: ROUTE,
-    _reserved3: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x10 - Channel Control Register"]
     pub ch0_ctrl: CH0_CTRL,
     #[doc = "0x14 - Channel Control Register"]
@@ -20,7 +20,7 @@ pub struct RegisterBlock {
     pub ch4_ctrl: CH4_CTRL,
     #[doc = "0x24 - Channel Control Register"]
     pub ch5_ctrl: CH5_CTRL,
-    _reserved9: [u8; 24usize],
+    _reserved1: [u8; 24usize],
     #[doc = "0x40 - MTB Trace Control Register"]
     pub tracectrl: TRACECTRL,
 }

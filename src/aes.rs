@@ -19,7 +19,7 @@ pub struct RegisterBlock {
     pub data: DATA,
     #[doc = "0x20 - XORDATA Register"]
     pub xordata: XORDATA,
-    _reserved9: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x30 - KEY Low Register"]
     pub keyla: KEYLA,
     #[doc = "0x34 - KEY Low Register"]

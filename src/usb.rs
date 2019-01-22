@@ -15,7 +15,7 @@ pub struct RegisterBlock {
     pub ien: IEN,
     #[doc = "0x18 - I/O Routing Register"]
     pub route: ROUTE,
-    _reserved7: [u8; 245740usize],
+    _reserved0: [u8; 245740usize],
     #[doc = "0x3c008 - AHB Configuration Register"]
     pub gahbcfg: GAHBCFG,
     #[doc = "0x3c00c - USB Configuration Register"]
@@ -34,24 +34,24 @@ pub struct RegisterBlock {
     pub grxfsiz: GRXFSIZ,
     #[doc = "0x3c028 - Non-periodic Transmit FIFO Size Register"]
     pub gnptxfsiz: GNPTXFSIZ,
-    _reserved16: [u8; 48usize],
+    _reserved1: [u8; 48usize],
     #[doc = "0x3c05c - Global DFIFO Configuration Register"]
     pub gdfifocfg: GDFIFOCFG,
-    _reserved17: [u8; 164usize],
+    _reserved2: [u8; 164usize],
     #[doc = "0x3c104 - Device IN Endpoint Transmit FIFO 1 Size Register"]
     pub dieptxf1: DIEPTXF1,
     #[doc = "0x3c108 - Device IN Endpoint Transmit FIFO 2 Size Register"]
     pub dieptxf2: DIEPTXF2,
     #[doc = "0x3c10c - Device IN Endpoint Transmit FIFO 3 Size Register"]
     pub dieptxf3: DIEPTXF3,
-    _reserved20: [u8; 1776usize],
+    _reserved3: [u8; 1776usize],
     #[doc = "0x3c800 - Device Configuration Register"]
     pub dcfg: DCFG,
     #[doc = "0x3c804 - Device Control Register"]
     pub dctl: DCTL,
     #[doc = "0x3c808 - Device Status Register"]
     pub dsts: DSTS,
-    _reserved23: [u8; 4usize],
+    _reserved4: [u8; 4usize],
     #[doc = "0x3c810 - Device IN Endpoint Common Interrupt Mask Register"]
     pub diepmsk: DIEPMSK,
     #[doc = "0x3c814 - Device OUT Endpoint Common Interrupt Mask Register"]
@@ -60,106 +60,106 @@ pub struct RegisterBlock {
     pub daint: DAINT,
     #[doc = "0x3c81c - Device All Endpoints Interrupt Mask Register"]
     pub daintmsk: DAINTMSK,
-    _reserved27: [u8; 20usize],
+    _reserved5: [u8; 20usize],
     #[doc = "0x3c834 - Device IN Endpoint FIFO Empty Interrupt Mask Register"]
     pub diepempmsk: DIEPEMPMSK,
-    _reserved28: [u8; 200usize],
+    _reserved6: [u8; 200usize],
     #[doc = "0x3c900 - Device IN Endpoint 0 Control Register"]
     pub diep0ctl: DIEP0CTL,
-    _reserved29: [u8; 4usize],
+    _reserved7: [u8; 4usize],
     #[doc = "0x3c908 - Device IN Endpoint 0 Interrupt Register"]
     pub diep0int: DIEP0INT,
-    _reserved30: [u8; 4usize],
+    _reserved8: [u8; 4usize],
     #[doc = "0x3c910 - Device IN Endpoint 0 Transfer Size Register"]
     pub diep0tsiz: DIEP0TSIZ,
     #[doc = "0x3c914 - Device IN Endpoint 0 DMA Address Register"]
     pub diep0dmaaddr: DIEP0DMAADDR,
     #[doc = "0x3c918 - Device IN Endpoint 0 Transmit FIFO Status Register"]
     pub diep0txfsts: DIEP0TXFSTS,
-    _reserved33: [u8; 4usize],
+    _reserved9: [u8; 4usize],
     #[doc = "0x3c920 - Device IN Endpoint x+1 Control Register"]
     pub diep0_ctl: DIEP0_CTL,
-    _reserved34: [u8; 4usize],
+    _reserved10: [u8; 4usize],
     #[doc = "0x3c928 - Device IN Endpoint x+1 Interrupt Register"]
     pub diep0_int: DIEP0_INT,
-    _reserved35: [u8; 4usize],
+    _reserved11: [u8; 4usize],
     #[doc = "0x3c930 - Device IN Endpoint x+1 Transfer Size Register"]
     pub diep0_tsiz: DIEP0_TSIZ,
     #[doc = "0x3c934 - Device IN Endpoint x+1 DMA Address Register"]
     pub diep0_dmaaddr: DIEP0_DMAADDR,
     #[doc = "0x3c938 - Device IN Endpoint x+1 Transmit FIFO Status Register"]
     pub diep0_txfsts: DIEP0_TXFSTS,
-    _reserved38: [u8; 4usize],
+    _reserved12: [u8; 4usize],
     #[doc = "0x3c940 - Device IN Endpoint x+1 Control Register"]
     pub diep1_ctl: DIEP1_CTL,
-    _reserved39: [u8; 4usize],
+    _reserved13: [u8; 4usize],
     #[doc = "0x3c948 - Device IN Endpoint x+1 Interrupt Register"]
     pub diep1_int: DIEP1_INT,
-    _reserved40: [u8; 4usize],
+    _reserved14: [u8; 4usize],
     #[doc = "0x3c950 - Device IN Endpoint x+1 Transfer Size Register"]
     pub diep1_tsiz: DIEP1_TSIZ,
     #[doc = "0x3c954 - Device IN Endpoint x+1 DMA Address Register"]
     pub diep1_dmaaddr: DIEP1_DMAADDR,
     #[doc = "0x3c958 - Device IN Endpoint x+1 Transmit FIFO Status Register"]
     pub diep1_txfsts: DIEP1_TXFSTS,
-    _reserved43: [u8; 4usize],
+    _reserved15: [u8; 4usize],
     #[doc = "0x3c960 - Device IN Endpoint x+1 Control Register"]
     pub diep2_ctl: DIEP2_CTL,
-    _reserved44: [u8; 4usize],
+    _reserved16: [u8; 4usize],
     #[doc = "0x3c968 - Device IN Endpoint x+1 Interrupt Register"]
     pub diep2_int: DIEP2_INT,
-    _reserved45: [u8; 4usize],
+    _reserved17: [u8; 4usize],
     #[doc = "0x3c970 - Device IN Endpoint x+1 Transfer Size Register"]
     pub diep2_tsiz: DIEP2_TSIZ,
     #[doc = "0x3c974 - Device IN Endpoint x+1 DMA Address Register"]
     pub diep2_dmaaddr: DIEP2_DMAADDR,
     #[doc = "0x3c978 - Device IN Endpoint x+1 Transmit FIFO Status Register"]
     pub diep2_txfsts: DIEP2_TXFSTS,
-    _reserved48: [u8; 388usize],
+    _reserved18: [u8; 388usize],
     #[doc = "0x3cb00 - Device OUT Endpoint 0 Control Register"]
     pub doep0ctl: DOEP0CTL,
-    _reserved49: [u8; 4usize],
+    _reserved19: [u8; 4usize],
     #[doc = "0x3cb08 - Device OUT Endpoint 0 Interrupt Register"]
     pub doep0int: DOEP0INT,
-    _reserved50: [u8; 4usize],
+    _reserved20: [u8; 4usize],
     #[doc = "0x3cb10 - Device OUT Endpoint 0 Transfer Size Register"]
     pub doep0tsiz: DOEP0TSIZ,
     #[doc = "0x3cb14 - Device OUT Endpoint 0 DMA Address Register"]
     pub doep0dmaaddr: DOEP0DMAADDR,
-    _reserved52: [u8; 8usize],
+    _reserved21: [u8; 8usize],
     #[doc = "0x3cb20 - Device OUT Endpoint x+1 Control Register"]
     pub doep0_ctl: DOEP0_CTL,
-    _reserved53: [u8; 4usize],
+    _reserved22: [u8; 4usize],
     #[doc = "0x3cb28 - Device OUT Endpoint x+1 Interrupt Register"]
     pub doep0_int: DOEP0_INT,
-    _reserved54: [u8; 4usize],
+    _reserved23: [u8; 4usize],
     #[doc = "0x3cb30 - Device OUT Endpoint x+1 Transfer Size Register"]
     pub doep0_tsiz: DOEP0_TSIZ,
     #[doc = "0x3cb34 - Device OUT Endpoint x+1 DMA Address Register"]
     pub doep0_dmaaddr: DOEP0_DMAADDR,
-    _reserved56: [u8; 8usize],
+    _reserved24: [u8; 8usize],
     #[doc = "0x3cb40 - Device OUT Endpoint x+1 Control Register"]
     pub doep1_ctl: DOEP1_CTL,
-    _reserved57: [u8; 4usize],
+    _reserved25: [u8; 4usize],
     #[doc = "0x3cb48 - Device OUT Endpoint x+1 Interrupt Register"]
     pub doep1_int: DOEP1_INT,
-    _reserved58: [u8; 4usize],
+    _reserved26: [u8; 4usize],
     #[doc = "0x3cb50 - Device OUT Endpoint x+1 Transfer Size Register"]
     pub doep1_tsiz: DOEP1_TSIZ,
     #[doc = "0x3cb54 - Device OUT Endpoint x+1 DMA Address Register"]
     pub doep1_dmaaddr: DOEP1_DMAADDR,
-    _reserved60: [u8; 8usize],
+    _reserved27: [u8; 8usize],
     #[doc = "0x3cb60 - Device OUT Endpoint x+1 Control Register"]
     pub doep2_ctl: DOEP2_CTL,
-    _reserved61: [u8; 4usize],
+    _reserved28: [u8; 4usize],
     #[doc = "0x3cb68 - Device OUT Endpoint x+1 Interrupt Register"]
     pub doep2_int: DOEP2_INT,
-    _reserved62: [u8; 4usize],
+    _reserved29: [u8; 4usize],
     #[doc = "0x3cb70 - Device OUT Endpoint x+1 Transfer Size Register"]
     pub doep2_tsiz: DOEP2_TSIZ,
     #[doc = "0x3cb74 - Device OUT Endpoint x+1 DMA Address Register"]
     pub doep2_dmaaddr: DOEP2_DMAADDR,
-    _reserved64: [u8; 648usize],
+    _reserved30: [u8; 648usize],
     #[doc = "0x3ce00 - Power and Clock Gating Control Register"]
     pub pcgcctl: PCGCCTL,
 }

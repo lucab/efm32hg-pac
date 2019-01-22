@@ -27,7 +27,7 @@ pub struct RegisterBlock {
     pub freeze: FREEZE,
     #[doc = "0x30 - Synchronization Busy Register"]
     pub syncbusy: SYNCBUSY,
-    _reserved13: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x38 - Auxiliary Counter Value Register"]
     pub auxcnt: AUXCNT,
     #[doc = "0x3c - PCNT Input Register"]
