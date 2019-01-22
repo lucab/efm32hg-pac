@@ -8,6 +8,6 @@ publish = false
 edition = "2018"
 
 [dependencies]
-svd2rust = { git = "https://github.com/tones111/svd2rust", branch="lib_generate" }
+svd2rust = { git = "https://github.com/rust-embedded/svd2rust", commit="77da805eb1afc4dcb5fd04ec992cde71b32d3832" }
 rustfmt-nightly = "1.0.0"
 form = "0.5.0"
