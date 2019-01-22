@@ -611,8 +611,6 @@ impl Deref for MTB {
 }
 #[doc = "MTB"]
 pub mod mtb;
-#[allow(renamed_and_removed_lints)]
-#[allow(private_no_mangle_statics)]
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals"]
