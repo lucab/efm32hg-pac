@@ -11,12 +11,12 @@ pub struct RegisterBlock {
     pub writecmd: WRITECMD,
     #[doc = "0x10 - Page Erase/Write Address Buffer"]
     pub addrb: ADDRB,
-    _reserved5: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x18 - Write Data Register"]
     pub wdata: WDATA,
     #[doc = "0x1c - Status Register"]
     pub status: STATUS,
-    _reserved7: [u8; 12usize],
+    _reserved1: [u8; 12usize],
     #[doc = "0x2c - Interrupt Flag Register"]
     pub if_: IF,
     #[doc = "0x30 - Interrupt Flag Set Register"]
@@ -33,7 +33,7 @@ pub struct RegisterBlock {
     pub cachehits: CACHEHITS,
     #[doc = "0x48 - Cache Misses Performance Counter"]
     pub cachemisses: CACHEMISSES,
-    _reserved15: [u8; 4usize],
+    _reserved2: [u8; 4usize],
     #[doc = "0x50 - Flash Write and Erase Timebase"]
     pub timebase: TIMEBASE,
     #[doc = "0x54 - Mass Erase Lock Register"]

@@ -37,32 +37,32 @@ pub struct RegisterBlock {
     pub hfcoreclken0: HFCORECLKEN0,
     #[doc = "0x44 - High Frequency Peripheral Clock Enable Register 0"]
     pub hfperclken0: HFPERCLKEN0,
-    _reserved18: [u8; 8usize],
+    _reserved0: [u8; 8usize],
     #[doc = "0x50 - Synchronization Busy Register"]
     pub syncbusy: SYNCBUSY,
     #[doc = "0x54 - Freeze Register"]
     pub freeze: FREEZE,
     #[doc = "0x58 - Low Frequency A Clock Enable Register 0 (Async Reg)"]
     pub lfaclken0: LFACLKEN0,
-    _reserved21: [u8; 4usize],
+    _reserved1: [u8; 4usize],
     #[doc = "0x60 - Low Frequency B Clock Enable Register 0 (Async Reg)"]
     pub lfbclken0: LFBCLKEN0,
     #[doc = "0x64 - Low Frequency C Clock Enable Register 0 (Async Reg)"]
     pub lfcclken0: LFCCLKEN0,
     #[doc = "0x68 - Low Frequency A Prescaler Register 0 (Async Reg)"]
     pub lfapresc0: LFAPRESC0,
-    _reserved24: [u8; 4usize],
+    _reserved2: [u8; 4usize],
     #[doc = "0x70 - Low Frequency B Prescaler Register 0 (Async Reg)"]
     pub lfbpresc0: LFBPRESC0,
-    _reserved25: [u8; 4usize],
+    _reserved3: [u8; 4usize],
     #[doc = "0x78 - PCNT Control Register"]
     pub pcntctrl: PCNTCTRL,
-    _reserved26: [u8; 4usize],
+    _reserved4: [u8; 4usize],
     #[doc = "0x80 - I/O Routing Register"]
     pub route: ROUTE,
     #[doc = "0x84 - Configuration Lock Register"]
     pub lock: LOCK,
-    _reserved28: [u8; 72usize],
+    _reserved5: [u8; 72usize],
     #[doc = "0xd0 - USB Clock Recovery Control"]
     pub usbcrctrl: USBCRCTRL,
     #[doc = "0xd4 - USHFRCO Control"]

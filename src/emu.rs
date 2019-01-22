@@ -3,10 +3,10 @@
 pub struct RegisterBlock {
     #[doc = "0x00 - Control Register"]
     pub ctrl: CTRL,
-    _reserved1: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x08 - Configuration Lock Register"]
     pub lock: LOCK,
-    _reserved2: [u8; 24usize],
+    _reserved1: [u8; 24usize],
     #[doc = "0x24 - Auxiliary Control Register"]
     pub auxctrl: AUXCTRL,
 }

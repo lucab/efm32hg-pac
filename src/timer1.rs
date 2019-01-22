@@ -23,7 +23,7 @@ pub struct RegisterBlock {
     pub cnt: CNT,
     #[doc = "0x28 - I/O Routing Register"]
     pub route: ROUTE,
-    _reserved11: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x30 - CC Channel Control Register"]
     pub cc0_ctrl: CC0_CTRL,
     #[doc = "0x34 - CC Channel Value Register"]
@@ -48,7 +48,7 @@ pub struct RegisterBlock {
     pub cc2_ccvp: CC2_CCVP,
     #[doc = "0x5c - CC Channel Buffer Register"]
     pub cc2_ccvb: CC2_CCVB,
-    _reserved23: [u8; 16usize],
+    _reserved1: [u8; 16usize],
     #[doc = "0x70 - DTI Control Register"]
     pub dtctrl: DTCTRL,
     #[doc = "0x74 - DTI Time Control Register"]

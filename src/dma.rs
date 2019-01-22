@@ -33,16 +33,16 @@ pub struct RegisterBlock {
     pub chpris: CHPRIS,
     #[doc = "0x3c - Channel Priority Clear Register"]
     pub chpric: CHPRIC,
-    _reserved16: [u8; 12usize],
+    _reserved0: [u8; 12usize],
     #[doc = "0x4c - Bus Error Clear Register"]
     pub errorc: ERRORC,
-    _reserved17: [u8; 3520usize],
+    _reserved1: [u8; 3520usize],
     #[doc = "0xe10 - Channel Request Status"]
     pub chreqstatus: CHREQSTATUS,
-    _reserved18: [u8; 4usize],
+    _reserved2: [u8; 4usize],
     #[doc = "0xe18 - Channel Single Request Status"]
     pub chsreqstatus: CHSREQSTATUS,
-    _reserved19: [u8; 484usize],
+    _reserved3: [u8; 484usize],
     #[doc = "0x1000 - Interrupt Flag Register"]
     pub if_: IF,
     #[doc = "0x1004 - Interrupt Flag Set Register"]
@@ -51,7 +51,7 @@ pub struct RegisterBlock {
     pub ifc: IFC,
     #[doc = "0x100c - Interrupt Enable register"]
     pub ien: IEN,
-    _reserved23: [u8; 240usize],
+    _reserved4: [u8; 240usize],
     #[doc = "0x1100 - Channel Control Register"]
     pub ch0_ctrl: CH0_CTRL,
     #[doc = "0x1104 - Channel Control Register"]

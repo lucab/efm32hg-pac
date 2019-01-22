@@ -29,7 +29,7 @@ pub struct RegisterBlock {
     pub scandatap: SCANDATAP,
     #[doc = "0x34 - Calibration Register"]
     pub cal: CAL,
-    _reserved14: [u8; 4usize],
+    _reserved0: [u8; 4usize],
     #[doc = "0x3c - Bias Programming Register"]
     pub biasprog: BIASPROG,
 }
