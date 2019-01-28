@@ -7,10 +7,6 @@ keywords = ["no-std", "arm", "cortex-m", "efm32", "efm32hg", "efm32hg309", "efm3
 readme = "readme.md"
 repository = "https://github.com/jacobrosenthal/efm32hg309f64-pac"
 
-[[bin]]
-name = "gen"
-path = "tools/src/bin/gen.rs"
-
 [dependencies]
 bare-metal = "0.2.0"
 cortex-m = "0.5.8"
