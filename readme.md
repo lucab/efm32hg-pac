@@ -1,10 +1,17 @@
-# `efm32hg309f64-pac`
+# `efm32hg-pac`
 
-Peripheral access API for efm32hg309f64 microcontroller from Silicon Labs.
+Peripheral access API for efm32hg microcontroller from Silicon Labs.
 
-The efm32hg309f64 register definitions were retrieved from from keil.com and provided here in ./svd as a convenience only.
+The efm32hg register definitions were retrieved from from keil.com and provided here in ./svd as a convenience only.
 
-## [Documentation](https://docs.rs/efm32hg309f64-pac)
+## Supported Series
+Currently supported and tested series:
+
+- efm32hg309f64
+
+Other HG series might be able to use this crate but is not supported until it's stated otherwise.
+
+## [Documentation](https://docs.rs/efm32hg-pac)
 
 ## Requirements
 The crate can be used with Rust v1.31 or newer. However `cargo gen` will require Rust nightly due to its `rustfmt-nightly` dependency.
