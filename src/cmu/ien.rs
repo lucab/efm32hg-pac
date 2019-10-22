@@ -1,595 +1,322 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::IEN {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register IEN"]
+pub type R = crate::R<u32, super::IEN>;
+#[doc = "Writer for register IEN"]
+pub type W = crate::W<u32, super::IEN>;
+#[doc = "Register IEN `reset()`'s with value 0"]
+impl crate::ResetValue for super::IEN {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = r" Value of the field"]
-pub struct HFRCORDYR {
-    bits: bool,
-}
-impl HFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct HFXORDYR {
-    bits: bool,
-}
-impl HFXORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LFRCORDYR {
-    bits: bool,
-}
-impl LFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LFXORDYR {
-    bits: bool,
-}
-impl LFXORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct AUXHFRCORDYR {
-    bits: bool,
-}
-impl AUXHFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CALRDYR {
-    bits: bool,
-}
-impl CALRDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CALOFR {
-    bits: bool,
-}
-impl CALOFR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct USHFRCORDYR {
-    bits: bool,
-}
-impl USHFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct USBCHFOSCSELR {
-    bits: bool,
-}
-impl USBCHFOSCSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Proxy"]
-pub struct _HFRCORDYW<'a> {
+#[doc = "Reader of field `HFRCORDY`"]
+pub type HFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `HFRCORDY`"]
+pub struct HFRCORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFRCORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> HFRCORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _HFXORDYW<'a> {
+#[doc = "Reader of field `HFXORDY`"]
+pub type HFXORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `HFXORDY`"]
+pub struct HFXORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFXORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> HFXORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LFRCORDYW<'a> {
+#[doc = "Reader of field `LFRCORDY`"]
+pub type LFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LFRCORDY`"]
+pub struct LFRCORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LFRCORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LFRCORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LFXORDYW<'a> {
+#[doc = "Reader of field `LFXORDY`"]
+pub type LFXORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LFXORDY`"]
+pub struct LFXORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LFXORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LFXORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _AUXHFRCORDYW<'a> {
+#[doc = "Reader of field `AUXHFRCORDY`"]
+pub type AUXHFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `AUXHFRCORDY`"]
+pub struct AUXHFRCORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _AUXHFRCORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> AUXHFRCORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CALRDYW<'a> {
+#[doc = "Reader of field `CALRDY`"]
+pub type CALRDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CALRDY`"]
+pub struct CALRDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CALRDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CALRDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 5;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CALOFW<'a> {
+#[doc = "Reader of field `CALOF`"]
+pub type CALOF_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CALOF`"]
+pub struct CALOF_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CALOFW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CALOF_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 6;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _USHFRCORDYW<'a> {
+#[doc = "Reader of field `USHFRCORDY`"]
+pub type USHFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `USHFRCORDY`"]
+pub struct USHFRCORDY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _USHFRCORDYW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> USHFRCORDY_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _USBCHFOSCSELW<'a> {
+#[doc = "Reader of field `USBCHFOSCSEL`"]
+pub type USBCHFOSCSEL_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `USBCHFOSCSEL`"]
+pub struct USBCHFOSCSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _USBCHFOSCSELW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> USBCHFOSCSEL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 9;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - HFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn hfrcordy(&self) -> HFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFRCORDYR { bits }
+    #[inline(always)]
+    pub fn hfrcordy(&self) -> HFRCORDY_R {
+        HFRCORDY_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - HFXO Ready Interrupt Enable"]
-    #[inline]
-    pub fn hfxordy(&self) -> HFXORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFXORDYR { bits }
+    #[inline(always)]
+    pub fn hfxordy(&self) -> HFXORDY_R {
+        HFXORDY_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - LFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn lfrcordy(&self) -> LFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFRCORDYR { bits }
+    #[inline(always)]
+    pub fn lfrcordy(&self) -> LFRCORDY_R {
+        LFRCORDY_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - LFXO Ready Interrupt Enable"]
-    #[inline]
-    pub fn lfxordy(&self) -> LFXORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFXORDYR { bits }
+    #[inline(always)]
+    pub fn lfxordy(&self) -> LFXORDY_R {
+        LFXORDY_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - AUXHFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn auxhfrcordy(&self) -> AUXHFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        AUXHFRCORDYR { bits }
+    #[inline(always)]
+    pub fn auxhfrcordy(&self) -> AUXHFRCORDY_R {
+        AUXHFRCORDY_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - Calibration Ready Interrupt Enable"]
-    #[inline]
-    pub fn calrdy(&self) -> CALRDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CALRDYR { bits }
+    #[inline(always)]
+    pub fn calrdy(&self) -> CALRDY_R {
+        CALRDY_R::new(((self.bits >> 5) & 0x01) != 0)
     }
     #[doc = "Bit 6 - Calibration Overflow Interrupt Enable"]
-    #[inline]
-    pub fn calof(&self) -> CALOFR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 6;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CALOFR { bits }
+    #[inline(always)]
+    pub fn calof(&self) -> CALOF_R {
+        CALOF_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bit 8 - USHFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn ushfrcordy(&self) -> USHFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        USHFRCORDYR { bits }
+    #[inline(always)]
+    pub fn ushfrcordy(&self) -> USHFRCORDY_R {
+        USHFRCORDY_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - USBC HF-oscillator Selected Interrupt Flag Clear"]
-    #[inline]
-    pub fn usbchfoscsel(&self) -> USBCHFOSCSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 9;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        USBCHFOSCSELR { bits }
+    #[inline(always)]
+    pub fn usbchfoscsel(&self) -> USBCHFOSCSEL_R {
+        USBCHFOSCSEL_R::new(((self.bits >> 9) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - HFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn hfrcordy(&mut self) -> _HFRCORDYW {
-        _HFRCORDYW { w: self }
+    #[inline(always)]
+    pub fn hfrcordy(&mut self) -> HFRCORDY_W {
+        HFRCORDY_W { w: self }
     }
     #[doc = "Bit 1 - HFXO Ready Interrupt Enable"]
-    #[inline]
-    pub fn hfxordy(&mut self) -> _HFXORDYW {
-        _HFXORDYW { w: self }
+    #[inline(always)]
+    pub fn hfxordy(&mut self) -> HFXORDY_W {
+        HFXORDY_W { w: self }
     }
     #[doc = "Bit 2 - LFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn lfrcordy(&mut self) -> _LFRCORDYW {
-        _LFRCORDYW { w: self }
+    #[inline(always)]
+    pub fn lfrcordy(&mut self) -> LFRCORDY_W {
+        LFRCORDY_W { w: self }
     }
     #[doc = "Bit 3 - LFXO Ready Interrupt Enable"]
-    #[inline]
-    pub fn lfxordy(&mut self) -> _LFXORDYW {
-        _LFXORDYW { w: self }
+    #[inline(always)]
+    pub fn lfxordy(&mut self) -> LFXORDY_W {
+        LFXORDY_W { w: self }
     }
     #[doc = "Bit 4 - AUXHFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn auxhfrcordy(&mut self) -> _AUXHFRCORDYW {
-        _AUXHFRCORDYW { w: self }
+    #[inline(always)]
+    pub fn auxhfrcordy(&mut self) -> AUXHFRCORDY_W {
+        AUXHFRCORDY_W { w: self }
     }
     #[doc = "Bit 5 - Calibration Ready Interrupt Enable"]
-    #[inline]
-    pub fn calrdy(&mut self) -> _CALRDYW {
-        _CALRDYW { w: self }
+    #[inline(always)]
+    pub fn calrdy(&mut self) -> CALRDY_W {
+        CALRDY_W { w: self }
     }
     #[doc = "Bit 6 - Calibration Overflow Interrupt Enable"]
-    #[inline]
-    pub fn calof(&mut self) -> _CALOFW {
-        _CALOFW { w: self }
+    #[inline(always)]
+    pub fn calof(&mut self) -> CALOF_W {
+        CALOF_W { w: self }
     }
     #[doc = "Bit 8 - USHFRCO Ready Interrupt Enable"]
-    #[inline]
-    pub fn ushfrcordy(&mut self) -> _USHFRCORDYW {
-        _USHFRCORDYW { w: self }
+    #[inline(always)]
+    pub fn ushfrcordy(&mut self) -> USHFRCORDY_W {
+        USHFRCORDY_W { w: self }
     }
     #[doc = "Bit 9 - USBC HF-oscillator Selected Interrupt Flag Clear"]
-    #[inline]
-    pub fn usbchfoscsel(&mut self) -> _USBCHFOSCSELW {
-        _USBCHFOSCSELW { w: self }
+    #[inline(always)]
+    pub fn usbchfoscsel(&mut self) -> USBCHFOSCSEL_W {
+        USBCHFOSCSEL_W { w: self }
     }
 }

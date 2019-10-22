@@ -1,574 +1,390 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::LFCLKSEL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register LFCLKSEL"]
+pub type R = crate::R<u32, super::LFCLKSEL>;
+#[doc = "Writer for register LFCLKSEL"]
+pub type W = crate::W<u32, super::LFCLKSEL>;
+#[doc = "Register LFCLKSEL `reset()`'s with value 0x15"]
+impl crate::ResetValue for super::LFCLKSEL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x15
     }
 }
-#[doc = "Possible values of the field `LFA`"]
+#[doc = "Clock Select for LFA\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LFAR {
-    #[doc = "LFACLK is disabled"]
+pub enum LFA_A {
+    #[doc = "0: LFACLK is disabled"]
     DISABLED,
-    #[doc = "LFRCO selected as LFACLK"]
+    #[doc = "1: LFRCO selected as LFACLK"]
     LFRCO,
-    #[doc = "LFXO selected as LFACLK"]
+    #[doc = "2: LFXO selected as LFACLK"]
     LFXO,
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
+    #[doc = "3: HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
     HFCORECLKLEDIV2,
 }
-impl LFAR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LFAR::DISABLED => 0,
-            LFAR::LFRCO => 1,
-            LFAR::LFXO => 2,
-            LFAR::HFCORECLKLEDIV2 => 3,
+impl From<LFA_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LFA_A) -> Self {
+        match variant {
+            LFA_A::DISABLED => 0,
+            LFA_A::LFRCO => 1,
+            LFA_A::LFXO => 2,
+            LFA_A::HFCORECLKLEDIV2 => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LFAR {
-        match value {
-            0 => LFAR::DISABLED,
-            1 => LFAR::LFRCO,
-            2 => LFAR::LFXO,
-            3 => LFAR::HFCORECLKLEDIV2,
+}
+#[doc = "Reader of field `LFA`"]
+pub type LFA_R = crate::R<u8, LFA_A>;
+impl LFA_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> LFA_A {
+        match self.bits {
+            0 => LFA_A::DISABLED,
+            1 => LFA_A::LFRCO,
+            2 => LFA_A::LFXO,
+            3 => LFA_A::HFCORECLKLEDIV2,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == LFAR::DISABLED
+        *self == LFA_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `LFRCO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == LFAR::LFRCO
+        *self == LFA_A::LFRCO
     }
     #[doc = "Checks if the value of the field is `LFXO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == LFAR::LFXO
+        *self == LFA_A::LFXO
     }
     #[doc = "Checks if the value of the field is `HFCORECLKLEDIV2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfcoreclklediv2(&self) -> bool {
-        *self == LFAR::HFCORECLKLEDIV2
+        *self == LFA_A::HFCORECLKLEDIV2
     }
 }
-#[doc = "Possible values of the field `LFB`"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LFBR {
-    #[doc = "LFBCLK is disabled"]
-    DISABLED,
-    #[doc = "LFRCO selected as LFBCLK"]
-    LFRCO,
-    #[doc = "LFXO selected as LFBCLK"]
-    LFXO,
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
-    HFCORECLKLEDIV2,
+#[doc = "Write proxy for field `LFA`"]
+pub struct LFA_W<'a> {
+    w: &'a mut W,
 }
-impl LFBR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LFBR::DISABLED => 0,
-            LFBR::LFRCO => 1,
-            LFBR::LFXO => 2,
-            LFBR::HFCORECLKLEDIV2 => 3,
+impl<'a> LFA_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LFA_A) -> &'a mut W {
+        {
+            self.bits(variant.into())
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LFBR {
-        match value {
-            0 => LFBR::DISABLED,
-            1 => LFBR::LFRCO,
-            2 => LFBR::LFXO,
-            3 => LFBR::HFCORECLKLEDIV2,
+    #[doc = "LFACLK is disabled"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(LFA_A::DISABLED)
+    }
+    #[doc = "LFRCO selected as LFACLK"]
+    #[inline(always)]
+    pub fn lfrco(self) -> &'a mut W {
+        self.variant(LFA_A::LFRCO)
+    }
+    #[doc = "LFXO selected as LFACLK"]
+    #[inline(always)]
+    pub fn lfxo(self) -> &'a mut W {
+        self.variant(LFA_A::LFXO)
+    }
+    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
+    #[inline(always)]
+    pub fn hfcoreclklediv2(self) -> &'a mut W {
+        self.variant(LFA_A::HFCORECLKLEDIV2)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x03) | ((value as u32) & 0x03);
+        self.w
+    }
+}
+#[doc = "Clock Select for LFB\n\nValue on reset: 1"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum LFB_A {
+    #[doc = "0: LFBCLK is disabled"]
+    DISABLED,
+    #[doc = "1: LFRCO selected as LFBCLK"]
+    LFRCO,
+    #[doc = "2: LFXO selected as LFBCLK"]
+    LFXO,
+    #[doc = "3: HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
+    HFCORECLKLEDIV2,
+}
+impl From<LFB_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LFB_A) -> Self {
+        match variant {
+            LFB_A::DISABLED => 0,
+            LFB_A::LFRCO => 1,
+            LFB_A::LFXO => 2,
+            LFB_A::HFCORECLKLEDIV2 => 3,
+        }
+    }
+}
+#[doc = "Reader of field `LFB`"]
+pub type LFB_R = crate::R<u8, LFB_A>;
+impl LFB_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> LFB_A {
+        match self.bits {
+            0 => LFB_A::DISABLED,
+            1 => LFB_A::LFRCO,
+            2 => LFB_A::LFXO,
+            3 => LFB_A::HFCORECLKLEDIV2,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == LFBR::DISABLED
+        *self == LFB_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `LFRCO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == LFBR::LFRCO
+        *self == LFB_A::LFRCO
     }
     #[doc = "Checks if the value of the field is `LFXO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == LFBR::LFXO
+        *self == LFB_A::LFXO
     }
     #[doc = "Checks if the value of the field is `HFCORECLKLEDIV2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfcoreclklediv2(&self) -> bool {
-        *self == LFBR::HFCORECLKLEDIV2
+        *self == LFB_A::HFCORECLKLEDIV2
     }
 }
-#[doc = "Possible values of the field `LFC`"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LFCR {
-    #[doc = "LFCCLK clock disabled."]
-    DISABLED,
-    #[doc = "LFRCO selected as LFCCLK clock"]
-    LFRCO,
-    #[doc = "LFXO selected as LFCCLK clock"]
-    LFXO,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
+#[doc = "Write proxy for field `LFB`"]
+pub struct LFB_W<'a> {
+    w: &'a mut W,
 }
-impl LFCR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LFCR::DISABLED => 0,
-            LFCR::LFRCO => 1,
-            LFCR::LFXO => 2,
-            LFCR::_Reserved(bits) => bits,
+impl<'a> LFB_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LFB_A) -> &'a mut W {
+        {
+            self.bits(variant.into())
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LFCR {
-        match value {
-            0 => LFCR::DISABLED,
-            1 => LFCR::LFRCO,
-            2 => LFCR::LFXO,
-            i => LFCR::_Reserved(i),
+    #[doc = "LFBCLK is disabled"]
+    #[inline(always)]
+    pub fn disabled(self) -> &'a mut W {
+        self.variant(LFB_A::DISABLED)
+    }
+    #[doc = "LFRCO selected as LFBCLK"]
+    #[inline(always)]
+    pub fn lfrco(self) -> &'a mut W {
+        self.variant(LFB_A::LFRCO)
+    }
+    #[doc = "LFXO selected as LFBCLK"]
+    #[inline(always)]
+    pub fn lfxo(self) -> &'a mut W {
+        self.variant(LFB_A::LFXO)
+    }
+    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
+    #[inline(always)]
+    pub fn hfcoreclklediv2(self) -> &'a mut W {
+        self.variant(LFB_A::HFCORECLKLEDIV2)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03 << 2)) | (((value as u32) & 0x03) << 2);
+        self.w
+    }
+}
+#[doc = "Clock Select for LFC\n\nValue on reset: 1"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum LFC_A {
+    #[doc = "0: LFCCLK clock disabled."]
+    DISABLED,
+    #[doc = "1: LFRCO selected as LFCCLK clock"]
+    LFRCO,
+    #[doc = "2: LFXO selected as LFCCLK clock"]
+    LFXO,
+}
+impl From<LFC_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LFC_A) -> Self {
+        match variant {
+            LFC_A::DISABLED => 0,
+            LFC_A::LFRCO => 1,
+            LFC_A::LFXO => 2,
+        }
+    }
+}
+#[doc = "Reader of field `LFC`"]
+pub type LFC_R = crate::R<u8, LFC_A>;
+impl LFC_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, LFC_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(LFC_A::DISABLED),
+            1 => Val(LFC_A::LFRCO),
+            2 => Val(LFC_A::LFXO),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `DISABLED`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_disabled(&self) -> bool {
-        *self == LFCR::DISABLED
+        *self == LFC_A::DISABLED
     }
     #[doc = "Checks if the value of the field is `LFRCO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfrco(&self) -> bool {
-        *self == LFCR::LFRCO
+        *self == LFC_A::LFRCO
     }
     #[doc = "Checks if the value of the field is `LFXO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lfxo(&self) -> bool {
-        *self == LFCR::LFXO
+        *self == LFC_A::LFXO
     }
 }
-#[doc = r" Value of the field"]
-pub struct LFAER {
-    bits: bool,
-}
-impl LFAER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LFBER {
-    bits: bool,
-}
-impl LFBER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Values that can be written to the field `LFA`"]
-pub enum LFAW {
-    #[doc = "LFACLK is disabled"]
-    DISABLED,
-    #[doc = "LFRCO selected as LFACLK"]
-    LFRCO,
-    #[doc = "LFXO selected as LFACLK"]
-    LFXO,
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
-    HFCORECLKLEDIV2,
-}
-impl LFAW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LFAW::DISABLED => 0,
-            LFAW::LFRCO => 1,
-            LFAW::LFXO => 2,
-            LFAW::HFCORECLKLEDIV2 => 3,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LFAW<'a> {
+#[doc = "Write proxy for field `LFC`"]
+pub struct LFC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LFAW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LFAW) -> &'a mut W {
-        {
-            self.bits(variant._bits())
-        }
-    }
-    #[doc = "LFACLK is disabled"]
-    #[inline]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LFAW::DISABLED)
-    }
-    #[doc = "LFRCO selected as LFACLK"]
-    #[inline]
-    pub fn lfrco(self) -> &'a mut W {
-        self.variant(LFAW::LFRCO)
-    }
-    #[doc = "LFXO selected as LFACLK"]
-    #[inline]
-    pub fn lfxo(self) -> &'a mut W {
-        self.variant(LFAW::LFXO)
-    }
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
-    #[inline]
-    pub fn hfcoreclklediv2(self) -> &'a mut W {
-        self.variant(LFAW::HFCORECLKLEDIV2)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `LFB`"]
-pub enum LFBW {
-    #[doc = "LFBCLK is disabled"]
-    DISABLED,
-    #[doc = "LFRCO selected as LFBCLK"]
-    LFRCO,
-    #[doc = "LFXO selected as LFBCLK"]
-    LFXO,
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
-    HFCORECLKLEDIV2,
-}
-impl LFBW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LFBW::DISABLED => 0,
-            LFBW::LFRCO => 1,
-            LFBW::LFXO => 2,
-            LFBW::HFCORECLKLEDIV2 => 3,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LFBW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _LFBW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LFBW) -> &'a mut W {
-        {
-            self.bits(variant._bits())
-        }
-    }
-    #[doc = "LFBCLK is disabled"]
-    #[inline]
-    pub fn disabled(self) -> &'a mut W {
-        self.variant(LFBW::DISABLED)
-    }
-    #[doc = "LFRCO selected as LFBCLK"]
-    #[inline]
-    pub fn lfrco(self) -> &'a mut W {
-        self.variant(LFBW::LFRCO)
-    }
-    #[doc = "LFXO selected as LFBCLK"]
-    #[inline]
-    pub fn lfxo(self) -> &'a mut W {
-        self.variant(LFBW::LFXO)
-    }
-    #[doc = "HFCORECLKLE divided by two or four is selected as LFACLK. The division factor is determined by CMU_CTRL_HFLE and CMU_HFCORECLKDIV_HFCORECLKLEDIV."]
-    #[inline]
-    pub fn hfcoreclklediv2(self) -> &'a mut W {
-        self.variant(LFBW::HFCORECLKLEDIV2)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `LFC`"]
-pub enum LFCW {
-    #[doc = "LFCCLK clock disabled."]
-    DISABLED,
-    #[doc = "LFRCO selected as LFCCLK clock"]
-    LFRCO,
-    #[doc = "LFXO selected as LFCCLK clock"]
-    LFXO,
-}
-impl LFCW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LFCW::DISABLED => 0,
-            LFCW::LFRCO => 1,
-            LFCW::LFXO => 2,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LFCW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _LFCW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LFCW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> LFC_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LFC_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "LFCCLK clock disabled."]
-    #[inline]
+    #[inline(always)]
     pub fn disabled(self) -> &'a mut W {
-        self.variant(LFCW::DISABLED)
+        self.variant(LFC_A::DISABLED)
     }
     #[doc = "LFRCO selected as LFCCLK clock"]
-    #[inline]
+    #[inline(always)]
     pub fn lfrco(self) -> &'a mut W {
-        self.variant(LFCW::LFRCO)
+        self.variant(LFC_A::LFRCO)
     }
     #[doc = "LFXO selected as LFCCLK clock"]
-    #[inline]
+    #[inline(always)]
     pub fn lfxo(self) -> &'a mut W {
-        self.variant(LFCW::LFXO)
+        self.variant(LFC_A::LFXO)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x03 << 4)) | (((value as u32) & 0x03) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LFAEW<'a> {
+#[doc = "Reader of field `LFAE`"]
+pub type LFAE_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LFAE`"]
+pub struct LFAE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LFAEW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LFAE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 16)) | (((value as u32) & 0x01) << 16);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LFBEW<'a> {
+#[doc = "Reader of field `LFBE`"]
+pub type LFBE_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LFBE`"]
+pub struct LFBE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LFBEW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LFBE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 20;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 20)) | (((value as u32) & 0x01) << 20);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:1 - Clock Select for LFA"]
-    #[inline]
-    pub fn lfa(&self) -> LFAR {
-        LFAR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn lfa(&self) -> LFA_R {
+        LFA_R::new((self.bits & 0x03) as u8)
     }
     #[doc = "Bits 2:3 - Clock Select for LFB"]
-    #[inline]
-    pub fn lfb(&self) -> LFBR {
-        LFBR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn lfb(&self) -> LFB_R {
+        LFB_R::new(((self.bits >> 2) & 0x03) as u8)
     }
     #[doc = "Bits 4:5 - Clock Select for LFC"]
-    #[inline]
-    pub fn lfc(&self) -> LFCR {
-        LFCR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn lfc(&self) -> LFC_R {
+        LFC_R::new(((self.bits >> 4) & 0x03) as u8)
     }
     #[doc = "Bit 16 - Clock Select for LFA Extended"]
-    #[inline]
-    pub fn lfae(&self) -> LFAER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFAER { bits }
+    #[inline(always)]
+    pub fn lfae(&self) -> LFAE_R {
+        LFAE_R::new(((self.bits >> 16) & 0x01) != 0)
     }
     #[doc = "Bit 20 - Clock Select for LFB Extended"]
-    #[inline]
-    pub fn lfbe(&self) -> LFBER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 20;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFBER { bits }
+    #[inline(always)]
+    pub fn lfbe(&self) -> LFBE_R {
+        LFBE_R::new(((self.bits >> 20) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 21 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:1 - Clock Select for LFA"]
-    #[inline]
-    pub fn lfa(&mut self) -> _LFAW {
-        _LFAW { w: self }
+    #[inline(always)]
+    pub fn lfa(&mut self) -> LFA_W {
+        LFA_W { w: self }
     }
     #[doc = "Bits 2:3 - Clock Select for LFB"]
-    #[inline]
-    pub fn lfb(&mut self) -> _LFBW {
-        _LFBW { w: self }
+    #[inline(always)]
+    pub fn lfb(&mut self) -> LFB_W {
+        LFB_W { w: self }
     }
     #[doc = "Bits 4:5 - Clock Select for LFC"]
-    #[inline]
-    pub fn lfc(&mut self) -> _LFCW {
-        _LFCW { w: self }
+    #[inline(always)]
+    pub fn lfc(&mut self) -> LFC_W {
+        LFC_W { w: self }
     }
     #[doc = "Bit 16 - Clock Select for LFA Extended"]
-    #[inline]
-    pub fn lfae(&mut self) -> _LFAEW {
-        _LFAEW { w: self }
+    #[inline(always)]
+    pub fn lfae(&mut self) -> LFAE_W {
+        LFAE_W { w: self }
     }
     #[doc = "Bit 20 - Clock Select for LFB Extended"]
-    #[inline]
-    pub fn lfbe(&mut self) -> _LFBEW {
-        _LFBEW { w: self }
+    #[inline(always)]
+    pub fn lfbe(&mut self) -> LFBE_W {
+        LFBE_W { w: self }
     }
 }

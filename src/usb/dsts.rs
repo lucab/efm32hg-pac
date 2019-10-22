@@ -1,174 +1,78 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::DSTS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SUSPSTSR {
-    bits: bool,
-}
-impl SUSPSTSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Possible values of the field `ENUMSPD`"]
+#[doc = "Reader of register DSTS"]
+pub type R = crate::R<u32, super::DSTS>;
+#[doc = "Reader of field `SUSPSTS`"]
+pub type SUSPSTS_R = crate::R<bool, bool>;
+#[doc = "Enumerated Speed\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum ENUMSPDR {
-    #[doc = "Low speed (PHY clock is running at 6 MHz)."]
+pub enum ENUMSPD_A {
+    #[doc = "2: Low speed (PHY clock is running at 6 MHz)."]
     LS,
-    #[doc = "Full speed (PHY clock is running at 48 MHz)."]
+    #[doc = "3: Full speed (PHY clock is running at 48 MHz)."]
     FS,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl ENUMSPDR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            ENUMSPDR::LS => 2,
-            ENUMSPDR::FS => 3,
-            ENUMSPDR::_Reserved(bits) => bits,
+impl From<ENUMSPD_A> for u8 {
+    #[inline(always)]
+    fn from(variant: ENUMSPD_A) -> Self {
+        match variant {
+            ENUMSPD_A::LS => 2,
+            ENUMSPD_A::FS => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> ENUMSPDR {
-        match value {
-            2 => ENUMSPDR::LS,
-            3 => ENUMSPDR::FS,
-            i => ENUMSPDR::_Reserved(i),
+}
+#[doc = "Reader of field `ENUMSPD`"]
+pub type ENUMSPD_R = crate::R<u8, ENUMSPD_A>;
+impl ENUMSPD_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, ENUMSPD_A> {
+        use crate::Variant::*;
+        match self.bits {
+            2 => Val(ENUMSPD_A::LS),
+            3 => Val(ENUMSPD_A::FS),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `LS`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ls(&self) -> bool {
-        *self == ENUMSPDR::LS
+        *self == ENUMSPD_A::LS
     }
     #[doc = "Checks if the value of the field is `FS`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_fs(&self) -> bool {
-        *self == ENUMSPDR::FS
+        *self == ENUMSPD_A::FS
     }
 }
-#[doc = r" Value of the field"]
-pub struct ERRTICERRR {
-    bits: bool,
-}
-impl ERRTICERRR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SOFFNR {
-    bits: u16,
-}
-impl SOFFNR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u16 {
-        self.bits
-    }
-}
-#[doc = r" Value of the field"]
-pub struct DEVLNSTSR {
-    bits: u8,
-}
-impl DEVLNSTSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
+#[doc = "Reader of field `ERRTICERR`"]
+pub type ERRTICERR_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SOFFN`"]
+pub type SOFFN_R = crate::R<u16, u16>;
+#[doc = "Reader of field `DEVLNSTS`"]
+pub type DEVLNSTS_R = crate::R<u8, u8>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Suspend Status"]
-    #[inline]
-    pub fn suspsts(&self) -> SUSPSTSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SUSPSTSR { bits }
+    #[inline(always)]
+    pub fn suspsts(&self) -> SUSPSTS_R {
+        SUSPSTS_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bits 1:2 - Enumerated Speed"]
-    #[inline]
-    pub fn enumspd(&self) -> ENUMSPDR {
-        ENUMSPDR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn enumspd(&self) -> ENUMSPD_R {
+        ENUMSPD_R::new(((self.bits >> 1) & 0x03) as u8)
     }
     #[doc = "Bit 3 - Erratic Error"]
-    #[inline]
-    pub fn errticerr(&self) -> ERRTICERRR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        ERRTICERRR { bits }
+    #[inline(always)]
+    pub fn errticerr(&self) -> ERRTICERR_R {
+        ERRTICERR_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bits 8:21 - Frame Number of the Received SOF"]
-    #[inline]
-    pub fn soffn(&self) -> SOFFNR {
-        let bits = {
-            const MASK: u16 = 16383;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) as u16
-        };
-        SOFFNR { bits }
+    #[inline(always)]
+    pub fn soffn(&self) -> SOFFN_R {
+        SOFFN_R::new(((self.bits >> 8) & 0x3fff) as u16)
     }
     #[doc = "Bits 22:23 - Device Line Status"]
-    #[inline]
-    pub fn devlnsts(&self) -> DEVLNSTSR {
-        let bits = {
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 22;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        DEVLNSTSR { bits }
+    #[inline(always)]
+    pub fn devlnsts(&self) -> DEVLNSTS_R {
+        DEVLNSTS_R::new(((self.bits >> 22) & 0x03) as u8)
     }
 }

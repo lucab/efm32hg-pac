@@ -1,203 +1,145 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::STATUS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct ENR {
-    bits: bool,
-}
-impl ENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Possible values of the field `STATE`"]
+#[doc = "Reader of register STATUS"]
+pub type R = crate::R<u32, super::STATUS>;
+#[doc = "Reader of field `EN`"]
+pub type EN_R = crate::R<bool, bool>;
+#[doc = "Control Current State\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum STATER {
-    #[doc = "Idle"]
+pub enum STATE_A {
+    #[doc = "0: Idle"]
     IDLE,
-    #[doc = "Reading channel controller data"]
+    #[doc = "1: Reading channel controller data"]
     RDCHCTRLDATA,
-    #[doc = "Reading source data end pointer"]
+    #[doc = "2: Reading source data end pointer"]
     RDSRCENDPTR,
-    #[doc = "Reading destination data end pointer"]
+    #[doc = "3: Reading destination data end pointer"]
     RDDSTENDPTR,
-    #[doc = "Reading source data"]
+    #[doc = "4: Reading source data"]
     RDSRCDATA,
-    #[doc = "Writing destination data"]
+    #[doc = "5: Writing destination data"]
     WRDSTDATA,
-    #[doc = "Waiting for DMA request to clear"]
+    #[doc = "6: Waiting for DMA request to clear"]
     WAITREQCLR,
-    #[doc = "Writing channel controller data"]
+    #[doc = "7: Writing channel controller data"]
     WRCHCTRLDATA,
-    #[doc = "Stalled"]
+    #[doc = "8: Stalled"]
     STALLED,
-    #[doc = "Done"]
+    #[doc = "9: Done"]
     DONE,
-    #[doc = "Peripheral scatter-gather transition"]
+    #[doc = "10: Peripheral scatter-gather transition"]
     PERSCATTRANS,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl STATER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            STATER::IDLE => 0,
-            STATER::RDCHCTRLDATA => 1,
-            STATER::RDSRCENDPTR => 2,
-            STATER::RDDSTENDPTR => 3,
-            STATER::RDSRCDATA => 4,
-            STATER::WRDSTDATA => 5,
-            STATER::WAITREQCLR => 6,
-            STATER::WRCHCTRLDATA => 7,
-            STATER::STALLED => 8,
-            STATER::DONE => 9,
-            STATER::PERSCATTRANS => 10,
-            STATER::_Reserved(bits) => bits,
+impl From<STATE_A> for u8 {
+    #[inline(always)]
+    fn from(variant: STATE_A) -> Self {
+        match variant {
+            STATE_A::IDLE => 0,
+            STATE_A::RDCHCTRLDATA => 1,
+            STATE_A::RDSRCENDPTR => 2,
+            STATE_A::RDDSTENDPTR => 3,
+            STATE_A::RDSRCDATA => 4,
+            STATE_A::WRDSTDATA => 5,
+            STATE_A::WAITREQCLR => 6,
+            STATE_A::WRCHCTRLDATA => 7,
+            STATE_A::STALLED => 8,
+            STATE_A::DONE => 9,
+            STATE_A::PERSCATTRANS => 10,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> STATER {
-        match value {
-            0 => STATER::IDLE,
-            1 => STATER::RDCHCTRLDATA,
-            2 => STATER::RDSRCENDPTR,
-            3 => STATER::RDDSTENDPTR,
-            4 => STATER::RDSRCDATA,
-            5 => STATER::WRDSTDATA,
-            6 => STATER::WAITREQCLR,
-            7 => STATER::WRCHCTRLDATA,
-            8 => STATER::STALLED,
-            9 => STATER::DONE,
-            10 => STATER::PERSCATTRANS,
-            i => STATER::_Reserved(i),
+}
+#[doc = "Reader of field `STATE`"]
+pub type STATE_R = crate::R<u8, STATE_A>;
+impl STATE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, STATE_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(STATE_A::IDLE),
+            1 => Val(STATE_A::RDCHCTRLDATA),
+            2 => Val(STATE_A::RDSRCENDPTR),
+            3 => Val(STATE_A::RDDSTENDPTR),
+            4 => Val(STATE_A::RDSRCDATA),
+            5 => Val(STATE_A::WRDSTDATA),
+            6 => Val(STATE_A::WAITREQCLR),
+            7 => Val(STATE_A::WRCHCTRLDATA),
+            8 => Val(STATE_A::STALLED),
+            9 => Val(STATE_A::DONE),
+            10 => Val(STATE_A::PERSCATTRANS),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `IDLE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_idle(&self) -> bool {
-        *self == STATER::IDLE
+        *self == STATE_A::IDLE
     }
     #[doc = "Checks if the value of the field is `RDCHCTRLDATA`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_rdchctrldata(&self) -> bool {
-        *self == STATER::RDCHCTRLDATA
+        *self == STATE_A::RDCHCTRLDATA
     }
     #[doc = "Checks if the value of the field is `RDSRCENDPTR`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_rdsrcendptr(&self) -> bool {
-        *self == STATER::RDSRCENDPTR
+        *self == STATE_A::RDSRCENDPTR
     }
     #[doc = "Checks if the value of the field is `RDDSTENDPTR`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_rddstendptr(&self) -> bool {
-        *self == STATER::RDDSTENDPTR
+        *self == STATE_A::RDDSTENDPTR
     }
     #[doc = "Checks if the value of the field is `RDSRCDATA`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_rdsrcdata(&self) -> bool {
-        *self == STATER::RDSRCDATA
+        *self == STATE_A::RDSRCDATA
     }
     #[doc = "Checks if the value of the field is `WRDSTDATA`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_wrdstdata(&self) -> bool {
-        *self == STATER::WRDSTDATA
+        *self == STATE_A::WRDSTDATA
     }
     #[doc = "Checks if the value of the field is `WAITREQCLR`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_waitreqclr(&self) -> bool {
-        *self == STATER::WAITREQCLR
+        *self == STATE_A::WAITREQCLR
     }
     #[doc = "Checks if the value of the field is `WRCHCTRLDATA`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_wrchctrldata(&self) -> bool {
-        *self == STATER::WRCHCTRLDATA
+        *self == STATE_A::WRCHCTRLDATA
     }
     #[doc = "Checks if the value of the field is `STALLED`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_stalled(&self) -> bool {
-        *self == STATER::STALLED
+        *self == STATE_A::STALLED
     }
     #[doc = "Checks if the value of the field is `DONE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_done(&self) -> bool {
-        *self == STATER::DONE
+        *self == STATE_A::DONE
     }
     #[doc = "Checks if the value of the field is `PERSCATTRANS`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_perscattrans(&self) -> bool {
-        *self == STATER::PERSCATTRANS
+        *self == STATE_A::PERSCATTRANS
     }
 }
-#[doc = r" Value of the field"]
-pub struct CHNUMR {
-    bits: u8,
-}
-impl CHNUMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
+#[doc = "Reader of field `CHNUM`"]
+pub type CHNUM_R = crate::R<u8, u8>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - DMA Enable Status"]
-    #[inline]
-    pub fn en(&self) -> ENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        ENR { bits }
+    #[inline(always)]
+    pub fn en(&self) -> EN_R {
+        EN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bits 4:7 - Control Current State"]
-    #[inline]
-    pub fn state(&self) -> STATER {
-        STATER::_from({
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn state(&self) -> STATE_R {
+        STATE_R::new(((self.bits >> 4) & 0x0f) as u8)
     }
     #[doc = "Bits 16:20 - Channel Number"]
-    #[inline]
-    pub fn chnum(&self) -> CHNUMR {
-        let bits = {
-            const MASK: u8 = 31;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        CHNUMR { bits }
+    #[inline(always)]
+    pub fn chnum(&self) -> CHNUM_R {
+        CHNUM_R::new(((self.bits >> 16) & 0x1f) as u8)
     }
 }

@@ -1,299 +1,67 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::IF {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct HFRCORDYR {
-    bits: bool,
-}
-impl HFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct HFXORDYR {
-    bits: bool,
-}
-impl HFXORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LFRCORDYR {
-    bits: bool,
-}
-impl LFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LFXORDYR {
-    bits: bool,
-}
-impl LFXORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct AUXHFRCORDYR {
-    bits: bool,
-}
-impl AUXHFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CALRDYR {
-    bits: bool,
-}
-impl CALRDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CALOFR {
-    bits: bool,
-}
-impl CALOFR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct USHFRCORDYR {
-    bits: bool,
-}
-impl USHFRCORDYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct USBCHFOSCSELR {
-    bits: bool,
-}
-impl USBCHFOSCSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
+#[doc = "Reader of register IF"]
+pub type R = crate::R<u32, super::IF>;
+#[doc = "Reader of field `HFRCORDY`"]
+pub type HFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `HFXORDY`"]
+pub type HFXORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `LFRCORDY`"]
+pub type LFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `LFXORDY`"]
+pub type LFXORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `AUXHFRCORDY`"]
+pub type AUXHFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CALRDY`"]
+pub type CALRDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CALOF`"]
+pub type CALOF_R = crate::R<bool, bool>;
+#[doc = "Reader of field `USHFRCORDY`"]
+pub type USHFRCORDY_R = crate::R<bool, bool>;
+#[doc = "Reader of field `USBCHFOSCSEL`"]
+pub type USBCHFOSCSEL_R = crate::R<bool, bool>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - HFRCO Ready Interrupt Flag"]
-    #[inline]
-    pub fn hfrcordy(&self) -> HFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFRCORDYR { bits }
+    #[inline(always)]
+    pub fn hfrcordy(&self) -> HFRCORDY_R {
+        HFRCORDY_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - HFXO Ready Interrupt Flag"]
-    #[inline]
-    pub fn hfxordy(&self) -> HFXORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFXORDYR { bits }
+    #[inline(always)]
+    pub fn hfxordy(&self) -> HFXORDY_R {
+        HFXORDY_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - LFRCO Ready Interrupt Flag"]
-    #[inline]
-    pub fn lfrcordy(&self) -> LFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFRCORDYR { bits }
+    #[inline(always)]
+    pub fn lfrcordy(&self) -> LFRCORDY_R {
+        LFRCORDY_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - LFXO Ready Interrupt Flag"]
-    #[inline]
-    pub fn lfxordy(&self) -> LFXORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LFXORDYR { bits }
+    #[inline(always)]
+    pub fn lfxordy(&self) -> LFXORDY_R {
+        LFXORDY_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - AUXHFRCO Ready Interrupt Flag"]
-    #[inline]
-    pub fn auxhfrcordy(&self) -> AUXHFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        AUXHFRCORDYR { bits }
+    #[inline(always)]
+    pub fn auxhfrcordy(&self) -> AUXHFRCORDY_R {
+        AUXHFRCORDY_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - Calibration Ready Interrupt Flag"]
-    #[inline]
-    pub fn calrdy(&self) -> CALRDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CALRDYR { bits }
+    #[inline(always)]
+    pub fn calrdy(&self) -> CALRDY_R {
+        CALRDY_R::new(((self.bits >> 5) & 0x01) != 0)
     }
     #[doc = "Bit 6 - Calibration Overflow Interrupt Flag"]
-    #[inline]
-    pub fn calof(&self) -> CALOFR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 6;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CALOFR { bits }
+    #[inline(always)]
+    pub fn calof(&self) -> CALOF_R {
+        CALOF_R::new(((self.bits >> 6) & 0x01) != 0)
     }
     #[doc = "Bit 8 - USHFRCO Ready Interrupt Flag"]
-    #[inline]
-    pub fn ushfrcordy(&self) -> USHFRCORDYR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        USHFRCORDYR { bits }
+    #[inline(always)]
+    pub fn ushfrcordy(&self) -> USHFRCORDY_R {
+        USHFRCORDY_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - USBC HF-oscillator Selected Interrupt Flag"]
-    #[inline]
-    pub fn usbchfoscsel(&self) -> USBCHFOSCSELR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 9;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        USBCHFOSCSELR { bits }
+    #[inline(always)]
+    pub fn usbchfoscsel(&self) -> USBCHFOSCSEL_R {
+        USBCHFOSCSEL_R::new(((self.bits >> 9) & 0x01) != 0)
     }
 }

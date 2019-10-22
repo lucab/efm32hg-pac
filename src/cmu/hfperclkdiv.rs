@@ -1,362 +1,240 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::HFPERCLKDIV {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register HFPERCLKDIV"]
+pub type R = crate::R<u32, super::HFPERCLKDIV>;
+#[doc = "Writer for register HFPERCLKDIV"]
+pub type W = crate::W<u32, super::HFPERCLKDIV>;
+#[doc = "Register HFPERCLKDIV `reset()`'s with value 0x0100"]
+impl crate::ResetValue for super::HFPERCLKDIV {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x0100
     }
 }
-#[doc = "Possible values of the field `HFPERCLKDIV`"]
+#[doc = "HFPERCLK Divider\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum HFPERCLKDIVR {
-    #[doc = "HFPERCLK = HFCLK."]
+pub enum HFPERCLKDIV_A {
+    #[doc = "0: HFPERCLK = HFCLK."]
     HFCLK,
-    #[doc = "HFPERCLK = HFCLK/2."]
+    #[doc = "1: HFPERCLK = HFCLK/2."]
     HFCLK2,
-    #[doc = "HFPERCLK = HFCLK/4."]
+    #[doc = "2: HFPERCLK = HFCLK/4."]
     HFCLK4,
-    #[doc = "HFPERCLK = HFCLK/8."]
+    #[doc = "3: HFPERCLK = HFCLK/8."]
     HFCLK8,
-    #[doc = "HFPERCLK = HFCLK/16."]
+    #[doc = "4: HFPERCLK = HFCLK/16."]
     HFCLK16,
-    #[doc = "HFPERCLK = HFCLK/32."]
+    #[doc = "5: HFPERCLK = HFCLK/32."]
     HFCLK32,
-    #[doc = "HFPERCLK = HFCLK/64."]
+    #[doc = "6: HFPERCLK = HFCLK/64."]
     HFCLK64,
-    #[doc = "HFPERCLK = HFCLK/128."]
+    #[doc = "7: HFPERCLK = HFCLK/128."]
     HFCLK128,
-    #[doc = "HFPERCLK = HFCLK/256."]
+    #[doc = "8: HFPERCLK = HFCLK/256."]
     HFCLK256,
-    #[doc = "HFPERCLK = HFCLK/512."]
+    #[doc = "9: HFPERCLK = HFCLK/512."]
     HFCLK512,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl HFPERCLKDIVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            HFPERCLKDIVR::HFCLK => 0,
-            HFPERCLKDIVR::HFCLK2 => 1,
-            HFPERCLKDIVR::HFCLK4 => 2,
-            HFPERCLKDIVR::HFCLK8 => 3,
-            HFPERCLKDIVR::HFCLK16 => 4,
-            HFPERCLKDIVR::HFCLK32 => 5,
-            HFPERCLKDIVR::HFCLK64 => 6,
-            HFPERCLKDIVR::HFCLK128 => 7,
-            HFPERCLKDIVR::HFCLK256 => 8,
-            HFPERCLKDIVR::HFCLK512 => 9,
-            HFPERCLKDIVR::_Reserved(bits) => bits,
+impl From<HFPERCLKDIV_A> for u8 {
+    #[inline(always)]
+    fn from(variant: HFPERCLKDIV_A) -> Self {
+        match variant {
+            HFPERCLKDIV_A::HFCLK => 0,
+            HFPERCLKDIV_A::HFCLK2 => 1,
+            HFPERCLKDIV_A::HFCLK4 => 2,
+            HFPERCLKDIV_A::HFCLK8 => 3,
+            HFPERCLKDIV_A::HFCLK16 => 4,
+            HFPERCLKDIV_A::HFCLK32 => 5,
+            HFPERCLKDIV_A::HFCLK64 => 6,
+            HFPERCLKDIV_A::HFCLK128 => 7,
+            HFPERCLKDIV_A::HFCLK256 => 8,
+            HFPERCLKDIV_A::HFCLK512 => 9,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> HFPERCLKDIVR {
-        match value {
-            0 => HFPERCLKDIVR::HFCLK,
-            1 => HFPERCLKDIVR::HFCLK2,
-            2 => HFPERCLKDIVR::HFCLK4,
-            3 => HFPERCLKDIVR::HFCLK8,
-            4 => HFPERCLKDIVR::HFCLK16,
-            5 => HFPERCLKDIVR::HFCLK32,
-            6 => HFPERCLKDIVR::HFCLK64,
-            7 => HFPERCLKDIVR::HFCLK128,
-            8 => HFPERCLKDIVR::HFCLK256,
-            9 => HFPERCLKDIVR::HFCLK512,
-            i => HFPERCLKDIVR::_Reserved(i),
+}
+#[doc = "Reader of field `HFPERCLKDIV`"]
+pub type HFPERCLKDIV_R = crate::R<u8, HFPERCLKDIV_A>;
+impl HFPERCLKDIV_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, HFPERCLKDIV_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(HFPERCLKDIV_A::HFCLK),
+            1 => Val(HFPERCLKDIV_A::HFCLK2),
+            2 => Val(HFPERCLKDIV_A::HFCLK4),
+            3 => Val(HFPERCLKDIV_A::HFCLK8),
+            4 => Val(HFPERCLKDIV_A::HFCLK16),
+            5 => Val(HFPERCLKDIV_A::HFCLK32),
+            6 => Val(HFPERCLKDIV_A::HFCLK64),
+            7 => Val(HFPERCLKDIV_A::HFCLK128),
+            8 => Val(HFPERCLKDIV_A::HFCLK256),
+            9 => Val(HFPERCLKDIV_A::HFCLK512),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `HFCLK`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK
+        *self == HFPERCLKDIV_A::HFCLK
     }
     #[doc = "Checks if the value of the field is `HFCLK2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk2(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK2
+        *self == HFPERCLKDIV_A::HFCLK2
     }
     #[doc = "Checks if the value of the field is `HFCLK4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk4(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK4
+        *self == HFPERCLKDIV_A::HFCLK4
     }
     #[doc = "Checks if the value of the field is `HFCLK8`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk8(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK8
+        *self == HFPERCLKDIV_A::HFCLK8
     }
     #[doc = "Checks if the value of the field is `HFCLK16`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk16(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK16
+        *self == HFPERCLKDIV_A::HFCLK16
     }
     #[doc = "Checks if the value of the field is `HFCLK32`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk32(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK32
+        *self == HFPERCLKDIV_A::HFCLK32
     }
     #[doc = "Checks if the value of the field is `HFCLK64`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk64(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK64
+        *self == HFPERCLKDIV_A::HFCLK64
     }
     #[doc = "Checks if the value of the field is `HFCLK128`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk128(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK128
+        *self == HFPERCLKDIV_A::HFCLK128
     }
     #[doc = "Checks if the value of the field is `HFCLK256`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk256(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK256
+        *self == HFPERCLKDIV_A::HFCLK256
     }
     #[doc = "Checks if the value of the field is `HFCLK512`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk512(&self) -> bool {
-        *self == HFPERCLKDIVR::HFCLK512
+        *self == HFPERCLKDIV_A::HFCLK512
     }
 }
-#[doc = r" Value of the field"]
-pub struct HFPERCLKENR {
-    bits: bool,
-}
-impl HFPERCLKENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Values that can be written to the field `HFPERCLKDIV`"]
-pub enum HFPERCLKDIVW {
-    #[doc = "HFPERCLK = HFCLK."]
-    HFCLK,
-    #[doc = "HFPERCLK = HFCLK/2."]
-    HFCLK2,
-    #[doc = "HFPERCLK = HFCLK/4."]
-    HFCLK4,
-    #[doc = "HFPERCLK = HFCLK/8."]
-    HFCLK8,
-    #[doc = "HFPERCLK = HFCLK/16."]
-    HFCLK16,
-    #[doc = "HFPERCLK = HFCLK/32."]
-    HFCLK32,
-    #[doc = "HFPERCLK = HFCLK/64."]
-    HFCLK64,
-    #[doc = "HFPERCLK = HFCLK/128."]
-    HFCLK128,
-    #[doc = "HFPERCLK = HFCLK/256."]
-    HFCLK256,
-    #[doc = "HFPERCLK = HFCLK/512."]
-    HFCLK512,
-}
-impl HFPERCLKDIVW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            HFPERCLKDIVW::HFCLK => 0,
-            HFPERCLKDIVW::HFCLK2 => 1,
-            HFPERCLKDIVW::HFCLK4 => 2,
-            HFPERCLKDIVW::HFCLK8 => 3,
-            HFPERCLKDIVW::HFCLK16 => 4,
-            HFPERCLKDIVW::HFCLK32 => 5,
-            HFPERCLKDIVW::HFCLK64 => 6,
-            HFPERCLKDIVW::HFCLK128 => 7,
-            HFPERCLKDIVW::HFCLK256 => 8,
-            HFPERCLKDIVW::HFCLK512 => 9,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _HFPERCLKDIVW<'a> {
+#[doc = "Write proxy for field `HFPERCLKDIV`"]
+pub struct HFPERCLKDIV_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFPERCLKDIVW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: HFPERCLKDIVW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> HFPERCLKDIV_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: HFPERCLKDIV_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "HFPERCLK = HFCLK."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK)
+        self.variant(HFPERCLKDIV_A::HFCLK)
     }
     #[doc = "HFPERCLK = HFCLK/2."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk2(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK2)
+        self.variant(HFPERCLKDIV_A::HFCLK2)
     }
     #[doc = "HFPERCLK = HFCLK/4."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk4(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK4)
+        self.variant(HFPERCLKDIV_A::HFCLK4)
     }
     #[doc = "HFPERCLK = HFCLK/8."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk8(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK8)
+        self.variant(HFPERCLKDIV_A::HFCLK8)
     }
     #[doc = "HFPERCLK = HFCLK/16."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk16(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK16)
+        self.variant(HFPERCLKDIV_A::HFCLK16)
     }
     #[doc = "HFPERCLK = HFCLK/32."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk32(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK32)
+        self.variant(HFPERCLKDIV_A::HFCLK32)
     }
     #[doc = "HFPERCLK = HFCLK/64."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk64(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK64)
+        self.variant(HFPERCLKDIV_A::HFCLK64)
     }
     #[doc = "HFPERCLK = HFCLK/128."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk128(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK128)
+        self.variant(HFPERCLKDIV_A::HFCLK128)
     }
     #[doc = "HFPERCLK = HFCLK/256."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk256(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK256)
+        self.variant(HFPERCLKDIV_A::HFCLK256)
     }
     #[doc = "HFPERCLK = HFCLK/512."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk512(self) -> &'a mut W {
-        self.variant(HFPERCLKDIVW::HFCLK512)
+        self.variant(HFPERCLKDIV_A::HFCLK512)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 15;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _HFPERCLKENW<'a> {
+#[doc = "Reader of field `HFPERCLKEN`"]
+pub type HFPERCLKEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `HFPERCLKEN`"]
+pub struct HFPERCLKEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFPERCLKENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> HFPERCLKEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:3 - HFPERCLK Divider"]
-    #[inline]
-    pub fn hfperclkdiv(&self) -> HFPERCLKDIVR {
-        HFPERCLKDIVR::_from({
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn hfperclkdiv(&self) -> HFPERCLKDIV_R {
+        HFPERCLKDIV_R::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bit 8 - HFPERCLK Enable"]
-    #[inline]
-    pub fn hfperclken(&self) -> HFPERCLKENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFPERCLKENR { bits }
+    #[inline(always)]
+    pub fn hfperclken(&self) -> HFPERCLKEN_R {
+        HFPERCLKEN_R::new(((self.bits >> 8) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 256 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:3 - HFPERCLK Divider"]
-    #[inline]
-    pub fn hfperclkdiv(&mut self) -> _HFPERCLKDIVW {
-        _HFPERCLKDIVW { w: self }
+    #[inline(always)]
+    pub fn hfperclkdiv(&mut self) -> HFPERCLKDIV_W {
+        HFPERCLKDIV_W { w: self }
     }
     #[doc = "Bit 8 - HFPERCLK Enable"]
-    #[inline]
-    pub fn hfperclken(&mut self) -> _HFPERCLKENW {
-        _HFPERCLKENW { w: self }
+    #[inline(always)]
+    pub fn hfperclken(&mut self) -> HFPERCLKEN_W {
+        HFPERCLKEN_W { w: self }
     }
 }

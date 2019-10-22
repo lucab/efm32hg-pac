@@ -1,362 +1,240 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::HFCORECLKDIV {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register HFCORECLKDIV"]
+pub type R = crate::R<u32, super::HFCORECLKDIV>;
+#[doc = "Writer for register HFCORECLKDIV"]
+pub type W = crate::W<u32, super::HFCORECLKDIV>;
+#[doc = "Register HFCORECLKDIV `reset()`'s with value 0"]
+impl crate::ResetValue for super::HFCORECLKDIV {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = "Possible values of the field `HFCORECLKDIV`"]
+#[doc = "HFCORECLK Divider\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum HFCORECLKDIVR {
-    #[doc = "HFCORECLK = HFCLK."]
+pub enum HFCORECLKDIV_A {
+    #[doc = "0: HFCORECLK = HFCLK."]
     HFCLK,
-    #[doc = "HFCORECLK = HFCLK/2."]
+    #[doc = "1: HFCORECLK = HFCLK/2."]
     HFCLK2,
-    #[doc = "HFCORECLK = HFCLK/4."]
+    #[doc = "2: HFCORECLK = HFCLK/4."]
     HFCLK4,
-    #[doc = "HFCORECLK = HFCLK/8."]
+    #[doc = "3: HFCORECLK = HFCLK/8."]
     HFCLK8,
-    #[doc = "HFCORECLK = HFCLK/16."]
+    #[doc = "4: HFCORECLK = HFCLK/16."]
     HFCLK16,
-    #[doc = "HFCORECLK = HFCLK/32."]
+    #[doc = "5: HFCORECLK = HFCLK/32."]
     HFCLK32,
-    #[doc = "HFCORECLK = HFCLK/64."]
+    #[doc = "6: HFCORECLK = HFCLK/64."]
     HFCLK64,
-    #[doc = "HFCORECLK = HFCLK/128."]
+    #[doc = "7: HFCORECLK = HFCLK/128."]
     HFCLK128,
-    #[doc = "HFCORECLK = HFCLK/256."]
+    #[doc = "8: HFCORECLK = HFCLK/256."]
     HFCLK256,
-    #[doc = "HFCORECLK = HFCLK/512."]
+    #[doc = "9: HFCORECLK = HFCLK/512."]
     HFCLK512,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl HFCORECLKDIVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            HFCORECLKDIVR::HFCLK => 0,
-            HFCORECLKDIVR::HFCLK2 => 1,
-            HFCORECLKDIVR::HFCLK4 => 2,
-            HFCORECLKDIVR::HFCLK8 => 3,
-            HFCORECLKDIVR::HFCLK16 => 4,
-            HFCORECLKDIVR::HFCLK32 => 5,
-            HFCORECLKDIVR::HFCLK64 => 6,
-            HFCORECLKDIVR::HFCLK128 => 7,
-            HFCORECLKDIVR::HFCLK256 => 8,
-            HFCORECLKDIVR::HFCLK512 => 9,
-            HFCORECLKDIVR::_Reserved(bits) => bits,
+impl From<HFCORECLKDIV_A> for u8 {
+    #[inline(always)]
+    fn from(variant: HFCORECLKDIV_A) -> Self {
+        match variant {
+            HFCORECLKDIV_A::HFCLK => 0,
+            HFCORECLKDIV_A::HFCLK2 => 1,
+            HFCORECLKDIV_A::HFCLK4 => 2,
+            HFCORECLKDIV_A::HFCLK8 => 3,
+            HFCORECLKDIV_A::HFCLK16 => 4,
+            HFCORECLKDIV_A::HFCLK32 => 5,
+            HFCORECLKDIV_A::HFCLK64 => 6,
+            HFCORECLKDIV_A::HFCLK128 => 7,
+            HFCORECLKDIV_A::HFCLK256 => 8,
+            HFCORECLKDIV_A::HFCLK512 => 9,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> HFCORECLKDIVR {
-        match value {
-            0 => HFCORECLKDIVR::HFCLK,
-            1 => HFCORECLKDIVR::HFCLK2,
-            2 => HFCORECLKDIVR::HFCLK4,
-            3 => HFCORECLKDIVR::HFCLK8,
-            4 => HFCORECLKDIVR::HFCLK16,
-            5 => HFCORECLKDIVR::HFCLK32,
-            6 => HFCORECLKDIVR::HFCLK64,
-            7 => HFCORECLKDIVR::HFCLK128,
-            8 => HFCORECLKDIVR::HFCLK256,
-            9 => HFCORECLKDIVR::HFCLK512,
-            i => HFCORECLKDIVR::_Reserved(i),
+}
+#[doc = "Reader of field `HFCORECLKDIV`"]
+pub type HFCORECLKDIV_R = crate::R<u8, HFCORECLKDIV_A>;
+impl HFCORECLKDIV_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, HFCORECLKDIV_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(HFCORECLKDIV_A::HFCLK),
+            1 => Val(HFCORECLKDIV_A::HFCLK2),
+            2 => Val(HFCORECLKDIV_A::HFCLK4),
+            3 => Val(HFCORECLKDIV_A::HFCLK8),
+            4 => Val(HFCORECLKDIV_A::HFCLK16),
+            5 => Val(HFCORECLKDIV_A::HFCLK32),
+            6 => Val(HFCORECLKDIV_A::HFCLK64),
+            7 => Val(HFCORECLKDIV_A::HFCLK128),
+            8 => Val(HFCORECLKDIV_A::HFCLK256),
+            9 => Val(HFCORECLKDIV_A::HFCLK512),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `HFCLK`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK
+        *self == HFCORECLKDIV_A::HFCLK
     }
     #[doc = "Checks if the value of the field is `HFCLK2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk2(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK2
+        *self == HFCORECLKDIV_A::HFCLK2
     }
     #[doc = "Checks if the value of the field is `HFCLK4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk4(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK4
+        *self == HFCORECLKDIV_A::HFCLK4
     }
     #[doc = "Checks if the value of the field is `HFCLK8`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk8(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK8
+        *self == HFCORECLKDIV_A::HFCLK8
     }
     #[doc = "Checks if the value of the field is `HFCLK16`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk16(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK16
+        *self == HFCORECLKDIV_A::HFCLK16
     }
     #[doc = "Checks if the value of the field is `HFCLK32`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk32(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK32
+        *self == HFCORECLKDIV_A::HFCLK32
     }
     #[doc = "Checks if the value of the field is `HFCLK64`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk64(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK64
+        *self == HFCORECLKDIV_A::HFCLK64
     }
     #[doc = "Checks if the value of the field is `HFCLK128`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk128(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK128
+        *self == HFCORECLKDIV_A::HFCLK128
     }
     #[doc = "Checks if the value of the field is `HFCLK256`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk256(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK256
+        *self == HFCORECLKDIV_A::HFCLK256
     }
     #[doc = "Checks if the value of the field is `HFCLK512`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hfclk512(&self) -> bool {
-        *self == HFCORECLKDIVR::HFCLK512
+        *self == HFCORECLKDIV_A::HFCLK512
     }
 }
-#[doc = r" Value of the field"]
-pub struct HFCORECLKLEDIVR {
-    bits: bool,
-}
-impl HFCORECLKLEDIVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Values that can be written to the field `HFCORECLKDIV`"]
-pub enum HFCORECLKDIVW {
-    #[doc = "HFCORECLK = HFCLK."]
-    HFCLK,
-    #[doc = "HFCORECLK = HFCLK/2."]
-    HFCLK2,
-    #[doc = "HFCORECLK = HFCLK/4."]
-    HFCLK4,
-    #[doc = "HFCORECLK = HFCLK/8."]
-    HFCLK8,
-    #[doc = "HFCORECLK = HFCLK/16."]
-    HFCLK16,
-    #[doc = "HFCORECLK = HFCLK/32."]
-    HFCLK32,
-    #[doc = "HFCORECLK = HFCLK/64."]
-    HFCLK64,
-    #[doc = "HFCORECLK = HFCLK/128."]
-    HFCLK128,
-    #[doc = "HFCORECLK = HFCLK/256."]
-    HFCLK256,
-    #[doc = "HFCORECLK = HFCLK/512."]
-    HFCLK512,
-}
-impl HFCORECLKDIVW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            HFCORECLKDIVW::HFCLK => 0,
-            HFCORECLKDIVW::HFCLK2 => 1,
-            HFCORECLKDIVW::HFCLK4 => 2,
-            HFCORECLKDIVW::HFCLK8 => 3,
-            HFCORECLKDIVW::HFCLK16 => 4,
-            HFCORECLKDIVW::HFCLK32 => 5,
-            HFCORECLKDIVW::HFCLK64 => 6,
-            HFCORECLKDIVW::HFCLK128 => 7,
-            HFCORECLKDIVW::HFCLK256 => 8,
-            HFCORECLKDIVW::HFCLK512 => 9,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _HFCORECLKDIVW<'a> {
+#[doc = "Write proxy for field `HFCORECLKDIV`"]
+pub struct HFCORECLKDIV_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFCORECLKDIVW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: HFCORECLKDIVW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> HFCORECLKDIV_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: HFCORECLKDIV_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "HFCORECLK = HFCLK."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK)
+        self.variant(HFCORECLKDIV_A::HFCLK)
     }
     #[doc = "HFCORECLK = HFCLK/2."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk2(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK2)
+        self.variant(HFCORECLKDIV_A::HFCLK2)
     }
     #[doc = "HFCORECLK = HFCLK/4."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk4(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK4)
+        self.variant(HFCORECLKDIV_A::HFCLK4)
     }
     #[doc = "HFCORECLK = HFCLK/8."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk8(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK8)
+        self.variant(HFCORECLKDIV_A::HFCLK8)
     }
     #[doc = "HFCORECLK = HFCLK/16."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk16(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK16)
+        self.variant(HFCORECLKDIV_A::HFCLK16)
     }
     #[doc = "HFCORECLK = HFCLK/32."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk32(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK32)
+        self.variant(HFCORECLKDIV_A::HFCLK32)
     }
     #[doc = "HFCORECLK = HFCLK/64."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk64(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK64)
+        self.variant(HFCORECLKDIV_A::HFCLK64)
     }
     #[doc = "HFCORECLK = HFCLK/128."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk128(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK128)
+        self.variant(HFCORECLKDIV_A::HFCLK128)
     }
     #[doc = "HFCORECLK = HFCLK/256."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk256(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK256)
+        self.variant(HFCORECLKDIV_A::HFCLK256)
     }
     #[doc = "HFCORECLK = HFCLK/512."]
-    #[inline]
+    #[inline(always)]
     pub fn hfclk512(self) -> &'a mut W {
-        self.variant(HFCORECLKDIVW::HFCLK512)
+        self.variant(HFCORECLKDIV_A::HFCLK512)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 15;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x0f) | ((value as u32) & 0x0f);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _HFCORECLKLEDIVW<'a> {
+#[doc = "Reader of field `HFCORECLKLEDIV`"]
+pub type HFCORECLKLEDIV_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `HFCORECLKLEDIV`"]
+pub struct HFCORECLKLEDIV_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HFCORECLKLEDIVW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> HFCORECLKLEDIV_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:3 - HFCORECLK Divider"]
-    #[inline]
-    pub fn hfcoreclkdiv(&self) -> HFCORECLKDIVR {
-        HFCORECLKDIVR::_from({
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn hfcoreclkdiv(&self) -> HFCORECLKDIV_R {
+        HFCORECLKDIV_R::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bit 8 - Additional Division Factor For HFCORECLKLE"]
-    #[inline]
-    pub fn hfcoreclklediv(&self) -> HFCORECLKLEDIVR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HFCORECLKLEDIVR { bits }
+    #[inline(always)]
+    pub fn hfcoreclklediv(&self) -> HFCORECLKLEDIV_R {
+        HFCORECLKLEDIV_R::new(((self.bits >> 8) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:3 - HFCORECLK Divider"]
-    #[inline]
-    pub fn hfcoreclkdiv(&mut self) -> _HFCORECLKDIVW {
-        _HFCORECLKDIVW { w: self }
+    #[inline(always)]
+    pub fn hfcoreclkdiv(&mut self) -> HFCORECLKDIV_W {
+        HFCORECLKDIV_W { w: self }
     }
     #[doc = "Bit 8 - Additional Division Factor For HFCORECLKLE"]
-    #[inline]
-    pub fn hfcoreclklediv(&mut self) -> _HFCORECLKLEDIVW {
-        _HFCORECLKLEDIVW { w: self }
+    #[inline(always)]
+    pub fn hfcoreclklediv(&mut self) -> HFCORECLKLEDIV_W {
+        HFCORECLKLEDIV_W { w: self }
     }
 }

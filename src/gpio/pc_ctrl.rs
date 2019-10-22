@@ -1,200 +1,123 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::PC_CTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register PC_CTRL"]
+pub type R = crate::R<u32, super::PC_CTRL>;
+#[doc = "Writer for register PC_CTRL"]
+pub type W = crate::W<u32, super::PC_CTRL>;
+#[doc = "Register PC_CTRL `reset()`'s with value 0"]
+impl crate::ResetValue for super::PC_CTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = "Possible values of the field `DRIVEMODE`"]
+#[doc = "Drive Mode Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DRIVEMODER {
-    #[doc = "6 mA drive current"]
+pub enum DRIVEMODE_A {
+    #[doc = "0: 6 mA drive current"]
     STANDARD,
-    #[doc = "0.1 mA drive current"]
+    #[doc = "1: 0.1 mA drive current"]
     LOWEST,
-    #[doc = "20 mA drive current"]
+    #[doc = "2: 20 mA drive current"]
     HIGH,
-    #[doc = "1 mA drive current"]
+    #[doc = "3: 1 mA drive current"]
     LOW,
 }
-impl DRIVEMODER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            DRIVEMODER::STANDARD => 0,
-            DRIVEMODER::LOWEST => 1,
-            DRIVEMODER::HIGH => 2,
-            DRIVEMODER::LOW => 3,
+impl From<DRIVEMODE_A> for u8 {
+    #[inline(always)]
+    fn from(variant: DRIVEMODE_A) -> Self {
+        match variant {
+            DRIVEMODE_A::STANDARD => 0,
+            DRIVEMODE_A::LOWEST => 1,
+            DRIVEMODE_A::HIGH => 2,
+            DRIVEMODE_A::LOW => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> DRIVEMODER {
-        match value {
-            0 => DRIVEMODER::STANDARD,
-            1 => DRIVEMODER::LOWEST,
-            2 => DRIVEMODER::HIGH,
-            3 => DRIVEMODER::LOW,
+}
+#[doc = "Reader of field `DRIVEMODE`"]
+pub type DRIVEMODE_R = crate::R<u8, DRIVEMODE_A>;
+impl DRIVEMODE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DRIVEMODE_A {
+        match self.bits {
+            0 => DRIVEMODE_A::STANDARD,
+            1 => DRIVEMODE_A::LOWEST,
+            2 => DRIVEMODE_A::HIGH,
+            3 => DRIVEMODE_A::LOW,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `STANDARD`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_standard(&self) -> bool {
-        *self == DRIVEMODER::STANDARD
+        *self == DRIVEMODE_A::STANDARD
     }
     #[doc = "Checks if the value of the field is `LOWEST`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_lowest(&self) -> bool {
-        *self == DRIVEMODER::LOWEST
+        *self == DRIVEMODE_A::LOWEST
     }
     #[doc = "Checks if the value of the field is `HIGH`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_high(&self) -> bool {
-        *self == DRIVEMODER::HIGH
+        *self == DRIVEMODE_A::HIGH
     }
     #[doc = "Checks if the value of the field is `LOW`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_low(&self) -> bool {
-        *self == DRIVEMODER::LOW
+        *self == DRIVEMODE_A::LOW
     }
 }
-#[doc = "Values that can be written to the field `DRIVEMODE`"]
-pub enum DRIVEMODEW {
-    #[doc = "6 mA drive current"]
-    STANDARD,
-    #[doc = "0.1 mA drive current"]
-    LOWEST,
-    #[doc = "20 mA drive current"]
-    HIGH,
-    #[doc = "1 mA drive current"]
-    LOW,
-}
-impl DRIVEMODEW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            DRIVEMODEW::STANDARD => 0,
-            DRIVEMODEW::LOWEST => 1,
-            DRIVEMODEW::HIGH => 2,
-            DRIVEMODEW::LOW => 3,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _DRIVEMODEW<'a> {
+#[doc = "Write proxy for field `DRIVEMODE`"]
+pub struct DRIVEMODE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DRIVEMODEW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: DRIVEMODEW) -> &'a mut W {
+impl<'a> DRIVEMODE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: DRIVEMODE_A) -> &'a mut W {
         {
-            self.bits(variant._bits())
+            self.bits(variant.into())
         }
     }
     #[doc = "6 mA drive current"]
-    #[inline]
+    #[inline(always)]
     pub fn standard(self) -> &'a mut W {
-        self.variant(DRIVEMODEW::STANDARD)
+        self.variant(DRIVEMODE_A::STANDARD)
     }
     #[doc = "0.1 mA drive current"]
-    #[inline]
+    #[inline(always)]
     pub fn lowest(self) -> &'a mut W {
-        self.variant(DRIVEMODEW::LOWEST)
+        self.variant(DRIVEMODE_A::LOWEST)
     }
     #[doc = "20 mA drive current"]
-    #[inline]
+    #[inline(always)]
     pub fn high(self) -> &'a mut W {
-        self.variant(DRIVEMODEW::HIGH)
+        self.variant(DRIVEMODE_A::HIGH)
     }
     #[doc = "1 mA drive current"]
-    #[inline]
+    #[inline(always)]
     pub fn low(self) -> &'a mut W {
-        self.variant(DRIVEMODEW::LOW)
+        self.variant(DRIVEMODE_A::LOW)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x03) | ((value as u32) & 0x03);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:1 - Drive Mode Select"]
-    #[inline]
-    pub fn drivemode(&self) -> DRIVEMODER {
-        DRIVEMODER::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn drivemode(&self) -> DRIVEMODE_R {
+        DRIVEMODE_R::new((self.bits & 0x03) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:1 - Drive Mode Select"]
-    #[inline]
-    pub fn drivemode(&mut self) -> _DRIVEMODEW {
-        _DRIVEMODEW { w: self }
+    #[inline(always)]
+    pub fn drivemode(&mut self) -> DRIVEMODE_W {
+        DRIVEMODE_W { w: self }
     }
 }

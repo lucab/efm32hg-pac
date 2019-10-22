@@ -1,412 +1,252 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::TRIGCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register TRIGCTRL"]
+pub type R = crate::R<u32, super::TRIGCTRL>;
+#[doc = "Writer for register TRIGCTRL"]
+pub type W = crate::W<u32, super::TRIGCTRL>;
+#[doc = "Register TRIGCTRL `reset()`'s with value 0"]
+impl crate::ResetValue for super::TRIGCTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = "Possible values of the field `TSEL`"]
+#[doc = "Trigger PRS Channel Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum TSELR {
-    #[doc = "PRS Channel 0 selected"]
+pub enum TSEL_A {
+    #[doc = "0: PRS Channel 0 selected"]
     PRSCH0,
-    #[doc = "PRS Channel 1 selected"]
+    #[doc = "1: PRS Channel 1 selected"]
     PRSCH1,
-    #[doc = "PRS Channel 2 selected"]
+    #[doc = "2: PRS Channel 2 selected"]
     PRSCH2,
-    #[doc = "PRS Channel 3 selected"]
+    #[doc = "3: PRS Channel 3 selected"]
     PRSCH3,
-    #[doc = "PRS Channel 4 selected"]
+    #[doc = "4: PRS Channel 4 selected"]
     PRSCH4,
-    #[doc = "PRS Channel 5 selected"]
+    #[doc = "5: PRS Channel 5 selected"]
     PRSCH5,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl TSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            TSELR::PRSCH0 => 0,
-            TSELR::PRSCH1 => 1,
-            TSELR::PRSCH2 => 2,
-            TSELR::PRSCH3 => 3,
-            TSELR::PRSCH4 => 4,
-            TSELR::PRSCH5 => 5,
-            TSELR::_Reserved(bits) => bits,
+impl From<TSEL_A> for u8 {
+    #[inline(always)]
+    fn from(variant: TSEL_A) -> Self {
+        match variant {
+            TSEL_A::PRSCH0 => 0,
+            TSEL_A::PRSCH1 => 1,
+            TSEL_A::PRSCH2 => 2,
+            TSEL_A::PRSCH3 => 3,
+            TSEL_A::PRSCH4 => 4,
+            TSEL_A::PRSCH5 => 5,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> TSELR {
-        match value {
-            0 => TSELR::PRSCH0,
-            1 => TSELR::PRSCH1,
-            2 => TSELR::PRSCH2,
-            3 => TSELR::PRSCH3,
-            4 => TSELR::PRSCH4,
-            5 => TSELR::PRSCH5,
-            i => TSELR::_Reserved(i),
+}
+#[doc = "Reader of field `TSEL`"]
+pub type TSEL_R = crate::R<u8, TSEL_A>;
+impl TSEL_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, TSEL_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(TSEL_A::PRSCH0),
+            1 => Val(TSEL_A::PRSCH1),
+            2 => Val(TSEL_A::PRSCH2),
+            3 => Val(TSEL_A::PRSCH3),
+            4 => Val(TSEL_A::PRSCH4),
+            5 => Val(TSEL_A::PRSCH5),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `PRSCH0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch0(&self) -> bool {
-        *self == TSELR::PRSCH0
+        *self == TSEL_A::PRSCH0
     }
     #[doc = "Checks if the value of the field is `PRSCH1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch1(&self) -> bool {
-        *self == TSELR::PRSCH1
+        *self == TSEL_A::PRSCH1
     }
     #[doc = "Checks if the value of the field is `PRSCH2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch2(&self) -> bool {
-        *self == TSELR::PRSCH2
+        *self == TSEL_A::PRSCH2
     }
     #[doc = "Checks if the value of the field is `PRSCH3`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch3(&self) -> bool {
-        *self == TSELR::PRSCH3
+        *self == TSEL_A::PRSCH3
     }
     #[doc = "Checks if the value of the field is `PRSCH4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch4(&self) -> bool {
-        *self == TSELR::PRSCH4
+        *self == TSEL_A::PRSCH4
     }
     #[doc = "Checks if the value of the field is `PRSCH5`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch5(&self) -> bool {
-        *self == TSELR::PRSCH5
+        *self == TSEL_A::PRSCH5
     }
 }
-#[doc = r" Value of the field"]
-pub struct RXTENR {
-    bits: bool,
-}
-impl RXTENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct TXTENR {
-    bits: bool,
-}
-impl TXTENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct AUTOTXTENR {
-    bits: bool,
-}
-impl AUTOTXTENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Values that can be written to the field `TSEL`"]
-pub enum TSELW {
-    #[doc = "PRS Channel 0 selected"]
-    PRSCH0,
-    #[doc = "PRS Channel 1 selected"]
-    PRSCH1,
-    #[doc = "PRS Channel 2 selected"]
-    PRSCH2,
-    #[doc = "PRS Channel 3 selected"]
-    PRSCH3,
-    #[doc = "PRS Channel 4 selected"]
-    PRSCH4,
-    #[doc = "PRS Channel 5 selected"]
-    PRSCH5,
-}
-impl TSELW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            TSELW::PRSCH0 => 0,
-            TSELW::PRSCH1 => 1,
-            TSELW::PRSCH2 => 2,
-            TSELW::PRSCH3 => 3,
-            TSELW::PRSCH4 => 4,
-            TSELW::PRSCH5 => 5,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _TSELW<'a> {
+#[doc = "Write proxy for field `TSEL`"]
+pub struct TSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TSELW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: TSELW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> TSEL_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: TSEL_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "PRS Channel 0 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch0(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH0)
+        self.variant(TSEL_A::PRSCH0)
     }
     #[doc = "PRS Channel 1 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch1(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH1)
+        self.variant(TSEL_A::PRSCH1)
     }
     #[doc = "PRS Channel 2 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch2(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH2)
+        self.variant(TSEL_A::PRSCH2)
     }
     #[doc = "PRS Channel 3 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch3(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH3)
+        self.variant(TSEL_A::PRSCH3)
     }
     #[doc = "PRS Channel 4 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch4(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH4)
+        self.variant(TSEL_A::PRSCH4)
     }
     #[doc = "PRS Channel 5 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch5(self) -> &'a mut W {
-        self.variant(TSELW::PRSCH5)
+        self.variant(TSEL_A::PRSCH5)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x07) | ((value as u32) & 0x07);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RXTENW<'a> {
+#[doc = "Reader of field `RXTEN`"]
+pub type RXTEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `RXTEN`"]
+pub struct RXTEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RXTENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> RXTEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _TXTENW<'a> {
+#[doc = "Reader of field `TXTEN`"]
+pub type TXTEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `TXTEN`"]
+pub struct TXTEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TXTENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> TXTEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 5;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _AUTOTXTENW<'a> {
+#[doc = "Reader of field `AUTOTXTEN`"]
+pub type AUTOTXTEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `AUTOTXTEN`"]
+pub struct AUTOTXTEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _AUTOTXTENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> AUTOTXTEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 6;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 6)) | (((value as u32) & 0x01) << 6);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:2 - Trigger PRS Channel Select"]
-    #[inline]
-    pub fn tsel(&self) -> TSELR {
-        TSELR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn tsel(&self) -> TSEL_R {
+        TSEL_R::new((self.bits & 0x07) as u8)
     }
     #[doc = "Bit 4 - Receive Trigger Enable"]
-    #[inline]
-    pub fn rxten(&self) -> RXTENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        RXTENR { bits }
+    #[inline(always)]
+    pub fn rxten(&self) -> RXTEN_R {
+        RXTEN_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - Transmit Trigger Enable"]
-    #[inline]
-    pub fn txten(&self) -> TXTENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        TXTENR { bits }
+    #[inline(always)]
+    pub fn txten(&self) -> TXTEN_R {
+        TXTEN_R::new(((self.bits >> 5) & 0x01) != 0)
     }
     #[doc = "Bit 6 - AUTOTX Trigger Enable"]
-    #[inline]
-    pub fn autotxten(&self) -> AUTOTXTENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 6;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        AUTOTXTENR { bits }
+    #[inline(always)]
+    pub fn autotxten(&self) -> AUTOTXTEN_R {
+        AUTOTXTEN_R::new(((self.bits >> 6) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:2 - Trigger PRS Channel Select"]
-    #[inline]
-    pub fn tsel(&mut self) -> _TSELW {
-        _TSELW { w: self }
+    #[inline(always)]
+    pub fn tsel(&mut self) -> TSEL_W {
+        TSEL_W { w: self }
     }
     #[doc = "Bit 4 - Receive Trigger Enable"]
-    #[inline]
-    pub fn rxten(&mut self) -> _RXTENW {
-        _RXTENW { w: self }
+    #[inline(always)]
+    pub fn rxten(&mut self) -> RXTEN_W {
+        RXTEN_W { w: self }
     }
     #[doc = "Bit 5 - Transmit Trigger Enable"]
-    #[inline]
-    pub fn txten(&mut self) -> _TXTENW {
-        _TXTENW { w: self }
+    #[inline(always)]
+    pub fn txten(&mut self) -> TXTEN_W {
+        TXTEN_W { w: self }
     }
     #[doc = "Bit 6 - AUTOTX Trigger Enable"]
-    #[inline]
-    pub fn autotxten(&mut self) -> _AUTOTXTENW {
-        _AUTOTXTENW { w: self }
+    #[inline(always)]
+    pub fn autotxten(&mut self) -> AUTOTXTEN_W {
+        AUTOTXTEN_W { w: self }
     }
 }

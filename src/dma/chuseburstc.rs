@@ -1,197 +1,174 @@
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::CHUSEBURSTC {
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
+#[doc = "Writer for register CHUSEBURSTC"]
+pub type W = crate::W<u32, super::CHUSEBURSTC>;
+#[doc = "Register CHUSEBURSTC `reset()`'s with value 0"]
+impl crate::ResetValue for super::CHUSEBURSTC {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH0USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH0USEBURSTC`"]
+pub struct CH0USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH0USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH0USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH1USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH1USEBURSTC`"]
+pub struct CH1USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH1USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH1USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH2USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH2USEBURSTC`"]
+pub struct CH2USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH2USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH2USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH3USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH3USEBURSTC`"]
+pub struct CH3USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH3USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH3USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH4USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH4USEBURSTC`"]
+pub struct CH4USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH4USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH4USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH5USEBURSTCW<'a> {
+#[doc = "Write proxy for field `CH5USEBURSTC`"]
+pub struct CH5USEBURSTC_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH5USEBURSTCW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH5USEBURSTC_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 5;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
         self.w
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Channel 0 Useburst Clear"]
-    #[inline]
-    pub fn ch0useburstc(&mut self) -> _CH0USEBURSTCW {
-        _CH0USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch0useburstc(&mut self) -> CH0USEBURSTC_W {
+        CH0USEBURSTC_W { w: self }
     }
     #[doc = "Bit 1 - Channel 1 Useburst Clear"]
-    #[inline]
-    pub fn ch1useburstc(&mut self) -> _CH1USEBURSTCW {
-        _CH1USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch1useburstc(&mut self) -> CH1USEBURSTC_W {
+        CH1USEBURSTC_W { w: self }
     }
     #[doc = "Bit 2 - Channel 2 Useburst Clear"]
-    #[inline]
-    pub fn ch2useburstc(&mut self) -> _CH2USEBURSTCW {
-        _CH2USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch2useburstc(&mut self) -> CH2USEBURSTC_W {
+        CH2USEBURSTC_W { w: self }
     }
     #[doc = "Bit 3 - Channel 3 Useburst Clear"]
-    #[inline]
-    pub fn ch3useburstc(&mut self) -> _CH3USEBURSTCW {
-        _CH3USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch3useburstc(&mut self) -> CH3USEBURSTC_W {
+        CH3USEBURSTC_W { w: self }
     }
     #[doc = "Bit 4 - Channel 4 Useburst Clear"]
-    #[inline]
-    pub fn ch4useburstc(&mut self) -> _CH4USEBURSTCW {
-        _CH4USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch4useburstc(&mut self) -> CH4USEBURSTC_W {
+        CH4USEBURSTC_W { w: self }
     }
     #[doc = "Bit 5 - Channel 5 Useburst Clear"]
-    #[inline]
-    pub fn ch5useburstc(&mut self) -> _CH5USEBURSTCW {
-        _CH5USEBURSTCW { w: self }
+    #[inline(always)]
+    pub fn ch5useburstc(&mut self) -> CH5USEBURSTC_W {
+        CH5USEBURSTC_W { w: self }
     }
 }

@@ -1,200 +1,123 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::LFBPRESC0 {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register LFBPRESC0"]
+pub type R = crate::R<u32, super::LFBPRESC0>;
+#[doc = "Writer for register LFBPRESC0"]
+pub type W = crate::W<u32, super::LFBPRESC0>;
+#[doc = "Register LFBPRESC0 `reset()`'s with value 0"]
+impl crate::ResetValue for super::LFBPRESC0 {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = "Possible values of the field `LEUART0`"]
+#[doc = "Low Energy UART 0 Prescaler\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LEUART0R {
-    #[doc = "LFBCLKLEUART0 = LFBCLK"]
+pub enum LEUART0_A {
+    #[doc = "0: LFBCLKLEUART0 = LFBCLK"]
     DIV1,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/2"]
+    #[doc = "1: LFBCLKLEUART0 = LFBCLK/2"]
     DIV2,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/4"]
+    #[doc = "2: LFBCLKLEUART0 = LFBCLK/4"]
     DIV4,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/8"]
+    #[doc = "3: LFBCLKLEUART0 = LFBCLK/8"]
     DIV8,
 }
-impl LEUART0R {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LEUART0R::DIV1 => 0,
-            LEUART0R::DIV2 => 1,
-            LEUART0R::DIV4 => 2,
-            LEUART0R::DIV8 => 3,
+impl From<LEUART0_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LEUART0_A) -> Self {
+        match variant {
+            LEUART0_A::DIV1 => 0,
+            LEUART0_A::DIV2 => 1,
+            LEUART0_A::DIV4 => 2,
+            LEUART0_A::DIV8 => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LEUART0R {
-        match value {
-            0 => LEUART0R::DIV1,
-            1 => LEUART0R::DIV2,
-            2 => LEUART0R::DIV4,
-            3 => LEUART0R::DIV8,
+}
+#[doc = "Reader of field `LEUART0`"]
+pub type LEUART0_R = crate::R<u8, LEUART0_A>;
+impl LEUART0_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> LEUART0_A {
+        match self.bits {
+            0 => LEUART0_A::DIV1,
+            1 => LEUART0_A::DIV2,
+            2 => LEUART0_A::DIV4,
+            3 => LEUART0_A::DIV8,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `DIV1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_div1(&self) -> bool {
-        *self == LEUART0R::DIV1
+        *self == LEUART0_A::DIV1
     }
     #[doc = "Checks if the value of the field is `DIV2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_div2(&self) -> bool {
-        *self == LEUART0R::DIV2
+        *self == LEUART0_A::DIV2
     }
     #[doc = "Checks if the value of the field is `DIV4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_div4(&self) -> bool {
-        *self == LEUART0R::DIV4
+        *self == LEUART0_A::DIV4
     }
     #[doc = "Checks if the value of the field is `DIV8`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_div8(&self) -> bool {
-        *self == LEUART0R::DIV8
+        *self == LEUART0_A::DIV8
     }
 }
-#[doc = "Values that can be written to the field `LEUART0`"]
-pub enum LEUART0W {
-    #[doc = "LFBCLKLEUART0 = LFBCLK"]
-    DIV1,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/2"]
-    DIV2,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/4"]
-    DIV4,
-    #[doc = "LFBCLKLEUART0 = LFBCLK/8"]
-    DIV8,
-}
-impl LEUART0W {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LEUART0W::DIV1 => 0,
-            LEUART0W::DIV2 => 1,
-            LEUART0W::DIV4 => 2,
-            LEUART0W::DIV8 => 3,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LEUART0W<'a> {
+#[doc = "Write proxy for field `LEUART0`"]
+pub struct LEUART0_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LEUART0W<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LEUART0W) -> &'a mut W {
+impl<'a> LEUART0_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LEUART0_A) -> &'a mut W {
         {
-            self.bits(variant._bits())
+            self.bits(variant.into())
         }
     }
     #[doc = "LFBCLKLEUART0 = LFBCLK"]
-    #[inline]
+    #[inline(always)]
     pub fn div1(self) -> &'a mut W {
-        self.variant(LEUART0W::DIV1)
+        self.variant(LEUART0_A::DIV1)
     }
     #[doc = "LFBCLKLEUART0 = LFBCLK/2"]
-    #[inline]
+    #[inline(always)]
     pub fn div2(self) -> &'a mut W {
-        self.variant(LEUART0W::DIV2)
+        self.variant(LEUART0_A::DIV2)
     }
     #[doc = "LFBCLKLEUART0 = LFBCLK/4"]
-    #[inline]
+    #[inline(always)]
     pub fn div4(self) -> &'a mut W {
-        self.variant(LEUART0W::DIV4)
+        self.variant(LEUART0_A::DIV4)
     }
     #[doc = "LFBCLKLEUART0 = LFBCLK/8"]
-    #[inline]
+    #[inline(always)]
     pub fn div8(self) -> &'a mut W {
-        self.variant(LEUART0W::DIV8)
+        self.variant(LEUART0_A::DIV8)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x03) | ((value as u32) & 0x03);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:1 - Low Energy UART 0 Prescaler"]
-    #[inline]
-    pub fn leuart0(&self) -> LEUART0R {
-        LEUART0R::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn leuart0(&self) -> LEUART0_R {
+        LEUART0_R::new((self.bits & 0x03) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:1 - Low Energy UART 0 Prescaler"]
-    #[inline]
-    pub fn leuart0(&mut self) -> _LEUART0W {
-        _LEUART0W { w: self }
+    #[inline(always)]
+    pub fn leuart0(&mut self) -> LEUART0_W {
+        LEUART0_W { w: self }
     }
 }

@@ -1,548 +1,359 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::IRCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register IRCTRL"]
+pub type R = crate::R<u32, super::IRCTRL>;
+#[doc = "Writer for register IRCTRL"]
+pub type W = crate::W<u32, super::IRCTRL>;
+#[doc = "Register IRCTRL `reset()`'s with value 0"]
+impl crate::ResetValue for super::IRCTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = r" Value of the field"]
-pub struct IRENR {
-    bits: bool,
+#[doc = "Reader of field `IREN`"]
+pub type IREN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IREN`"]
+pub struct IREN_W<'a> {
+    w: &'a mut W,
 }
-impl IRENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> IREN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
+        self.w
     }
 }
-#[doc = "Possible values of the field `IRPW`"]
+#[doc = "IrDA TX Pulse Width\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IRPWR {
-    #[doc = "IrDA pulse width is 1/16 for OVS=0 and 1/8 for OVS=1"]
+pub enum IRPW_A {
+    #[doc = "0: IrDA pulse width is 1/16 for OVS=0 and 1/8 for OVS=1"]
     ONE,
-    #[doc = "IrDA pulse width is 2/16 for OVS=0 and 2/8 for OVS=1"]
+    #[doc = "1: IrDA pulse width is 2/16 for OVS=0 and 2/8 for OVS=1"]
     TWO,
-    #[doc = "IrDA pulse width is 3/16 for OVS=0 and 3/8 for OVS=1"]
+    #[doc = "2: IrDA pulse width is 3/16 for OVS=0 and 3/8 for OVS=1"]
     THREE,
-    #[doc = "IrDA pulse width is 4/16 for OVS=0 and 4/8 for OVS=1"]
+    #[doc = "3: IrDA pulse width is 4/16 for OVS=0 and 4/8 for OVS=1"]
     FOUR,
 }
-impl IRPWR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            IRPWR::ONE => 0,
-            IRPWR::TWO => 1,
-            IRPWR::THREE => 2,
-            IRPWR::FOUR => 3,
+impl From<IRPW_A> for u8 {
+    #[inline(always)]
+    fn from(variant: IRPW_A) -> Self {
+        match variant {
+            IRPW_A::ONE => 0,
+            IRPW_A::TWO => 1,
+            IRPW_A::THREE => 2,
+            IRPW_A::FOUR => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> IRPWR {
-        match value {
-            0 => IRPWR::ONE,
-            1 => IRPWR::TWO,
-            2 => IRPWR::THREE,
-            3 => IRPWR::FOUR,
+}
+#[doc = "Reader of field `IRPW`"]
+pub type IRPW_R = crate::R<u8, IRPW_A>;
+impl IRPW_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> IRPW_A {
+        match self.bits {
+            0 => IRPW_A::ONE,
+            1 => IRPW_A::TWO,
+            2 => IRPW_A::THREE,
+            3 => IRPW_A::FOUR,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `ONE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_one(&self) -> bool {
-        *self == IRPWR::ONE
+        *self == IRPW_A::ONE
     }
     #[doc = "Checks if the value of the field is `TWO`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_two(&self) -> bool {
-        *self == IRPWR::TWO
+        *self == IRPW_A::TWO
     }
     #[doc = "Checks if the value of the field is `THREE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_three(&self) -> bool {
-        *self == IRPWR::THREE
+        *self == IRPW_A::THREE
     }
     #[doc = "Checks if the value of the field is `FOUR`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_four(&self) -> bool {
-        *self == IRPWR::FOUR
+        *self == IRPW_A::FOUR
     }
 }
-#[doc = r" Value of the field"]
-pub struct IRFILTR {
-    bits: bool,
+#[doc = "Write proxy for field `IRPW`"]
+pub struct IRPW_W<'a> {
+    w: &'a mut W,
 }
-impl IRFILTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Possible values of the field `IRPRSSEL`"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum IRPRSSELR {
-    #[doc = "PRS Channel 0 selected"]
-    PRSCH0,
-    #[doc = "PRS Channel 1 selected"]
-    PRSCH1,
-    #[doc = "PRS Channel 2 selected"]
-    PRSCH2,
-    #[doc = "PRS Channel 3 selected"]
-    PRSCH3,
-    #[doc = "PRS Channel 4 selected"]
-    PRSCH4,
-    #[doc = "PRS Channel 5 selected"]
-    PRSCH5,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
-}
-impl IRPRSSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            IRPRSSELR::PRSCH0 => 0,
-            IRPRSSELR::PRSCH1 => 1,
-            IRPRSSELR::PRSCH2 => 2,
-            IRPRSSELR::PRSCH3 => 3,
-            IRPRSSELR::PRSCH4 => 4,
-            IRPRSSELR::PRSCH5 => 5,
-            IRPRSSELR::_Reserved(bits) => bits,
+impl<'a> IRPW_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: IRPW_A) -> &'a mut W {
+        {
+            self.bits(variant.into())
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> IRPRSSELR {
-        match value {
-            0 => IRPRSSELR::PRSCH0,
-            1 => IRPRSSELR::PRSCH1,
-            2 => IRPRSSELR::PRSCH2,
-            3 => IRPRSSELR::PRSCH3,
-            4 => IRPRSSELR::PRSCH4,
-            5 => IRPRSSELR::PRSCH5,
-            i => IRPRSSELR::_Reserved(i),
+    #[doc = "IrDA pulse width is 1/16 for OVS=0 and 1/8 for OVS=1"]
+    #[inline(always)]
+    pub fn one(self) -> &'a mut W {
+        self.variant(IRPW_A::ONE)
+    }
+    #[doc = "IrDA pulse width is 2/16 for OVS=0 and 2/8 for OVS=1"]
+    #[inline(always)]
+    pub fn two(self) -> &'a mut W {
+        self.variant(IRPW_A::TWO)
+    }
+    #[doc = "IrDA pulse width is 3/16 for OVS=0 and 3/8 for OVS=1"]
+    #[inline(always)]
+    pub fn three(self) -> &'a mut W {
+        self.variant(IRPW_A::THREE)
+    }
+    #[doc = "IrDA pulse width is 4/16 for OVS=0 and 4/8 for OVS=1"]
+    #[inline(always)]
+    pub fn four(self) -> &'a mut W {
+        self.variant(IRPW_A::FOUR)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x03 << 1)) | (((value as u32) & 0x03) << 1);
+        self.w
+    }
+}
+#[doc = "Reader of field `IRFILT`"]
+pub type IRFILT_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IRFILT`"]
+pub struct IRFILT_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> IRFILT_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
+        self.w
+    }
+}
+#[doc = "IrDA PRS Channel Select\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum IRPRSSEL_A {
+    #[doc = "0: PRS Channel 0 selected"]
+    PRSCH0,
+    #[doc = "1: PRS Channel 1 selected"]
+    PRSCH1,
+    #[doc = "2: PRS Channel 2 selected"]
+    PRSCH2,
+    #[doc = "3: PRS Channel 3 selected"]
+    PRSCH3,
+    #[doc = "4: PRS Channel 4 selected"]
+    PRSCH4,
+    #[doc = "5: PRS Channel 5 selected"]
+    PRSCH5,
+}
+impl From<IRPRSSEL_A> for u8 {
+    #[inline(always)]
+    fn from(variant: IRPRSSEL_A) -> Self {
+        match variant {
+            IRPRSSEL_A::PRSCH0 => 0,
+            IRPRSSEL_A::PRSCH1 => 1,
+            IRPRSSEL_A::PRSCH2 => 2,
+            IRPRSSEL_A::PRSCH3 => 3,
+            IRPRSSEL_A::PRSCH4 => 4,
+            IRPRSSEL_A::PRSCH5 => 5,
+        }
+    }
+}
+#[doc = "Reader of field `IRPRSSEL`"]
+pub type IRPRSSEL_R = crate::R<u8, IRPRSSEL_A>;
+impl IRPRSSEL_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, IRPRSSEL_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(IRPRSSEL_A::PRSCH0),
+            1 => Val(IRPRSSEL_A::PRSCH1),
+            2 => Val(IRPRSSEL_A::PRSCH2),
+            3 => Val(IRPRSSEL_A::PRSCH3),
+            4 => Val(IRPRSSEL_A::PRSCH4),
+            5 => Val(IRPRSSEL_A::PRSCH5),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `PRSCH0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch0(&self) -> bool {
-        *self == IRPRSSELR::PRSCH0
+        *self == IRPRSSEL_A::PRSCH0
     }
     #[doc = "Checks if the value of the field is `PRSCH1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch1(&self) -> bool {
-        *self == IRPRSSELR::PRSCH1
+        *self == IRPRSSEL_A::PRSCH1
     }
     #[doc = "Checks if the value of the field is `PRSCH2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch2(&self) -> bool {
-        *self == IRPRSSELR::PRSCH2
+        *self == IRPRSSEL_A::PRSCH2
     }
     #[doc = "Checks if the value of the field is `PRSCH3`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch3(&self) -> bool {
-        *self == IRPRSSELR::PRSCH3
+        *self == IRPRSSEL_A::PRSCH3
     }
     #[doc = "Checks if the value of the field is `PRSCH4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch4(&self) -> bool {
-        *self == IRPRSSELR::PRSCH4
+        *self == IRPRSSEL_A::PRSCH4
     }
     #[doc = "Checks if the value of the field is `PRSCH5`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_prsch5(&self) -> bool {
-        *self == IRPRSSELR::PRSCH5
+        *self == IRPRSSEL_A::PRSCH5
     }
 }
-#[doc = r" Value of the field"]
-pub struct IRPRSENR {
-    bits: bool,
-}
-impl IRPRSENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Proxy"]
-pub struct _IRENW<'a> {
+#[doc = "Write proxy for field `IRPRSSEL`"]
+pub struct IRPRSSEL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _IRENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `IRPW`"]
-pub enum IRPWW {
-    #[doc = "IrDA pulse width is 1/16 for OVS=0 and 1/8 for OVS=1"]
-    ONE,
-    #[doc = "IrDA pulse width is 2/16 for OVS=0 and 2/8 for OVS=1"]
-    TWO,
-    #[doc = "IrDA pulse width is 3/16 for OVS=0 and 3/8 for OVS=1"]
-    THREE,
-    #[doc = "IrDA pulse width is 4/16 for OVS=0 and 4/8 for OVS=1"]
-    FOUR,
-}
-impl IRPWW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            IRPWW::ONE => 0,
-            IRPWW::TWO => 1,
-            IRPWW::THREE => 2,
-            IRPWW::FOUR => 3,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _IRPWW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _IRPWW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: IRPWW) -> &'a mut W {
-        {
-            self.bits(variant._bits())
-        }
-    }
-    #[doc = "IrDA pulse width is 1/16 for OVS=0 and 1/8 for OVS=1"]
-    #[inline]
-    pub fn one(self) -> &'a mut W {
-        self.variant(IRPWW::ONE)
-    }
-    #[doc = "IrDA pulse width is 2/16 for OVS=0 and 2/8 for OVS=1"]
-    #[inline]
-    pub fn two(self) -> &'a mut W {
-        self.variant(IRPWW::TWO)
-    }
-    #[doc = "IrDA pulse width is 3/16 for OVS=0 and 3/8 for OVS=1"]
-    #[inline]
-    pub fn three(self) -> &'a mut W {
-        self.variant(IRPWW::THREE)
-    }
-    #[doc = "IrDA pulse width is 4/16 for OVS=0 and 4/8 for OVS=1"]
-    #[inline]
-    pub fn four(self) -> &'a mut W {
-        self.variant(IRPWW::FOUR)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _IRFILTW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _IRFILTW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `IRPRSSEL`"]
-pub enum IRPRSSELW {
-    #[doc = "PRS Channel 0 selected"]
-    PRSCH0,
-    #[doc = "PRS Channel 1 selected"]
-    PRSCH1,
-    #[doc = "PRS Channel 2 selected"]
-    PRSCH2,
-    #[doc = "PRS Channel 3 selected"]
-    PRSCH3,
-    #[doc = "PRS Channel 4 selected"]
-    PRSCH4,
-    #[doc = "PRS Channel 5 selected"]
-    PRSCH5,
-}
-impl IRPRSSELW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            IRPRSSELW::PRSCH0 => 0,
-            IRPRSSELW::PRSCH1 => 1,
-            IRPRSSELW::PRSCH2 => 2,
-            IRPRSSELW::PRSCH3 => 3,
-            IRPRSSELW::PRSCH4 => 4,
-            IRPRSSELW::PRSCH5 => 5,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _IRPRSSELW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _IRPRSSELW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: IRPRSSELW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> IRPRSSEL_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: IRPRSSEL_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "PRS Channel 0 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch0(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH0)
+        self.variant(IRPRSSEL_A::PRSCH0)
     }
     #[doc = "PRS Channel 1 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch1(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH1)
+        self.variant(IRPRSSEL_A::PRSCH1)
     }
     #[doc = "PRS Channel 2 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch2(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH2)
+        self.variant(IRPRSSEL_A::PRSCH2)
     }
     #[doc = "PRS Channel 3 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch3(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH3)
+        self.variant(IRPRSSEL_A::PRSCH3)
     }
     #[doc = "PRS Channel 4 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch4(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH4)
+        self.variant(IRPRSSEL_A::PRSCH4)
     }
     #[doc = "PRS Channel 5 selected"]
-    #[inline]
+    #[inline(always)]
     pub fn prsch5(self) -> &'a mut W {
-        self.variant(IRPRSSELW::PRSCH5)
+        self.variant(IRPRSSEL_A::PRSCH5)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 4)) | (((value as u32) & 0x07) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _IRPRSENW<'a> {
+#[doc = "Reader of field `IRPRSEN`"]
+pub type IRPRSEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IRPRSEN`"]
+pub struct IRPRSEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _IRPRSENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> IRPRSEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 7;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Enable IrDA Module"]
-    #[inline]
-    pub fn iren(&self) -> IRENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IRENR { bits }
+    #[inline(always)]
+    pub fn iren(&self) -> IREN_R {
+        IREN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bits 1:2 - IrDA TX Pulse Width"]
-    #[inline]
-    pub fn irpw(&self) -> IRPWR {
-        IRPWR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn irpw(&self) -> IRPW_R {
+        IRPW_R::new(((self.bits >> 1) & 0x03) as u8)
     }
     #[doc = "Bit 3 - IrDA RX Filter"]
-    #[inline]
-    pub fn irfilt(&self) -> IRFILTR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IRFILTR { bits }
+    #[inline(always)]
+    pub fn irfilt(&self) -> IRFILT_R {
+        IRFILT_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bits 4:6 - IrDA PRS Channel Select"]
-    #[inline]
-    pub fn irprssel(&self) -> IRPRSSELR {
-        IRPRSSELR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn irprssel(&self) -> IRPRSSEL_R {
+        IRPRSSEL_R::new(((self.bits >> 4) & 0x07) as u8)
     }
     #[doc = "Bit 7 - IrDA PRS Channel Enable"]
-    #[inline]
-    pub fn irprsen(&self) -> IRPRSENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 7;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IRPRSENR { bits }
+    #[inline(always)]
+    pub fn irprsen(&self) -> IRPRSEN_R {
+        IRPRSEN_R::new(((self.bits >> 7) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Enable IrDA Module"]
-    #[inline]
-    pub fn iren(&mut self) -> _IRENW {
-        _IRENW { w: self }
+    #[inline(always)]
+    pub fn iren(&mut self) -> IREN_W {
+        IREN_W { w: self }
     }
     #[doc = "Bits 1:2 - IrDA TX Pulse Width"]
-    #[inline]
-    pub fn irpw(&mut self) -> _IRPWW {
-        _IRPWW { w: self }
+    #[inline(always)]
+    pub fn irpw(&mut self) -> IRPW_W {
+        IRPW_W { w: self }
     }
     #[doc = "Bit 3 - IrDA RX Filter"]
-    #[inline]
-    pub fn irfilt(&mut self) -> _IRFILTW {
-        _IRFILTW { w: self }
+    #[inline(always)]
+    pub fn irfilt(&mut self) -> IRFILT_W {
+        IRFILT_W { w: self }
     }
     #[doc = "Bits 4:6 - IrDA PRS Channel Select"]
-    #[inline]
-    pub fn irprssel(&mut self) -> _IRPRSSELW {
-        _IRPRSSELW { w: self }
+    #[inline(always)]
+    pub fn irprssel(&mut self) -> IRPRSSEL_W {
+        IRPRSSEL_W { w: self }
     }
     #[doc = "Bit 7 - IrDA PRS Channel Enable"]
-    #[inline]
-    pub fn irprsen(&mut self) -> _IRPRSENW {
-        _IRPRSENW { w: self }
+    #[inline(always)]
+    pub fn irprsen(&mut self) -> IRPRSEN_W {
+        IRPRSEN_W { w: self }
     }
 }
