@@ -640,6 +640,26 @@ impl Deref for MTB {
 }
 #[doc = "MTB"]
 pub mod mtb;
+#[doc = "The DI page contains calibration values, a unique identification number and other useful data"]
+pub struct DEVINFO {
+    _marker: PhantomData<*const ()>,
+}
+unsafe impl Send for DEVINFO {}
+impl DEVINFO {
+    #[doc = r"Returns a pointer to the register block"]
+    #[inline(always)]
+    pub const fn ptr() -> *const devinfo::RegisterBlock {
+        0x0fe0_81b0 as *const _
+    }
+}
+impl Deref for DEVINFO {
+    type Target = devinfo::RegisterBlock;
+    fn deref(&self) -> &Self::Target {
+        unsafe { &*DEVINFO::ptr() }
+    }
+}
+#[doc = "The DI page contains calibration values, a unique identification number and other useful data"]
+pub mod devinfo;
 #[no_mangle]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r"All the peripherals"]
@@ -693,6 +713,8 @@ pub struct Peripherals {
     pub WDOG: WDOG,
     #[doc = "MTB"]
     pub MTB: MTB,
+    #[doc = "DEVINFO"]
+    pub DEVINFO: DEVINFO,
 }
 impl Peripherals {
     #[doc = r"Returns all the peripherals *once*"]
@@ -780,6 +802,9 @@ impl Peripherals {
                 _marker: PhantomData,
             },
             MTB: MTB {
+                _marker: PhantomData,
+            },
+            DEVINFO: DEVINFO {
                 _marker: PhantomData,
             },
         }
