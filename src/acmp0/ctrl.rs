@@ -1,985 +1,638 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::CTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register CTRL"]
+pub type R = crate::R<u32, super::CTRL>;
+#[doc = "Writer for register CTRL"]
+pub type W = crate::W<u32, super::CTRL>;
+#[doc = "Register CTRL `reset()`'s with value 0x4700_0000"]
+impl crate::ResetValue for super::CTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x4700_0000
     }
 }
-#[doc = r" Value of the field"]
-pub struct ENR {
-    bits: bool,
+#[doc = "Reader of field `EN`"]
+pub type EN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `EN`"]
+pub struct EN_W<'a> {
+    w: &'a mut W,
 }
-impl ENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> EN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct MUXENR {
-    bits: bool,
-}
-impl MUXENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
+        self.w
     }
 }
-#[doc = r" Value of the field"]
-pub struct INACTVALR {
-    bits: bool,
+#[doc = "Reader of field `MUXEN`"]
+pub type MUXEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `MUXEN`"]
+pub struct MUXEN_W<'a> {
+    w: &'a mut W,
 }
-impl INACTVALR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> MUXEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct GPIOINVR {
-    bits: bool,
-}
-impl GPIOINVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
+        self.w
     }
 }
-#[doc = "Possible values of the field `HYSTSEL`"]
+#[doc = "Reader of field `INACTVAL`"]
+pub type INACTVAL_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `INACTVAL`"]
+pub struct INACTVAL_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> INACTVAL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
+        self.w
+    }
+}
+#[doc = "Reader of field `GPIOINV`"]
+pub type GPIOINV_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `GPIOINV`"]
+pub struct GPIOINV_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> GPIOINV_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
+        self.w
+    }
+}
+#[doc = "Hysteresis Select\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum HYSTSELR {
-    #[doc = "No hysteresis."]
+pub enum HYSTSEL_A {
+    #[doc = "0: No hysteresis."]
     HYST0,
-    #[doc = "~15 mV hysteresis."]
+    #[doc = "1: ~15 mV hysteresis."]
     HYST1,
-    #[doc = "~22 mV hysteresis."]
+    #[doc = "2: ~22 mV hysteresis."]
     HYST2,
-    #[doc = "~29 mV hysteresis."]
+    #[doc = "3: ~29 mV hysteresis."]
     HYST3,
-    #[doc = "~36 mV hysteresis."]
+    #[doc = "4: ~36 mV hysteresis."]
     HYST4,
-    #[doc = "~43 mV hysteresis."]
+    #[doc = "5: ~43 mV hysteresis."]
     HYST5,
-    #[doc = "~50 mV hysteresis."]
+    #[doc = "6: ~50 mV hysteresis."]
     HYST6,
-    #[doc = "~57 mV hysteresis."]
+    #[doc = "7: ~57 mV hysteresis."]
     HYST7,
 }
-impl HYSTSELR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            HYSTSELR::HYST0 => 0,
-            HYSTSELR::HYST1 => 1,
-            HYSTSELR::HYST2 => 2,
-            HYSTSELR::HYST3 => 3,
-            HYSTSELR::HYST4 => 4,
-            HYSTSELR::HYST5 => 5,
-            HYSTSELR::HYST6 => 6,
-            HYSTSELR::HYST7 => 7,
+impl From<HYSTSEL_A> for u8 {
+    #[inline(always)]
+    fn from(variant: HYSTSEL_A) -> Self {
+        match variant {
+            HYSTSEL_A::HYST0 => 0,
+            HYSTSEL_A::HYST1 => 1,
+            HYSTSEL_A::HYST2 => 2,
+            HYSTSEL_A::HYST3 => 3,
+            HYSTSEL_A::HYST4 => 4,
+            HYSTSEL_A::HYST5 => 5,
+            HYSTSEL_A::HYST6 => 6,
+            HYSTSEL_A::HYST7 => 7,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> HYSTSELR {
-        match value {
-            0 => HYSTSELR::HYST0,
-            1 => HYSTSELR::HYST1,
-            2 => HYSTSELR::HYST2,
-            3 => HYSTSELR::HYST3,
-            4 => HYSTSELR::HYST4,
-            5 => HYSTSELR::HYST5,
-            6 => HYSTSELR::HYST6,
-            7 => HYSTSELR::HYST7,
+}
+#[doc = "Reader of field `HYSTSEL`"]
+pub type HYSTSEL_R = crate::R<u8, HYSTSEL_A>;
+impl HYSTSEL_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> HYSTSEL_A {
+        match self.bits {
+            0 => HYSTSEL_A::HYST0,
+            1 => HYSTSEL_A::HYST1,
+            2 => HYSTSEL_A::HYST2,
+            3 => HYSTSEL_A::HYST3,
+            4 => HYSTSEL_A::HYST4,
+            5 => HYSTSEL_A::HYST5,
+            6 => HYSTSEL_A::HYST6,
+            7 => HYSTSEL_A::HYST7,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `HYST0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst0(&self) -> bool {
-        *self == HYSTSELR::HYST0
+        *self == HYSTSEL_A::HYST0
     }
     #[doc = "Checks if the value of the field is `HYST1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst1(&self) -> bool {
-        *self == HYSTSELR::HYST1
+        *self == HYSTSEL_A::HYST1
     }
     #[doc = "Checks if the value of the field is `HYST2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst2(&self) -> bool {
-        *self == HYSTSELR::HYST2
+        *self == HYSTSEL_A::HYST2
     }
     #[doc = "Checks if the value of the field is `HYST3`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst3(&self) -> bool {
-        *self == HYSTSELR::HYST3
+        *self == HYSTSEL_A::HYST3
     }
     #[doc = "Checks if the value of the field is `HYST4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst4(&self) -> bool {
-        *self == HYSTSELR::HYST4
+        *self == HYSTSEL_A::HYST4
     }
     #[doc = "Checks if the value of the field is `HYST5`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst5(&self) -> bool {
-        *self == HYSTSELR::HYST5
+        *self == HYSTSEL_A::HYST5
     }
     #[doc = "Checks if the value of the field is `HYST6`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst6(&self) -> bool {
-        *self == HYSTSELR::HYST6
+        *self == HYSTSEL_A::HYST6
     }
     #[doc = "Checks if the value of the field is `HYST7`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_hyst7(&self) -> bool {
-        *self == HYSTSELR::HYST7
+        *self == HYSTSEL_A::HYST7
     }
 }
-#[doc = "Possible values of the field `WARMTIME`"]
-#[derive(Clone, Copy, Debug, PartialEq)]
-pub enum WARMTIMER {
-    #[doc = "4 HFPERCLK cycles."]
-    _4CYCLES,
-    #[doc = "8 HFPERCLK cycles."]
-    _8CYCLES,
-    #[doc = "16 HFPERCLK cycles."]
-    _16CYCLES,
-    #[doc = "32 HFPERCLK cycles."]
-    _32CYCLES,
-    #[doc = "64 HFPERCLK cycles."]
-    _64CYCLES,
-    #[doc = "128 HFPERCLK cycles."]
-    _128CYCLES,
-    #[doc = "256 HFPERCLK cycles."]
-    _256CYCLES,
-    #[doc = "512 HFPERCLK cycles."]
-    _512CYCLES,
+#[doc = "Write proxy for field `HYSTSEL`"]
+pub struct HYSTSEL_W<'a> {
+    w: &'a mut W,
 }
-impl WARMTIMER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            WARMTIMER::_4CYCLES => 0,
-            WARMTIMER::_8CYCLES => 1,
-            WARMTIMER::_16CYCLES => 2,
-            WARMTIMER::_32CYCLES => 3,
-            WARMTIMER::_64CYCLES => 4,
-            WARMTIMER::_128CYCLES => 5,
-            WARMTIMER::_256CYCLES => 6,
-            WARMTIMER::_512CYCLES => 7,
+impl<'a> HYSTSEL_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: HYSTSEL_A) -> &'a mut W {
+        {
+            self.bits(variant.into())
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> WARMTIMER {
-        match value {
-            0 => WARMTIMER::_4CYCLES,
-            1 => WARMTIMER::_8CYCLES,
-            2 => WARMTIMER::_16CYCLES,
-            3 => WARMTIMER::_32CYCLES,
-            4 => WARMTIMER::_64CYCLES,
-            5 => WARMTIMER::_128CYCLES,
-            6 => WARMTIMER::_256CYCLES,
-            7 => WARMTIMER::_512CYCLES,
+    #[doc = "No hysteresis."]
+    #[inline(always)]
+    pub fn hyst0(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST0)
+    }
+    #[doc = "~15 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst1(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST1)
+    }
+    #[doc = "~22 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst2(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST2)
+    }
+    #[doc = "~29 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst3(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST3)
+    }
+    #[doc = "~36 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst4(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST4)
+    }
+    #[doc = "~43 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst5(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST5)
+    }
+    #[doc = "~50 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst6(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST6)
+    }
+    #[doc = "~57 mV hysteresis."]
+    #[inline(always)]
+    pub fn hyst7(self) -> &'a mut W {
+        self.variant(HYSTSEL_A::HYST7)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x07 << 4)) | (((value as u32) & 0x07) << 4);
+        self.w
+    }
+}
+#[doc = "Warm-up Time\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum WARMTIME_A {
+    #[doc = "0: 4 HFPERCLK cycles."]
+    _4CYCLES,
+    #[doc = "1: 8 HFPERCLK cycles."]
+    _8CYCLES,
+    #[doc = "2: 16 HFPERCLK cycles."]
+    _16CYCLES,
+    #[doc = "3: 32 HFPERCLK cycles."]
+    _32CYCLES,
+    #[doc = "4: 64 HFPERCLK cycles."]
+    _64CYCLES,
+    #[doc = "5: 128 HFPERCLK cycles."]
+    _128CYCLES,
+    #[doc = "6: 256 HFPERCLK cycles."]
+    _256CYCLES,
+    #[doc = "7: 512 HFPERCLK cycles."]
+    _512CYCLES,
+}
+impl From<WARMTIME_A> for u8 {
+    #[inline(always)]
+    fn from(variant: WARMTIME_A) -> Self {
+        match variant {
+            WARMTIME_A::_4CYCLES => 0,
+            WARMTIME_A::_8CYCLES => 1,
+            WARMTIME_A::_16CYCLES => 2,
+            WARMTIME_A::_32CYCLES => 3,
+            WARMTIME_A::_64CYCLES => 4,
+            WARMTIME_A::_128CYCLES => 5,
+            WARMTIME_A::_256CYCLES => 6,
+            WARMTIME_A::_512CYCLES => 7,
+        }
+    }
+}
+#[doc = "Reader of field `WARMTIME`"]
+pub type WARMTIME_R = crate::R<u8, WARMTIME_A>;
+impl WARMTIME_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> WARMTIME_A {
+        match self.bits {
+            0 => WARMTIME_A::_4CYCLES,
+            1 => WARMTIME_A::_8CYCLES,
+            2 => WARMTIME_A::_16CYCLES,
+            3 => WARMTIME_A::_32CYCLES,
+            4 => WARMTIME_A::_64CYCLES,
+            5 => WARMTIME_A::_128CYCLES,
+            6 => WARMTIME_A::_256CYCLES,
+            7 => WARMTIME_A::_512CYCLES,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `_4CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_4cycles(&self) -> bool {
-        *self == WARMTIMER::_4CYCLES
+        *self == WARMTIME_A::_4CYCLES
     }
     #[doc = "Checks if the value of the field is `_8CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_8cycles(&self) -> bool {
-        *self == WARMTIMER::_8CYCLES
+        *self == WARMTIME_A::_8CYCLES
     }
     #[doc = "Checks if the value of the field is `_16CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_16cycles(&self) -> bool {
-        *self == WARMTIMER::_16CYCLES
+        *self == WARMTIME_A::_16CYCLES
     }
     #[doc = "Checks if the value of the field is `_32CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_32cycles(&self) -> bool {
-        *self == WARMTIMER::_32CYCLES
+        *self == WARMTIME_A::_32CYCLES
     }
     #[doc = "Checks if the value of the field is `_64CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_64cycles(&self) -> bool {
-        *self == WARMTIMER::_64CYCLES
+        *self == WARMTIME_A::_64CYCLES
     }
     #[doc = "Checks if the value of the field is `_128CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_128cycles(&self) -> bool {
-        *self == WARMTIMER::_128CYCLES
+        *self == WARMTIME_A::_128CYCLES
     }
     #[doc = "Checks if the value of the field is `_256CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_256cycles(&self) -> bool {
-        *self == WARMTIMER::_256CYCLES
+        *self == WARMTIME_A::_256CYCLES
     }
     #[doc = "Checks if the value of the field is `_512CYCLES`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_512cycles(&self) -> bool {
-        *self == WARMTIMER::_512CYCLES
+        *self == WARMTIME_A::_512CYCLES
     }
 }
-#[doc = r" Value of the field"]
-pub struct IRISER {
-    bits: bool,
-}
-impl IRISER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct IFALLR {
-    bits: bool,
-}
-impl IFALLR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BIASPROGR {
-    bits: u8,
-}
-impl BIASPROGR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
-#[doc = r" Value of the field"]
-pub struct HALFBIASR {
-    bits: bool,
-}
-impl HALFBIASR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct FULLBIASR {
-    bits: bool,
-}
-impl FULLBIASR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Proxy"]
-pub struct _ENW<'a> {
+#[doc = "Write proxy for field `WARMTIME`"]
+pub struct WARMTIME_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _ENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _MUXENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _MUXENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _INACTVALW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _INACTVALW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _GPIOINVW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _GPIOINVW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `HYSTSEL`"]
-pub enum HYSTSELW {
-    #[doc = "No hysteresis."]
-    HYST0,
-    #[doc = "~15 mV hysteresis."]
-    HYST1,
-    #[doc = "~22 mV hysteresis."]
-    HYST2,
-    #[doc = "~29 mV hysteresis."]
-    HYST3,
-    #[doc = "~36 mV hysteresis."]
-    HYST4,
-    #[doc = "~43 mV hysteresis."]
-    HYST5,
-    #[doc = "~50 mV hysteresis."]
-    HYST6,
-    #[doc = "~57 mV hysteresis."]
-    HYST7,
-}
-impl HYSTSELW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            HYSTSELW::HYST0 => 0,
-            HYSTSELW::HYST1 => 1,
-            HYSTSELW::HYST2 => 2,
-            HYSTSELW::HYST3 => 3,
-            HYSTSELW::HYST4 => 4,
-            HYSTSELW::HYST5 => 5,
-            HYSTSELW::HYST6 => 6,
-            HYSTSELW::HYST7 => 7,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _HYSTSELW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _HYSTSELW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: HYSTSELW) -> &'a mut W {
+impl<'a> WARMTIME_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: WARMTIME_A) -> &'a mut W {
         {
-            self.bits(variant._bits())
-        }
-    }
-    #[doc = "No hysteresis."]
-    #[inline]
-    pub fn hyst0(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST0)
-    }
-    #[doc = "~15 mV hysteresis."]
-    #[inline]
-    pub fn hyst1(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST1)
-    }
-    #[doc = "~22 mV hysteresis."]
-    #[inline]
-    pub fn hyst2(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST2)
-    }
-    #[doc = "~29 mV hysteresis."]
-    #[inline]
-    pub fn hyst3(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST3)
-    }
-    #[doc = "~36 mV hysteresis."]
-    #[inline]
-    pub fn hyst4(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST4)
-    }
-    #[doc = "~43 mV hysteresis."]
-    #[inline]
-    pub fn hyst5(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST5)
-    }
-    #[doc = "~50 mV hysteresis."]
-    #[inline]
-    pub fn hyst6(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST6)
-    }
-    #[doc = "~57 mV hysteresis."]
-    #[inline]
-    pub fn hyst7(self) -> &'a mut W {
-        self.variant(HYSTSELW::HYST7)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `WARMTIME`"]
-pub enum WARMTIMEW {
-    #[doc = "4 HFPERCLK cycles."]
-    _4CYCLES,
-    #[doc = "8 HFPERCLK cycles."]
-    _8CYCLES,
-    #[doc = "16 HFPERCLK cycles."]
-    _16CYCLES,
-    #[doc = "32 HFPERCLK cycles."]
-    _32CYCLES,
-    #[doc = "64 HFPERCLK cycles."]
-    _64CYCLES,
-    #[doc = "128 HFPERCLK cycles."]
-    _128CYCLES,
-    #[doc = "256 HFPERCLK cycles."]
-    _256CYCLES,
-    #[doc = "512 HFPERCLK cycles."]
-    _512CYCLES,
-}
-impl WARMTIMEW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            WARMTIMEW::_4CYCLES => 0,
-            WARMTIMEW::_8CYCLES => 1,
-            WARMTIMEW::_16CYCLES => 2,
-            WARMTIMEW::_32CYCLES => 3,
-            WARMTIMEW::_64CYCLES => 4,
-            WARMTIMEW::_128CYCLES => 5,
-            WARMTIMEW::_256CYCLES => 6,
-            WARMTIMEW::_512CYCLES => 7,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _WARMTIMEW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _WARMTIMEW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: WARMTIMEW) -> &'a mut W {
-        {
-            self.bits(variant._bits())
+            self.bits(variant.into())
         }
     }
     #[doc = "4 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _4cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_4CYCLES)
+        self.variant(WARMTIME_A::_4CYCLES)
     }
     #[doc = "8 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _8cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_8CYCLES)
+        self.variant(WARMTIME_A::_8CYCLES)
     }
     #[doc = "16 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _16cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_16CYCLES)
+        self.variant(WARMTIME_A::_16CYCLES)
     }
     #[doc = "32 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _32cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_32CYCLES)
+        self.variant(WARMTIME_A::_32CYCLES)
     }
     #[doc = "64 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _64cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_64CYCLES)
+        self.variant(WARMTIME_A::_64CYCLES)
     }
     #[doc = "128 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _128cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_128CYCLES)
+        self.variant(WARMTIME_A::_128CYCLES)
     }
     #[doc = "256 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _256cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_256CYCLES)
+        self.variant(WARMTIME_A::_256CYCLES)
     }
     #[doc = "512 HFPERCLK cycles."]
-    #[inline]
+    #[inline(always)]
     pub fn _512cycles(self) -> &'a mut W {
-        self.variant(WARMTIMEW::_512CYCLES)
+        self.variant(WARMTIME_A::_512CYCLES)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 8)) | (((value as u32) & 0x07) << 8);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _IRISEW<'a> {
+#[doc = "Reader of field `IRISE`"]
+pub type IRISE_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IRISE`"]
+pub struct IRISE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _IRISEW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> IRISE_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 16)) | (((value as u32) & 0x01) << 16);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _IFALLW<'a> {
+#[doc = "Reader of field `IFALL`"]
+pub type IFALL_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IFALL`"]
+pub struct IFALL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _IFALLW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> IFALL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 17;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 17)) | (((value as u32) & 0x01) << 17);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _BIASPROGW<'a> {
+#[doc = "Reader of field `BIASPROG`"]
+pub type BIASPROG_R = crate::R<u8, u8>;
+#[doc = "Write proxy for field `BIASPROG`"]
+pub struct BIASPROG_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _BIASPROGW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> BIASPROG_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 15;
-        const OFFSET: u8 = 24;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x0f << 24)) | (((value as u32) & 0x0f) << 24);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _HALFBIASW<'a> {
+#[doc = "Reader of field `HALFBIAS`"]
+pub type HALFBIAS_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `HALFBIAS`"]
+pub struct HALFBIAS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _HALFBIASW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> HALFBIAS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 30;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 30)) | (((value as u32) & 0x01) << 30);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _FULLBIASW<'a> {
+#[doc = "Reader of field `FULLBIAS`"]
+pub type FULLBIAS_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `FULLBIAS`"]
+pub struct FULLBIAS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _FULLBIASW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> FULLBIAS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 31;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 31)) | (((value as u32) & 0x01) << 31);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Analog Comparator Enable"]
-    #[inline]
-    pub fn en(&self) -> ENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        ENR { bits }
+    #[inline(always)]
+    pub fn en(&self) -> EN_R {
+        EN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Input Mux Enable"]
-    #[inline]
-    pub fn muxen(&self) -> MUXENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        MUXENR { bits }
+    #[inline(always)]
+    pub fn muxen(&self) -> MUXEN_R {
+        MUXEN_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Inactive Value"]
-    #[inline]
-    pub fn inactval(&self) -> INACTVALR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        INACTVALR { bits }
+    #[inline(always)]
+    pub fn inactval(&self) -> INACTVAL_R {
+        INACTVAL_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - Comparator GPIO Output Invert"]
-    #[inline]
-    pub fn gpioinv(&self) -> GPIOINVR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        GPIOINVR { bits }
+    #[inline(always)]
+    pub fn gpioinv(&self) -> GPIOINV_R {
+        GPIOINV_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bits 4:6 - Hysteresis Select"]
-    #[inline]
-    pub fn hystsel(&self) -> HYSTSELR {
-        HYSTSELR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn hystsel(&self) -> HYSTSEL_R {
+        HYSTSEL_R::new(((self.bits >> 4) & 0x07) as u8)
     }
     #[doc = "Bits 8:10 - Warm-up Time"]
-    #[inline]
-    pub fn warmtime(&self) -> WARMTIMER {
-        WARMTIMER::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn warmtime(&self) -> WARMTIME_R {
+        WARMTIME_R::new(((self.bits >> 8) & 0x07) as u8)
     }
     #[doc = "Bit 16 - Rising Edge Interrupt Sense"]
-    #[inline]
-    pub fn irise(&self) -> IRISER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IRISER { bits }
+    #[inline(always)]
+    pub fn irise(&self) -> IRISE_R {
+        IRISE_R::new(((self.bits >> 16) & 0x01) != 0)
     }
     #[doc = "Bit 17 - Falling Edge Interrupt Sense"]
-    #[inline]
-    pub fn ifall(&self) -> IFALLR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 17;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IFALLR { bits }
+    #[inline(always)]
+    pub fn ifall(&self) -> IFALL_R {
+        IFALL_R::new(((self.bits >> 17) & 0x01) != 0)
     }
     #[doc = "Bits 24:27 - Bias Configuration"]
-    #[inline]
-    pub fn biasprog(&self) -> BIASPROGR {
-        let bits = {
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 24;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        BIASPROGR { bits }
+    #[inline(always)]
+    pub fn biasprog(&self) -> BIASPROG_R {
+        BIASPROG_R::new(((self.bits >> 24) & 0x0f) as u8)
     }
     #[doc = "Bit 30 - Half Bias Current"]
-    #[inline]
-    pub fn halfbias(&self) -> HALFBIASR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 30;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        HALFBIASR { bits }
+    #[inline(always)]
+    pub fn halfbias(&self) -> HALFBIAS_R {
+        HALFBIAS_R::new(((self.bits >> 30) & 0x01) != 0)
     }
     #[doc = "Bit 31 - Full Bias Current"]
-    #[inline]
-    pub fn fullbias(&self) -> FULLBIASR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 31;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        FULLBIASR { bits }
+    #[inline(always)]
+    pub fn fullbias(&self) -> FULLBIAS_R {
+        FULLBIAS_R::new(((self.bits >> 31) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 1191182336 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Analog Comparator Enable"]
-    #[inline]
-    pub fn en(&mut self) -> _ENW {
-        _ENW { w: self }
+    #[inline(always)]
+    pub fn en(&mut self) -> EN_W {
+        EN_W { w: self }
     }
     #[doc = "Bit 1 - Input Mux Enable"]
-    #[inline]
-    pub fn muxen(&mut self) -> _MUXENW {
-        _MUXENW { w: self }
+    #[inline(always)]
+    pub fn muxen(&mut self) -> MUXEN_W {
+        MUXEN_W { w: self }
     }
     #[doc = "Bit 2 - Inactive Value"]
-    #[inline]
-    pub fn inactval(&mut self) -> _INACTVALW {
-        _INACTVALW { w: self }
+    #[inline(always)]
+    pub fn inactval(&mut self) -> INACTVAL_W {
+        INACTVAL_W { w: self }
     }
     #[doc = "Bit 3 - Comparator GPIO Output Invert"]
-    #[inline]
-    pub fn gpioinv(&mut self) -> _GPIOINVW {
-        _GPIOINVW { w: self }
+    #[inline(always)]
+    pub fn gpioinv(&mut self) -> GPIOINV_W {
+        GPIOINV_W { w: self }
     }
     #[doc = "Bits 4:6 - Hysteresis Select"]
-    #[inline]
-    pub fn hystsel(&mut self) -> _HYSTSELW {
-        _HYSTSELW { w: self }
+    #[inline(always)]
+    pub fn hystsel(&mut self) -> HYSTSEL_W {
+        HYSTSEL_W { w: self }
     }
     #[doc = "Bits 8:10 - Warm-up Time"]
-    #[inline]
-    pub fn warmtime(&mut self) -> _WARMTIMEW {
-        _WARMTIMEW { w: self }
+    #[inline(always)]
+    pub fn warmtime(&mut self) -> WARMTIME_W {
+        WARMTIME_W { w: self }
     }
     #[doc = "Bit 16 - Rising Edge Interrupt Sense"]
-    #[inline]
-    pub fn irise(&mut self) -> _IRISEW {
-        _IRISEW { w: self }
+    #[inline(always)]
+    pub fn irise(&mut self) -> IRISE_W {
+        IRISE_W { w: self }
     }
     #[doc = "Bit 17 - Falling Edge Interrupt Sense"]
-    #[inline]
-    pub fn ifall(&mut self) -> _IFALLW {
-        _IFALLW { w: self }
+    #[inline(always)]
+    pub fn ifall(&mut self) -> IFALL_W {
+        IFALL_W { w: self }
     }
     #[doc = "Bits 24:27 - Bias Configuration"]
-    #[inline]
-    pub fn biasprog(&mut self) -> _BIASPROGW {
-        _BIASPROGW { w: self }
+    #[inline(always)]
+    pub fn biasprog(&mut self) -> BIASPROG_W {
+        BIASPROG_W { w: self }
     }
     #[doc = "Bit 30 - Half Bias Current"]
-    #[inline]
-    pub fn halfbias(&mut self) -> _HALFBIASW {
-        _HALFBIASW { w: self }
+    #[inline(always)]
+    pub fn halfbias(&mut self) -> HALFBIAS_W {
+        HALFBIAS_W { w: self }
     }
     #[doc = "Bit 31 - Full Bias Current"]
-    #[inline]
-    pub fn fullbias(&mut self) -> _FULLBIASW {
-        _FULLBIASW { w: self }
+    #[inline(always)]
+    pub fn fullbias(&mut self) -> FULLBIAS_W {
+        FULLBIAS_W { w: self }
     }
 }

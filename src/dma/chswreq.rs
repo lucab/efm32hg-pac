@@ -1,197 +1,174 @@
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::CHSWREQ {
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
+#[doc = "Writer for register CHSWREQ"]
+pub type W = crate::W<u32, super::CHSWREQ>;
+#[doc = "Register CHSWREQ `reset()`'s with value 0"]
+impl crate::ResetValue for super::CHSWREQ {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH0SWREQW<'a> {
+#[doc = "Write proxy for field `CH0SWREQ`"]
+pub struct CH0SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH0SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH0SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH1SWREQW<'a> {
+#[doc = "Write proxy for field `CH1SWREQ`"]
+pub struct CH1SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH1SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH1SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH2SWREQW<'a> {
+#[doc = "Write proxy for field `CH2SWREQ`"]
+pub struct CH2SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH2SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH2SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH3SWREQW<'a> {
+#[doc = "Write proxy for field `CH3SWREQ`"]
+pub struct CH3SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH3SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH3SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH4SWREQW<'a> {
+#[doc = "Write proxy for field `CH4SWREQ`"]
+pub struct CH4SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH4SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH4SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _CH5SWREQW<'a> {
+#[doc = "Write proxy for field `CH5SWREQ`"]
+pub struct CH5SWREQ_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CH5SWREQW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> CH5SWREQ_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 5;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 5)) | (((value as u32) & 0x01) << 5);
         self.w
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - Channel 0 Software Request"]
-    #[inline]
-    pub fn ch0swreq(&mut self) -> _CH0SWREQW {
-        _CH0SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch0swreq(&mut self) -> CH0SWREQ_W {
+        CH0SWREQ_W { w: self }
     }
     #[doc = "Bit 1 - Channel 1 Software Request"]
-    #[inline]
-    pub fn ch1swreq(&mut self) -> _CH1SWREQW {
-        _CH1SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch1swreq(&mut self) -> CH1SWREQ_W {
+        CH1SWREQ_W { w: self }
     }
     #[doc = "Bit 2 - Channel 2 Software Request"]
-    #[inline]
-    pub fn ch2swreq(&mut self) -> _CH2SWREQW {
-        _CH2SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch2swreq(&mut self) -> CH2SWREQ_W {
+        CH2SWREQ_W { w: self }
     }
     #[doc = "Bit 3 - Channel 3 Software Request"]
-    #[inline]
-    pub fn ch3swreq(&mut self) -> _CH3SWREQW {
-        _CH3SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch3swreq(&mut self) -> CH3SWREQ_W {
+        CH3SWREQ_W { w: self }
     }
     #[doc = "Bit 4 - Channel 4 Software Request"]
-    #[inline]
-    pub fn ch4swreq(&mut self) -> _CH4SWREQW {
-        _CH4SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch4swreq(&mut self) -> CH4SWREQ_W {
+        CH4SWREQ_W { w: self }
     }
     #[doc = "Bit 5 - Channel 5 Software Request"]
-    #[inline]
-    pub fn ch5swreq(&mut self) -> _CH5SWREQW {
-        _CH5SWREQW { w: self }
+    #[inline(always)]
+    pub fn ch5swreq(&mut self) -> CH5SWREQ_W {
+        CH5SWREQ_W { w: self }
     }
 }

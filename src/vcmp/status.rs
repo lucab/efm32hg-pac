@@ -1,82 +1,18 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::STATUS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct VCMPACTR {
-    bits: bool,
-}
-impl VCMPACTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct VCMPOUTR {
-    bits: bool,
-}
-impl VCMPOUTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
+#[doc = "Reader of register STATUS"]
+pub type R = crate::R<u32, super::STATUS>;
+#[doc = "Reader of field `VCMPACT`"]
+pub type VCMPACT_R = crate::R<bool, bool>;
+#[doc = "Reader of field `VCMPOUT`"]
+pub type VCMPOUT_R = crate::R<bool, bool>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Voltage Supply Comparator Active"]
-    #[inline]
-    pub fn vcmpact(&self) -> VCMPACTR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        VCMPACTR { bits }
+    #[inline(always)]
+    pub fn vcmpact(&self) -> VCMPACT_R {
+        VCMPACT_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Voltage Supply Comparator Output"]
-    #[inline]
-    pub fn vcmpout(&self) -> VCMPOUTR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        VCMPOUTR { bits }
+    #[inline(always)]
+    pub fn vcmpout(&self) -> VCMPOUT_R {
+        VCMPOUT_R::new(((self.bits >> 1) & 0x01) != 0)
     }
 }

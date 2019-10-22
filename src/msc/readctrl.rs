@@ -1,344 +1,196 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::READCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register READCTRL"]
+pub type R = crate::R<u32, super::READCTRL>;
+#[doc = "Writer for register READCTRL"]
+pub type W = crate::W<u32, super::READCTRL>;
+#[doc = "Register READCTRL `reset()`'s with value 0x01"]
+impl crate::ResetValue for super::READCTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x01
     }
 }
-#[doc = "Possible values of the field `MODE`"]
+#[doc = "Read Mode\n\nValue on reset: 1"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum MODER {
-    #[doc = "Zero wait-states inserted in fetch or read transfers."]
+pub enum MODE_A {
+    #[doc = "0: Zero wait-states inserted in fetch or read transfers."]
     WS0,
-    #[doc = "One wait-state inserted for each fetch or read transfer. This mode is required for a core frequency above 16 MHz."]
+    #[doc = "1: One wait-state inserted for each fetch or read transfer. This mode is required for a core frequency above 16 MHz."]
     WS1,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl MODER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            MODER::WS0 => 0,
-            MODER::WS1 => 1,
-            MODER::_Reserved(bits) => bits,
+impl From<MODE_A> for u8 {
+    #[inline(always)]
+    fn from(variant: MODE_A) -> Self {
+        match variant {
+            MODE_A::WS0 => 0,
+            MODE_A::WS1 => 1,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> MODER {
-        match value {
-            0 => MODER::WS0,
-            1 => MODER::WS1,
-            i => MODER::_Reserved(i),
+}
+#[doc = "Reader of field `MODE`"]
+pub type MODE_R = crate::R<u8, MODE_A>;
+impl MODE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, MODE_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(MODE_A::WS0),
+            1 => Val(MODE_A::WS1),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `WS0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ws0(&self) -> bool {
-        *self == MODER::WS0
+        *self == MODE_A::WS0
     }
     #[doc = "Checks if the value of the field is `WS1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ws1(&self) -> bool {
-        *self == MODER::WS1
+        *self == MODE_A::WS1
     }
 }
-#[doc = r" Value of the field"]
-pub struct IFCDISR {
-    bits: bool,
-}
-impl IFCDISR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct AIDISR {
-    bits: bool,
-}
-impl AIDISR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct RAMCENR {
-    bits: bool,
-}
-impl RAMCENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Values that can be written to the field `MODE`"]
-pub enum MODEW {
-    #[doc = "Zero wait-states inserted in fetch or read transfers."]
-    WS0,
-    #[doc = "One wait-state inserted for each fetch or read transfer. This mode is required for a core frequency above 16 MHz."]
-    WS1,
-}
-impl MODEW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            MODEW::WS0 => 0,
-            MODEW::WS1 => 1,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _MODEW<'a> {
+#[doc = "Write proxy for field `MODE`"]
+pub struct MODE_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _MODEW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: MODEW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> MODE_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: MODE_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "Zero wait-states inserted in fetch or read transfers."]
-    #[inline]
+    #[inline(always)]
     pub fn ws0(self) -> &'a mut W {
-        self.variant(MODEW::WS0)
+        self.variant(MODE_A::WS0)
     }
     #[doc = "One wait-state inserted for each fetch or read transfer. This mode is required for a core frequency above 16 MHz."]
-    #[inline]
+    #[inline(always)]
     pub fn ws1(self) -> &'a mut W {
-        self.variant(MODEW::WS1)
+        self.variant(MODE_A::WS1)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !0x07) | ((value as u32) & 0x07);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _IFCDISW<'a> {
+#[doc = "Reader of field `IFCDIS`"]
+pub type IFCDIS_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `IFCDIS`"]
+pub struct IFCDIS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _IFCDISW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> IFCDIS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 3;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 3)) | (((value as u32) & 0x01) << 3);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _AIDISW<'a> {
+#[doc = "Reader of field `AIDIS`"]
+pub type AIDIS_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `AIDIS`"]
+pub struct AIDIS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _AIDISW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> AIDIS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 4)) | (((value as u32) & 0x01) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _RAMCENW<'a> {
+#[doc = "Reader of field `RAMCEN`"]
+pub type RAMCEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `RAMCEN`"]
+pub struct RAMCEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _RAMCENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> RAMCEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 7;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:2 - Read Mode"]
-    #[inline]
-    pub fn mode(&self) -> MODER {
-        MODER::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn mode(&self) -> MODE_R {
+        MODE_R::new((self.bits & 0x07) as u8)
     }
     #[doc = "Bit 3 - Internal Flash Cache Disable"]
-    #[inline]
-    pub fn ifcdis(&self) -> IFCDISR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        IFCDISR { bits }
+    #[inline(always)]
+    pub fn ifcdis(&self) -> IFCDIS_R {
+        IFCDIS_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - Automatic Invalidate Disable"]
-    #[inline]
-    pub fn aidis(&self) -> AIDISR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        AIDISR { bits }
+    #[inline(always)]
+    pub fn aidis(&self) -> AIDIS_R {
+        AIDIS_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 7 - RAM Cache Enable"]
-    #[inline]
-    pub fn ramcen(&self) -> RAMCENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 7;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        RAMCENR { bits }
+    #[inline(always)]
+    pub fn ramcen(&self) -> RAMCEN_R {
+        RAMCEN_R::new(((self.bits >> 7) & 0x01) != 0)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 1 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:2 - Read Mode"]
-    #[inline]
-    pub fn mode(&mut self) -> _MODEW {
-        _MODEW { w: self }
+    #[inline(always)]
+    pub fn mode(&mut self) -> MODE_W {
+        MODE_W { w: self }
     }
     #[doc = "Bit 3 - Internal Flash Cache Disable"]
-    #[inline]
-    pub fn ifcdis(&mut self) -> _IFCDISW {
-        _IFCDISW { w: self }
+    #[inline(always)]
+    pub fn ifcdis(&mut self) -> IFCDIS_W {
+        IFCDIS_W { w: self }
     }
     #[doc = "Bit 4 - Automatic Invalidate Disable"]
-    #[inline]
-    pub fn aidis(&mut self) -> _AIDISW {
-        _AIDISW { w: self }
+    #[inline(always)]
+    pub fn aidis(&mut self) -> AIDIS_W {
+        AIDIS_W { w: self }
     }
     #[doc = "Bit 7 - RAM Cache Enable"]
-    #[inline]
-    pub fn ramcen(&mut self) -> _RAMCENW {
-        _RAMCENW { w: self }
+    #[inline(always)]
+    pub fn ramcen(&mut self) -> RAMCEN_W {
+        RAMCEN_W { w: self }
     }
 }

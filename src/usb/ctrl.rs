@@ -1,679 +1,394 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::CTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register CTRL"]
+pub type R = crate::R<u32, super::CTRL>;
+#[doc = "Writer for register CTRL"]
+pub type W = crate::W<u32, super::CTRL>;
+#[doc = "Register CTRL `reset()`'s with value 0x20"]
+impl crate::ResetValue for super::CTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x20
     }
 }
-#[doc = r" Value of the field"]
-pub struct DMPUAPR {
-    bits: bool,
+#[doc = "Reader of field `DMPUAP`"]
+pub type DMPUAP_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `DMPUAP`"]
+pub struct DMPUAP_W<'a> {
+    w: &'a mut W,
 }
-impl DMPUAPR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> DMPUAP_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
+        self.w
     }
 }
-#[doc = "Possible values of the field `LEMOSCCTRL`"]
+#[doc = "Low Energy Mode Oscillator Control\n\nValue on reset: 2"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LEMOSCCTRLR {
-    #[doc = "Low Energy Mode has no effect on neither USBC or USHFRCO."]
+pub enum LEMOSCCTRL_A {
+    #[doc = "0: Low Energy Mode has no effect on neither USBC or USHFRCO."]
     NONE,
-    #[doc = "The USBC clock is gated when Low Energy Mode is active."]
+    #[doc = "1: The USBC clock is gated when Low Energy Mode is active."]
     GATE,
-    #[doc = "The USBC clock is gated, and USHFRCO is suspended (if not selected as HFCLK) when Low Energy Mode is active."]
+    #[doc = "2: The USBC clock is gated, and USHFRCO is suspended (if not selected as HFCLK) when Low Energy Mode is active."]
     SUSPEND,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl LEMOSCCTRLR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LEMOSCCTRLR::NONE => 0,
-            LEMOSCCTRLR::GATE => 1,
-            LEMOSCCTRLR::SUSPEND => 2,
-            LEMOSCCTRLR::_Reserved(bits) => bits,
+impl From<LEMOSCCTRL_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LEMOSCCTRL_A) -> Self {
+        match variant {
+            LEMOSCCTRL_A::NONE => 0,
+            LEMOSCCTRL_A::GATE => 1,
+            LEMOSCCTRL_A::SUSPEND => 2,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LEMOSCCTRLR {
-        match value {
-            0 => LEMOSCCTRLR::NONE,
-            1 => LEMOSCCTRLR::GATE,
-            2 => LEMOSCCTRLR::SUSPEND,
-            i => LEMOSCCTRLR::_Reserved(i),
+}
+#[doc = "Reader of field `LEMOSCCTRL`"]
+pub type LEMOSCCTRL_R = crate::R<u8, LEMOSCCTRL_A>;
+impl LEMOSCCTRL_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, LEMOSCCTRL_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(LEMOSCCTRL_A::NONE),
+            1 => Val(LEMOSCCTRL_A::GATE),
+            2 => Val(LEMOSCCTRL_A::SUSPEND),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `NONE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_none(&self) -> bool {
-        *self == LEMOSCCTRLR::NONE
+        *self == LEMOSCCTRL_A::NONE
     }
     #[doc = "Checks if the value of the field is `GATE`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_gate(&self) -> bool {
-        *self == LEMOSCCTRLR::GATE
+        *self == LEMOSCCTRL_A::GATE
     }
     #[doc = "Checks if the value of the field is `SUSPEND`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_suspend(&self) -> bool {
-        *self == LEMOSCCTRLR::SUSPEND
+        *self == LEMOSCCTRL_A::SUSPEND
     }
 }
-#[doc = r" Value of the field"]
-pub struct LEMPHYCTRLR {
-    bits: bool,
-}
-impl LEMPHYCTRLR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LEMIDLEENR {
-    bits: bool,
-}
-impl LEMIDLEENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LEMNAKENR {
-    bits: bool,
-}
-impl LEMNAKENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LEMADDRMENR {
-    bits: bool,
-}
-impl LEMADDRMENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct VREGDISR {
-    bits: bool,
-}
-impl VREGDISR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct VREGOSENR {
-    bits: bool,
-}
-impl VREGOSENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BIASPROGEM01R {
-    bits: u8,
-}
-impl BIASPROGEM01R {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BIASPROGEM23R {
-    bits: u8,
-}
-impl BIASPROGEM23R {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
-#[doc = r" Proxy"]
-pub struct _DMPUAPW<'a> {
+#[doc = "Write proxy for field `LEMOSCCTRL`"]
+pub struct LEMOSCCTRL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _DMPUAPW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `LEMOSCCTRL`"]
-pub enum LEMOSCCTRLW {
-    #[doc = "Low Energy Mode has no effect on neither USBC or USHFRCO."]
-    NONE,
-    #[doc = "The USBC clock is gated when Low Energy Mode is active."]
-    GATE,
-    #[doc = "The USBC clock is gated, and USHFRCO is suspended (if not selected as HFCLK) when Low Energy Mode is active."]
-    SUSPEND,
-}
-impl LEMOSCCTRLW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LEMOSCCTRLW::NONE => 0,
-            LEMOSCCTRLW::GATE => 1,
-            LEMOSCCTRLW::SUSPEND => 2,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LEMOSCCTRLW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _LEMOSCCTRLW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LEMOSCCTRLW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> LEMOSCCTRL_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LEMOSCCTRL_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "Low Energy Mode has no effect on neither USBC or USHFRCO."]
-    #[inline]
+    #[inline(always)]
     pub fn none(self) -> &'a mut W {
-        self.variant(LEMOSCCTRLW::NONE)
+        self.variant(LEMOSCCTRL_A::NONE)
     }
     #[doc = "The USBC clock is gated when Low Energy Mode is active."]
-    #[inline]
+    #[inline(always)]
     pub fn gate(self) -> &'a mut W {
-        self.variant(LEMOSCCTRLW::GATE)
+        self.variant(LEMOSCCTRL_A::GATE)
     }
     #[doc = "The USBC clock is gated, and USHFRCO is suspended (if not selected as HFCLK) when Low Energy Mode is active."]
-    #[inline]
+    #[inline(always)]
     pub fn suspend(self) -> &'a mut W {
-        self.variant(LEMOSCCTRLW::SUSPEND)
+        self.variant(LEMOSCCTRL_A::SUSPEND)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 4;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x03 << 4)) | (((value as u32) & 0x03) << 4);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LEMPHYCTRLW<'a> {
+#[doc = "Reader of field `LEMPHYCTRL`"]
+pub type LEMPHYCTRL_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LEMPHYCTRL`"]
+pub struct LEMPHYCTRL_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LEMPHYCTRLW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LEMPHYCTRL_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 7;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 7)) | (((value as u32) & 0x01) << 7);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LEMIDLEENW<'a> {
+#[doc = "Reader of field `LEMIDLEEN`"]
+pub type LEMIDLEEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LEMIDLEEN`"]
+pub struct LEMIDLEEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LEMIDLEENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LEMIDLEEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 9;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LEMNAKENW<'a> {
+#[doc = "Reader of field `LEMNAKEN`"]
+pub type LEMNAKEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LEMNAKEN`"]
+pub struct LEMNAKEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LEMNAKENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LEMNAKEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 10;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 10)) | (((value as u32) & 0x01) << 10);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _LEMADDRMENW<'a> {
+#[doc = "Reader of field `LEMADDRMEN`"]
+pub type LEMADDRMEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `LEMADDRMEN`"]
+pub struct LEMADDRMEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _LEMADDRMENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> LEMADDRMEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 11;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 11)) | (((value as u32) & 0x01) << 11);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _VREGDISW<'a> {
+#[doc = "Reader of field `VREGDIS`"]
+pub type VREGDIS_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `VREGDIS`"]
+pub struct VREGDIS_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _VREGDISW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> VREGDIS_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 16)) | (((value as u32) & 0x01) << 16);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _VREGOSENW<'a> {
+#[doc = "Reader of field `VREGOSEN`"]
+pub type VREGOSEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `VREGOSEN`"]
+pub struct VREGOSEN_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _VREGOSENW<'a> {
-    #[doc = r" Sets the field bit"]
+impl<'a> VREGOSEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
         self.bit(true)
     }
-    #[doc = r" Clears the field bit"]
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
     pub fn clear_bit(self) -> &'a mut W {
         self.bit(false)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 17;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x01 << 17)) | (((value as u32) & 0x01) << 17);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _BIASPROGEM01W<'a> {
+#[doc = "Reader of field `BIASPROGEM01`"]
+pub type BIASPROGEM01_R = crate::R<u8, u8>;
+#[doc = "Write proxy for field `BIASPROGEM01`"]
+pub struct BIASPROGEM01_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _BIASPROGEM01W<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> BIASPROGEM01_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 20;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x03 << 20)) | (((value as u32) & 0x03) << 20);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _BIASPROGEM23W<'a> {
+#[doc = "Reader of field `BIASPROGEM23`"]
+pub type BIASPROGEM23_R = crate::R<u8, u8>;
+#[doc = "Write proxy for field `BIASPROGEM23`"]
+pub struct BIASPROGEM23_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _BIASPROGEM23W<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> BIASPROGEM23_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 3;
-        const OFFSET: u8 = 24;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x03 << 24)) | (((value as u32) & 0x03) << 24);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 1 - DMPU Active Polarity"]
-    #[inline]
-    pub fn dmpuap(&self) -> DMPUAPR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        DMPUAPR { bits }
+    #[inline(always)]
+    pub fn dmpuap(&self) -> DMPUAP_R {
+        DMPUAP_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bits 4:5 - Low Energy Mode Oscillator Control"]
-    #[inline]
-    pub fn lemoscctrl(&self) -> LEMOSCCTRLR {
-        LEMOSCCTRLR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn lemoscctrl(&self) -> LEMOSCCTRL_R {
+        LEMOSCCTRL_R::new(((self.bits >> 4) & 0x03) as u8)
     }
     #[doc = "Bit 7 - Low Energy Mode USB PHY Control"]
-    #[inline]
-    pub fn lemphyctrl(&self) -> LEMPHYCTRLR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 7;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LEMPHYCTRLR { bits }
+    #[inline(always)]
+    pub fn lemphyctrl(&self) -> LEMPHYCTRL_R {
+        LEMPHYCTRL_R::new(((self.bits >> 7) & 0x01) != 0)
     }
     #[doc = "Bit 9 - Low Energy Mode on Bus Idle Enable"]
-    #[inline]
-    pub fn lemidleen(&self) -> LEMIDLEENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 9;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LEMIDLEENR { bits }
+    #[inline(always)]
+    pub fn lemidleen(&self) -> LEMIDLEEN_R {
+        LEMIDLEEN_R::new(((self.bits >> 9) & 0x01) != 0)
     }
     #[doc = "Bit 10 - Low Energy Mode on OUT NAK Enable"]
-    #[inline]
-    pub fn lemnaken(&self) -> LEMNAKENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 10;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LEMNAKENR { bits }
+    #[inline(always)]
+    pub fn lemnaken(&self) -> LEMNAKEN_R {
+        LEMNAKEN_R::new(((self.bits >> 10) & 0x01) != 0)
     }
     #[doc = "Bit 11 - Low Energy Mode on Device Address Mismatch Enable"]
-    #[inline]
-    pub fn lemaddrmen(&self) -> LEMADDRMENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 11;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LEMADDRMENR { bits }
+    #[inline(always)]
+    pub fn lemaddrmen(&self) -> LEMADDRMEN_R {
+        LEMADDRMEN_R::new(((self.bits >> 11) & 0x01) != 0)
     }
     #[doc = "Bit 16 - Voltage Regulator Disable"]
-    #[inline]
-    pub fn vregdis(&self) -> VREGDISR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        VREGDISR { bits }
+    #[inline(always)]
+    pub fn vregdis(&self) -> VREGDIS_R {
+        VREGDIS_R::new(((self.bits >> 16) & 0x01) != 0)
     }
     #[doc = "Bit 17 - VREGO Sense Enable"]
-    #[inline]
-    pub fn vregosen(&self) -> VREGOSENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 17;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        VREGOSENR { bits }
+    #[inline(always)]
+    pub fn vregosen(&self) -> VREGOSEN_R {
+        VREGOSEN_R::new(((self.bits >> 17) & 0x01) != 0)
     }
     #[doc = "Bits 20:21 - Regulator Bias Programming Value in EM0/1"]
-    #[inline]
-    pub fn biasprogem01(&self) -> BIASPROGEM01R {
-        let bits = {
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 20;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        BIASPROGEM01R { bits }
+    #[inline(always)]
+    pub fn biasprogem01(&self) -> BIASPROGEM01_R {
+        BIASPROGEM01_R::new(((self.bits >> 20) & 0x03) as u8)
     }
     #[doc = "Bits 24:25 - Regulator Bias Programming Value in EM2/3"]
-    #[inline]
-    pub fn biasprogem23(&self) -> BIASPROGEM23R {
-        let bits = {
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 24;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        BIASPROGEM23R { bits }
+    #[inline(always)]
+    pub fn biasprogem23(&self) -> BIASPROGEM23_R {
+        BIASPROGEM23_R::new(((self.bits >> 24) & 0x03) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 32 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 1 - DMPU Active Polarity"]
-    #[inline]
-    pub fn dmpuap(&mut self) -> _DMPUAPW {
-        _DMPUAPW { w: self }
+    #[inline(always)]
+    pub fn dmpuap(&mut self) -> DMPUAP_W {
+        DMPUAP_W { w: self }
     }
     #[doc = "Bits 4:5 - Low Energy Mode Oscillator Control"]
-    #[inline]
-    pub fn lemoscctrl(&mut self) -> _LEMOSCCTRLW {
-        _LEMOSCCTRLW { w: self }
+    #[inline(always)]
+    pub fn lemoscctrl(&mut self) -> LEMOSCCTRL_W {
+        LEMOSCCTRL_W { w: self }
     }
     #[doc = "Bit 7 - Low Energy Mode USB PHY Control"]
-    #[inline]
-    pub fn lemphyctrl(&mut self) -> _LEMPHYCTRLW {
-        _LEMPHYCTRLW { w: self }
+    #[inline(always)]
+    pub fn lemphyctrl(&mut self) -> LEMPHYCTRL_W {
+        LEMPHYCTRL_W { w: self }
     }
     #[doc = "Bit 9 - Low Energy Mode on Bus Idle Enable"]
-    #[inline]
-    pub fn lemidleen(&mut self) -> _LEMIDLEENW {
-        _LEMIDLEENW { w: self }
+    #[inline(always)]
+    pub fn lemidleen(&mut self) -> LEMIDLEEN_W {
+        LEMIDLEEN_W { w: self }
     }
     #[doc = "Bit 10 - Low Energy Mode on OUT NAK Enable"]
-    #[inline]
-    pub fn lemnaken(&mut self) -> _LEMNAKENW {
-        _LEMNAKENW { w: self }
+    #[inline(always)]
+    pub fn lemnaken(&mut self) -> LEMNAKEN_W {
+        LEMNAKEN_W { w: self }
     }
     #[doc = "Bit 11 - Low Energy Mode on Device Address Mismatch Enable"]
-    #[inline]
-    pub fn lemaddrmen(&mut self) -> _LEMADDRMENW {
-        _LEMADDRMENW { w: self }
+    #[inline(always)]
+    pub fn lemaddrmen(&mut self) -> LEMADDRMEN_W {
+        LEMADDRMEN_W { w: self }
     }
     #[doc = "Bit 16 - Voltage Regulator Disable"]
-    #[inline]
-    pub fn vregdis(&mut self) -> _VREGDISW {
-        _VREGDISW { w: self }
+    #[inline(always)]
+    pub fn vregdis(&mut self) -> VREGDIS_W {
+        VREGDIS_W { w: self }
     }
     #[doc = "Bit 17 - VREGO Sense Enable"]
-    #[inline]
-    pub fn vregosen(&mut self) -> _VREGOSENW {
-        _VREGOSENW { w: self }
+    #[inline(always)]
+    pub fn vregosen(&mut self) -> VREGOSEN_W {
+        VREGOSEN_W { w: self }
     }
     #[doc = "Bits 20:21 - Regulator Bias Programming Value in EM0/1"]
-    #[inline]
-    pub fn biasprogem01(&mut self) -> _BIASPROGEM01W {
-        _BIASPROGEM01W { w: self }
+    #[inline(always)]
+    pub fn biasprogem01(&mut self) -> BIASPROGEM01_W {
+        BIASPROGEM01_W { w: self }
     }
     #[doc = "Bits 24:25 - Regulator Bias Programming Value in EM2/3"]
-    #[inline]
-    pub fn biasprogem23(&mut self) -> _BIASPROGEM23W {
-        _BIASPROGEM23W { w: self }
+    #[inline(always)]
+    pub fn biasprogem23(&mut self) -> BIASPROGEM23_W {
+        BIASPROGEM23_W { w: self }
     }
 }

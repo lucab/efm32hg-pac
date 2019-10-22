@@ -1,300 +1,184 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::HFRCOCTRL {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register HFRCOCTRL"]
+pub type R = crate::R<u32, super::HFRCOCTRL>;
+#[doc = "Writer for register HFRCOCTRL"]
+pub type W = crate::W<u32, super::HFRCOCTRL>;
+#[doc = "Register HFRCOCTRL `reset()`'s with value 0x0380"]
+impl crate::ResetValue for super::HFRCOCTRL {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0x0380
     }
 }
-#[doc = r" Value of the field"]
-pub struct TUNINGR {
-    bits: u8,
+#[doc = "Reader of field `TUNING`"]
+pub type TUNING_R = crate::R<u8, u8>;
+#[doc = "Write proxy for field `TUNING`"]
+pub struct TUNING_W<'a> {
+    w: &'a mut W,
 }
-impl TUNINGR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
+impl<'a> TUNING_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub unsafe fn bits(self, value: u8) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0xff) | ((value as u32) & 0xff);
+        self.w
     }
 }
-#[doc = "Possible values of the field `BAND`"]
+#[doc = "HFRCO Band Select\n\nValue on reset: 3"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum BANDR {
-    #[doc = "1 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
+pub enum BAND_A {
+    #[doc = "0: 1 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
     _1MHZ,
-    #[doc = "7 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
+    #[doc = "1: 7 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
     _7MHZ,
-    #[doc = "11 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
+    #[doc = "2: 11 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
     _11MHZ,
-    #[doc = "14 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
+    #[doc = "3: 14 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
     _14MHZ,
-    #[doc = "21 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
+    #[doc = "4: 21 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
     _21MHZ,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl BANDR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            BANDR::_1MHZ => 0,
-            BANDR::_7MHZ => 1,
-            BANDR::_11MHZ => 2,
-            BANDR::_14MHZ => 3,
-            BANDR::_21MHZ => 4,
-            BANDR::_Reserved(bits) => bits,
+impl From<BAND_A> for u8 {
+    #[inline(always)]
+    fn from(variant: BAND_A) -> Self {
+        match variant {
+            BAND_A::_1MHZ => 0,
+            BAND_A::_7MHZ => 1,
+            BAND_A::_11MHZ => 2,
+            BAND_A::_14MHZ => 3,
+            BAND_A::_21MHZ => 4,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> BANDR {
-        match value {
-            0 => BANDR::_1MHZ,
-            1 => BANDR::_7MHZ,
-            2 => BANDR::_11MHZ,
-            3 => BANDR::_14MHZ,
-            4 => BANDR::_21MHZ,
-            i => BANDR::_Reserved(i),
+}
+#[doc = "Reader of field `BAND`"]
+pub type BAND_R = crate::R<u8, BAND_A>;
+impl BAND_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, BAND_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(BAND_A::_1MHZ),
+            1 => Val(BAND_A::_7MHZ),
+            2 => Val(BAND_A::_11MHZ),
+            3 => Val(BAND_A::_14MHZ),
+            4 => Val(BAND_A::_21MHZ),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `_1MHZ`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_1mhz(&self) -> bool {
-        *self == BANDR::_1MHZ
+        *self == BAND_A::_1MHZ
     }
     #[doc = "Checks if the value of the field is `_7MHZ`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_7mhz(&self) -> bool {
-        *self == BANDR::_7MHZ
+        *self == BAND_A::_7MHZ
     }
     #[doc = "Checks if the value of the field is `_11MHZ`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_11mhz(&self) -> bool {
-        *self == BANDR::_11MHZ
+        *self == BAND_A::_11MHZ
     }
     #[doc = "Checks if the value of the field is `_14MHZ`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_14mhz(&self) -> bool {
-        *self == BANDR::_14MHZ
+        *self == BAND_A::_14MHZ
     }
     #[doc = "Checks if the value of the field is `_21MHZ`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_21mhz(&self) -> bool {
-        *self == BANDR::_21MHZ
+        *self == BAND_A::_21MHZ
     }
 }
-#[doc = r" Value of the field"]
-pub struct SUDELAYR {
-    bits: u8,
-}
-impl SUDELAYR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
-#[doc = r" Proxy"]
-pub struct _TUNINGW<'a> {
+#[doc = "Write proxy for field `BAND`"]
+pub struct BAND_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _TUNINGW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 255;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `BAND`"]
-pub enum BANDW {
-    #[doc = "1 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    _1MHZ,
-    #[doc = "7 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    _7MHZ,
-    #[doc = "11 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    _11MHZ,
-    #[doc = "14 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    _14MHZ,
-    #[doc = "21 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    _21MHZ,
-}
-impl BANDW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            BANDW::_1MHZ => 0,
-            BANDW::_7MHZ => 1,
-            BANDW::_11MHZ => 2,
-            BANDW::_14MHZ => 3,
-            BANDW::_21MHZ => 4,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _BANDW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _BANDW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: BANDW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> BAND_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: BAND_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "1 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    #[inline]
+    #[inline(always)]
     pub fn _1mhz(self) -> &'a mut W {
-        self.variant(BANDW::_1MHZ)
+        self.variant(BAND_A::_1MHZ)
     }
     #[doc = "7 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    #[inline]
+    #[inline(always)]
     pub fn _7mhz(self) -> &'a mut W {
-        self.variant(BANDW::_7MHZ)
+        self.variant(BAND_A::_7MHZ)
     }
     #[doc = "11 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    #[inline]
+    #[inline(always)]
     pub fn _11mhz(self) -> &'a mut W {
-        self.variant(BANDW::_11MHZ)
+        self.variant(BAND_A::_11MHZ)
     }
     #[doc = "14 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    #[inline]
+    #[inline(always)]
     pub fn _14mhz(self) -> &'a mut W {
-        self.variant(BANDW::_14MHZ)
+        self.variant(BAND_A::_14MHZ)
     }
     #[doc = "21 MHz band. NOTE: Also set the TUNING value (bits 7:0) when changing band."]
-    #[inline]
+    #[inline(always)]
     pub fn _21mhz(self) -> &'a mut W {
-        self.variant(BANDW::_21MHZ)
+        self.variant(BAND_A::_21MHZ)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 8)) | (((value as u32) & 0x07) << 8);
         self.w
     }
 }
-#[doc = r" Proxy"]
-pub struct _SUDELAYW<'a> {
+#[doc = "Reader of field `SUDELAY`"]
+pub type SUDELAY_R = crate::R<u8, u8>;
+#[doc = "Write proxy for field `SUDELAY`"]
+pub struct SUDELAY_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _SUDELAYW<'a> {
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+impl<'a> SUDELAY_W<'a> {
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 31;
-        const OFFSET: u8 = 12;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x1f << 12)) | (((value as u32) & 0x1f) << 12);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:7 - HFRCO Tuning Value"]
-    #[inline]
-    pub fn tuning(&self) -> TUNINGR {
-        let bits = {
-            const MASK: u8 = 255;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        TUNINGR { bits }
+    #[inline(always)]
+    pub fn tuning(&self) -> TUNING_R {
+        TUNING_R::new((self.bits & 0xff) as u8)
     }
     #[doc = "Bits 8:10 - HFRCO Band Select"]
-    #[inline]
-    pub fn band(&self) -> BANDR {
-        BANDR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn band(&self) -> BAND_R {
+        BAND_R::new(((self.bits >> 8) & 0x07) as u8)
     }
     #[doc = "Bits 12:16 - HFRCO Start-up Delay"]
-    #[inline]
-    pub fn sudelay(&self) -> SUDELAYR {
-        let bits = {
-            const MASK: u8 = 31;
-            const OFFSET: u8 = 12;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        SUDELAYR { bits }
+    #[inline(always)]
+    pub fn sudelay(&self) -> SUDELAY_R {
+        SUDELAY_R::new(((self.bits >> 12) & 0x1f) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 896 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bits 0:7 - HFRCO Tuning Value"]
-    #[inline]
-    pub fn tuning(&mut self) -> _TUNINGW {
-        _TUNINGW { w: self }
+    #[inline(always)]
+    pub fn tuning(&mut self) -> TUNING_W {
+        TUNING_W { w: self }
     }
     #[doc = "Bits 8:10 - HFRCO Band Select"]
-    #[inline]
-    pub fn band(&mut self) -> _BANDW {
-        _BANDW { w: self }
+    #[inline(always)]
+    pub fn band(&mut self) -> BAND_W {
+        BAND_W { w: self }
     }
     #[doc = "Bits 12:16 - HFRCO Start-up Delay"]
-    #[inline]
-    pub fn sudelay(&mut self) -> _SUDELAYW {
-        _SUDELAYW { w: self }
+    #[inline(always)]
+    pub fn sudelay(&mut self) -> SUDELAY_W {
+        SUDELAY_W { w: self }
     }
 }

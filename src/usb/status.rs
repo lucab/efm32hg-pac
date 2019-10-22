@@ -1,82 +1,18 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::STATUS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct VREGOSR {
-    bits: bool,
-}
-impl VREGOSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct LEMACTIVER {
-    bits: bool,
-}
-impl LEMACTIVER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
+#[doc = "Reader of register STATUS"]
+pub type R = crate::R<u32, super::STATUS>;
+#[doc = "Reader of field `VREGOS`"]
+pub type VREGOS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `LEMACTIVE`"]
+pub type LEMACTIVE_R = crate::R<bool, bool>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - VREGO Sense Output"]
-    #[inline]
-    pub fn vregos(&self) -> VREGOSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        VREGOSR { bits }
+    #[inline(always)]
+    pub fn vregos(&self) -> VREGOS_R {
+        VREGOS_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 2 - Low Energy Mode Active"]
-    #[inline]
-    pub fn lemactive(&self) -> LEMACTIVER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        LEMACTIVER { bits }
+    #[inline(always)]
+    pub fn lemactive(&self) -> LEMACTIVE_R {
+        LEMACTIVE_R::new(((self.bits >> 2) & 0x01) != 0)
     }
 }

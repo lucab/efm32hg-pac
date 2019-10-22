@@ -1,338 +1,152 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::STATUS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SINGLEACTR {
-    bits: bool,
-}
-impl SINGLEACTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SCANACTR {
-    bits: bool,
-}
-impl SCANACTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SINGLEREFWARMR {
-    bits: bool,
-}
-impl SINGLEREFWARMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SCANREFWARMR {
-    bits: bool,
-}
-impl SCANREFWARMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct WARMR {
-    bits: bool,
-}
-impl WARMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SINGLEDVR {
-    bits: bool,
-}
-impl SINGLEDVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct SCANDVR {
-    bits: bool,
-}
-impl SCANDVR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = "Possible values of the field `SCANDATASRC`"]
+#[doc = "Reader of register STATUS"]
+pub type R = crate::R<u32, super::STATUS>;
+#[doc = "Reader of field `SINGLEACT`"]
+pub type SINGLEACT_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SCANACT`"]
+pub type SCANACT_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SINGLEREFWARM`"]
+pub type SINGLEREFWARM_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SCANREFWARM`"]
+pub type SCANREFWARM_R = crate::R<bool, bool>;
+#[doc = "Reader of field `WARM`"]
+pub type WARM_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SINGLEDV`"]
+pub type SINGLEDV_R = crate::R<bool, bool>;
+#[doc = "Reader of field `SCANDV`"]
+pub type SCANDV_R = crate::R<bool, bool>;
+#[doc = "Scan Data Source\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum SCANDATASRCR {
-    #[doc = "Single ended mode: SCANDATA result originates from ADCn_CH0. Differential mode: SCANDATA result originates from ADCn_CH0-ADCn_CH1"]
+pub enum SCANDATASRC_A {
+    #[doc = "0: Single ended mode: SCANDATA result originates from ADCn_CH0. Differential mode: SCANDATA result originates from ADCn_CH0-ADCn_CH1"]
     CH0,
-    #[doc = "Single ended mode: SCANDATA result originates from ADCn_CH1. Differential mode: SCANDATA result originates from ADCn_CH2_ADCn_CH3"]
+    #[doc = "1: Single ended mode: SCANDATA result originates from ADCn_CH1. Differential mode: SCANDATA result originates from ADCn_CH2_ADCn_CH3"]
     CH1,
-    #[doc = "Single ended mode: SCANDATA result originates from ADCn_CH2. Differential mode: SCANDATA result originates from ADCn_CH4-ADCn_CH5"]
+    #[doc = "2: Single ended mode: SCANDATA result originates from ADCn_CH2. Differential mode: SCANDATA result originates from ADCn_CH4-ADCn_CH5"]
     CH2,
-    #[doc = "Single ended mode: SCANDATA result originates from ADCn_CH3. Differential mode: SCANDATA result originates from ADCn_CH6-ADCn_CH7"]
+    #[doc = "3: Single ended mode: SCANDATA result originates from ADCn_CH3. Differential mode: SCANDATA result originates from ADCn_CH6-ADCn_CH7"]
     CH3,
-    #[doc = "SCANDATA result originates from ADCn_CH4"]
+    #[doc = "4: SCANDATA result originates from ADCn_CH4"]
     CH4,
-    #[doc = "SCANDATA result originates from ADCn_CH5"]
+    #[doc = "5: SCANDATA result originates from ADCn_CH5"]
     CH5,
-    #[doc = "SCANDATA result originates from ADCn_CH6"]
+    #[doc = "6: SCANDATA result originates from ADCn_CH6"]
     CH6,
-    #[doc = "SCANDATA result originates from ADCn_CH7"]
+    #[doc = "7: SCANDATA result originates from ADCn_CH7"]
     CH7,
 }
-impl SCANDATASRCR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            SCANDATASRCR::CH0 => 0,
-            SCANDATASRCR::CH1 => 1,
-            SCANDATASRCR::CH2 => 2,
-            SCANDATASRCR::CH3 => 3,
-            SCANDATASRCR::CH4 => 4,
-            SCANDATASRCR::CH5 => 5,
-            SCANDATASRCR::CH6 => 6,
-            SCANDATASRCR::CH7 => 7,
+impl From<SCANDATASRC_A> for u8 {
+    #[inline(always)]
+    fn from(variant: SCANDATASRC_A) -> Self {
+        match variant {
+            SCANDATASRC_A::CH0 => 0,
+            SCANDATASRC_A::CH1 => 1,
+            SCANDATASRC_A::CH2 => 2,
+            SCANDATASRC_A::CH3 => 3,
+            SCANDATASRC_A::CH4 => 4,
+            SCANDATASRC_A::CH5 => 5,
+            SCANDATASRC_A::CH6 => 6,
+            SCANDATASRC_A::CH7 => 7,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> SCANDATASRCR {
-        match value {
-            0 => SCANDATASRCR::CH0,
-            1 => SCANDATASRCR::CH1,
-            2 => SCANDATASRCR::CH2,
-            3 => SCANDATASRCR::CH3,
-            4 => SCANDATASRCR::CH4,
-            5 => SCANDATASRCR::CH5,
-            6 => SCANDATASRCR::CH6,
-            7 => SCANDATASRCR::CH7,
+}
+#[doc = "Reader of field `SCANDATASRC`"]
+pub type SCANDATASRC_R = crate::R<u8, SCANDATASRC_A>;
+impl SCANDATASRC_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> SCANDATASRC_A {
+        match self.bits {
+            0 => SCANDATASRC_A::CH0,
+            1 => SCANDATASRC_A::CH1,
+            2 => SCANDATASRC_A::CH2,
+            3 => SCANDATASRC_A::CH3,
+            4 => SCANDATASRC_A::CH4,
+            5 => SCANDATASRC_A::CH5,
+            6 => SCANDATASRC_A::CH6,
+            7 => SCANDATASRC_A::CH7,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `CH0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch0(&self) -> bool {
-        *self == SCANDATASRCR::CH0
+        *self == SCANDATASRC_A::CH0
     }
     #[doc = "Checks if the value of the field is `CH1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch1(&self) -> bool {
-        *self == SCANDATASRCR::CH1
+        *self == SCANDATASRC_A::CH1
     }
     #[doc = "Checks if the value of the field is `CH2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch2(&self) -> bool {
-        *self == SCANDATASRCR::CH2
+        *self == SCANDATASRC_A::CH2
     }
     #[doc = "Checks if the value of the field is `CH3`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch3(&self) -> bool {
-        *self == SCANDATASRCR::CH3
+        *self == SCANDATASRC_A::CH3
     }
     #[doc = "Checks if the value of the field is `CH4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch4(&self) -> bool {
-        *self == SCANDATASRCR::CH4
+        *self == SCANDATASRC_A::CH4
     }
     #[doc = "Checks if the value of the field is `CH5`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch5(&self) -> bool {
-        *self == SCANDATASRCR::CH5
+        *self == SCANDATASRC_A::CH5
     }
     #[doc = "Checks if the value of the field is `CH6`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch6(&self) -> bool {
-        *self == SCANDATASRCR::CH6
+        *self == SCANDATASRC_A::CH6
     }
     #[doc = "Checks if the value of the field is `CH7`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_ch7(&self) -> bool {
-        *self == SCANDATASRCR::CH7
+        *self == SCANDATASRC_A::CH7
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Single Conversion Active"]
-    #[inline]
-    pub fn singleact(&self) -> SINGLEACTR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SINGLEACTR { bits }
+    #[inline(always)]
+    pub fn singleact(&self) -> SINGLEACT_R {
+        SINGLEACT_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Scan Conversion Active"]
-    #[inline]
-    pub fn scanact(&self) -> SCANACTR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SCANACTR { bits }
+    #[inline(always)]
+    pub fn scanact(&self) -> SCANACT_R {
+        SCANACT_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 8 - Single Reference Warmed Up"]
-    #[inline]
-    pub fn singlerefwarm(&self) -> SINGLEREFWARMR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SINGLEREFWARMR { bits }
+    #[inline(always)]
+    pub fn singlerefwarm(&self) -> SINGLEREFWARM_R {
+        SINGLEREFWARM_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - Scan Reference Warmed Up"]
-    #[inline]
-    pub fn scanrefwarm(&self) -> SCANREFWARMR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 9;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SCANREFWARMR { bits }
+    #[inline(always)]
+    pub fn scanrefwarm(&self) -> SCANREFWARM_R {
+        SCANREFWARM_R::new(((self.bits >> 9) & 0x01) != 0)
     }
     #[doc = "Bit 12 - ADC Warmed Up"]
-    #[inline]
-    pub fn warm(&self) -> WARMR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 12;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        WARMR { bits }
+    #[inline(always)]
+    pub fn warm(&self) -> WARM_R {
+        WARM_R::new(((self.bits >> 12) & 0x01) != 0)
     }
     #[doc = "Bit 16 - Single Sample Data Valid"]
-    #[inline]
-    pub fn singledv(&self) -> SINGLEDVR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SINGLEDVR { bits }
+    #[inline(always)]
+    pub fn singledv(&self) -> SINGLEDV_R {
+        SINGLEDV_R::new(((self.bits >> 16) & 0x01) != 0)
     }
     #[doc = "Bit 17 - Scan Data Valid"]
-    #[inline]
-    pub fn scandv(&self) -> SCANDVR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 17;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        SCANDVR { bits }
+    #[inline(always)]
+    pub fn scandv(&self) -> SCANDV_R {
+        SCANDV_R::new(((self.bits >> 17) & 0x01) != 0)
     }
     #[doc = "Bits 24:26 - Scan Data Source"]
-    #[inline]
-    pub fn scandatasrc(&self) -> SCANDATASRCR {
-        SCANDATASRCR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 24;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn scandatasrc(&self) -> SCANDATASRC_R {
+        SCANDATASRC_R::new(((self.bits >> 24) & 0x07) as u8)
     }
 }

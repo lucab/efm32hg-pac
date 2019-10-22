@@ -1,606 +1,368 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-#[doc = r" Value to write to the register"]
-pub struct W {
-    bits: u32,
-}
-impl super::ROUTE {
-    #[doc = r" Modifies the contents of the register"]
-    #[inline]
-    pub fn modify<F>(&self, f: F)
-    where
-        for<'w> F: FnOnce(&R, &'w mut W) -> &'w mut W,
-    {
-        let bits = self.register.get();
-        let r = R { bits: bits };
-        let mut w = W { bits: bits };
-        f(&r, &mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-    #[doc = r" Writes to the register"]
-    #[inline]
-    pub fn write<F>(&self, f: F)
-    where
-        F: FnOnce(&mut W) -> &mut W,
-    {
-        let mut w = W::reset_value();
-        f(&mut w);
-        self.register.set(w.bits);
-    }
-    #[doc = r" Writes the reset value to the register"]
-    #[inline]
-    pub fn reset(&self) {
-        self.write(|w| w)
+#[doc = "Reader of register ROUTE"]
+pub type R = crate::R<u32, super::ROUTE>;
+#[doc = "Writer for register ROUTE"]
+pub type W = crate::W<u32, super::ROUTE>;
+#[doc = "Register ROUTE `reset()`'s with value 0"]
+impl crate::ResetValue for super::ROUTE {
+    type Type = u32;
+    #[inline(always)]
+    fn reset_value() -> Self::Type {
+        0
     }
 }
-#[doc = r" Value of the field"]
-pub struct CC0PENR {
-    bits: bool,
+#[doc = "Reader of field `CC0PEN`"]
+pub type CC0PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CC0PEN`"]
+pub struct CC0PEN_W<'a> {
+    w: &'a mut W,
 }
-impl CC0PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> CC0PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CC1PENR {
-    bits: bool,
-}
-impl CC1PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !0x01) | ((value as u32) & 0x01);
+        self.w
     }
 }
-#[doc = r" Value of the field"]
-pub struct CC2PENR {
-    bits: bool,
+#[doc = "Reader of field `CC1PEN`"]
+pub type CC1PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CC1PEN`"]
+pub struct CC1PEN_W<'a> {
+    w: &'a mut W,
 }
-impl CC2PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> CC1PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CDTI0PENR {
-    bits: bool,
-}
-impl CDTI0PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 1)) | (((value as u32) & 0x01) << 1);
+        self.w
     }
 }
-#[doc = r" Value of the field"]
-pub struct CDTI1PENR {
-    bits: bool,
+#[doc = "Reader of field `CC2PEN`"]
+pub type CC2PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CC2PEN`"]
+pub struct CC2PEN_W<'a> {
+    w: &'a mut W,
 }
-impl CDTI1PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
+impl<'a> CC2PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
     }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
     }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CDTI2PENR {
-    bits: bool,
-}
-impl CDTI2PENR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 2)) | (((value as u32) & 0x01) << 2);
+        self.w
     }
 }
-#[doc = "Possible values of the field `LOCATION`"]
+#[doc = "Reader of field `CDTI0PEN`"]
+pub type CDTI0PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CDTI0PEN`"]
+pub struct CDTI0PEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CDTI0PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 8)) | (((value as u32) & 0x01) << 8);
+        self.w
+    }
+}
+#[doc = "Reader of field `CDTI1PEN`"]
+pub type CDTI1PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CDTI1PEN`"]
+pub struct CDTI1PEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CDTI1PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 9)) | (((value as u32) & 0x01) << 9);
+        self.w
+    }
+}
+#[doc = "Reader of field `CDTI2PEN`"]
+pub type CDTI2PEN_R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `CDTI2PEN`"]
+pub struct CDTI2PEN_W<'a> {
+    w: &'a mut W,
+}
+impl<'a> CDTI2PEN_W<'a> {
+    #[doc = r"Sets the field bit"]
+    #[inline(always)]
+    pub fn set_bit(self) -> &'a mut W {
+        self.bit(true)
+    }
+    #[doc = r"Clears the field bit"]
+    #[inline(always)]
+    pub fn clear_bit(self) -> &'a mut W {
+        self.bit(false)
+    }
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
+    pub fn bit(self, value: bool) -> &'a mut W {
+        self.w.bits = (self.w.bits & !(0x01 << 10)) | (((value as u32) & 0x01) << 10);
+        self.w
+    }
+}
+#[doc = "I/O Location\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum LOCATIONR {
-    #[doc = "Location 0"]
+pub enum LOCATION_A {
+    #[doc = "0: Location 0"]
     LOC0,
-    #[doc = "Location 1"]
+    #[doc = "1: Location 1"]
     LOC1,
-    #[doc = "Location 2"]
+    #[doc = "2: Location 2"]
     LOC2,
-    #[doc = "Location 3"]
+    #[doc = "3: Location 3"]
     LOC3,
-    #[doc = "Location 4"]
+    #[doc = "4: Location 4"]
     LOC4,
-    #[doc = "Location 5"]
+    #[doc = "5: Location 5"]
     LOC5,
-    #[doc = "Location 6"]
+    #[doc = "6: Location 6"]
     LOC6,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl LOCATIONR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            LOCATIONR::LOC0 => 0,
-            LOCATIONR::LOC1 => 1,
-            LOCATIONR::LOC2 => 2,
-            LOCATIONR::LOC3 => 3,
-            LOCATIONR::LOC4 => 4,
-            LOCATIONR::LOC5 => 5,
-            LOCATIONR::LOC6 => 6,
-            LOCATIONR::_Reserved(bits) => bits,
+impl From<LOCATION_A> for u8 {
+    #[inline(always)]
+    fn from(variant: LOCATION_A) -> Self {
+        match variant {
+            LOCATION_A::LOC0 => 0,
+            LOCATION_A::LOC1 => 1,
+            LOCATION_A::LOC2 => 2,
+            LOCATION_A::LOC3 => 3,
+            LOCATION_A::LOC4 => 4,
+            LOCATION_A::LOC5 => 5,
+            LOCATION_A::LOC6 => 6,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> LOCATIONR {
-        match value {
-            0 => LOCATIONR::LOC0,
-            1 => LOCATIONR::LOC1,
-            2 => LOCATIONR::LOC2,
-            3 => LOCATIONR::LOC3,
-            4 => LOCATIONR::LOC4,
-            5 => LOCATIONR::LOC5,
-            6 => LOCATIONR::LOC6,
-            i => LOCATIONR::_Reserved(i),
+}
+#[doc = "Reader of field `LOCATION`"]
+pub type LOCATION_R = crate::R<u8, LOCATION_A>;
+impl LOCATION_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, LOCATION_A> {
+        use crate::Variant::*;
+        match self.bits {
+            0 => Val(LOCATION_A::LOC0),
+            1 => Val(LOCATION_A::LOC1),
+            2 => Val(LOCATION_A::LOC2),
+            3 => Val(LOCATION_A::LOC3),
+            4 => Val(LOCATION_A::LOC4),
+            5 => Val(LOCATION_A::LOC5),
+            6 => Val(LOCATION_A::LOC6),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `LOC0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc0(&self) -> bool {
-        *self == LOCATIONR::LOC0
+        *self == LOCATION_A::LOC0
     }
     #[doc = "Checks if the value of the field is `LOC1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc1(&self) -> bool {
-        *self == LOCATIONR::LOC1
+        *self == LOCATION_A::LOC1
     }
     #[doc = "Checks if the value of the field is `LOC2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc2(&self) -> bool {
-        *self == LOCATIONR::LOC2
+        *self == LOCATION_A::LOC2
     }
     #[doc = "Checks if the value of the field is `LOC3`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc3(&self) -> bool {
-        *self == LOCATIONR::LOC3
+        *self == LOCATION_A::LOC3
     }
     #[doc = "Checks if the value of the field is `LOC4`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc4(&self) -> bool {
-        *self == LOCATIONR::LOC4
+        *self == LOCATION_A::LOC4
     }
     #[doc = "Checks if the value of the field is `LOC5`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc5(&self) -> bool {
-        *self == LOCATIONR::LOC5
+        *self == LOCATION_A::LOC5
     }
     #[doc = "Checks if the value of the field is `LOC6`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_loc6(&self) -> bool {
-        *self == LOCATIONR::LOC6
+        *self == LOCATION_A::LOC6
     }
 }
-#[doc = r" Proxy"]
-pub struct _CC0PENW<'a> {
+#[doc = "Write proxy for field `LOCATION`"]
+pub struct LOCATION_W<'a> {
     w: &'a mut W,
 }
-impl<'a> _CC0PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 0;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _CC1PENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _CC1PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 1;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _CC2PENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _CC2PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 2;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _CDTI0PENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _CDTI0PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 8;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _CDTI1PENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _CDTI1PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 9;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = r" Proxy"]
-pub struct _CDTI2PENW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _CDTI2PENW<'a> {
-    #[doc = r" Sets the field bit"]
-    pub fn set_bit(self) -> &'a mut W {
-        self.bit(true)
-    }
-    #[doc = r" Clears the field bit"]
-    pub fn clear_bit(self) -> &'a mut W {
-        self.bit(false)
-    }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
-    pub fn bit(self, value: bool) -> &'a mut W {
-        const MASK: bool = true;
-        const OFFSET: u8 = 10;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
-        self.w
-    }
-}
-#[doc = "Values that can be written to the field `LOCATION`"]
-pub enum LOCATIONW {
-    #[doc = "Location 0"]
-    LOC0,
-    #[doc = "Location 1"]
-    LOC1,
-    #[doc = "Location 2"]
-    LOC2,
-    #[doc = "Location 3"]
-    LOC3,
-    #[doc = "Location 4"]
-    LOC4,
-    #[doc = "Location 5"]
-    LOC5,
-    #[doc = "Location 6"]
-    LOC6,
-}
-impl LOCATIONW {
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _bits(&self) -> u8 {
-        match *self {
-            LOCATIONW::LOC0 => 0,
-            LOCATIONW::LOC1 => 1,
-            LOCATIONW::LOC2 => 2,
-            LOCATIONW::LOC3 => 3,
-            LOCATIONW::LOC4 => 4,
-            LOCATIONW::LOC5 => 5,
-            LOCATIONW::LOC6 => 6,
-        }
-    }
-}
-#[doc = r" Proxy"]
-pub struct _LOCATIONW<'a> {
-    w: &'a mut W,
-}
-impl<'a> _LOCATIONW<'a> {
-    #[doc = r" Writes `variant` to the field"]
-    #[inline]
-    pub fn variant(self, variant: LOCATIONW) -> &'a mut W {
-        unsafe { self.bits(variant._bits()) }
+impl<'a> LOCATION_W<'a> {
+    #[doc = r"Writes `variant` to the field"]
+    #[inline(always)]
+    pub fn variant(self, variant: LOCATION_A) -> &'a mut W {
+        unsafe { self.bits(variant.into()) }
     }
     #[doc = "Location 0"]
-    #[inline]
+    #[inline(always)]
     pub fn loc0(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC0)
+        self.variant(LOCATION_A::LOC0)
     }
     #[doc = "Location 1"]
-    #[inline]
+    #[inline(always)]
     pub fn loc1(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC1)
+        self.variant(LOCATION_A::LOC1)
     }
     #[doc = "Location 2"]
-    #[inline]
+    #[inline(always)]
     pub fn loc2(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC2)
+        self.variant(LOCATION_A::LOC2)
     }
     #[doc = "Location 3"]
-    #[inline]
+    #[inline(always)]
     pub fn loc3(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC3)
+        self.variant(LOCATION_A::LOC3)
     }
     #[doc = "Location 4"]
-    #[inline]
+    #[inline(always)]
     pub fn loc4(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC4)
+        self.variant(LOCATION_A::LOC4)
     }
     #[doc = "Location 5"]
-    #[inline]
+    #[inline(always)]
     pub fn loc5(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC5)
+        self.variant(LOCATION_A::LOC5)
     }
     #[doc = "Location 6"]
-    #[inline]
+    #[inline(always)]
     pub fn loc6(self) -> &'a mut W {
-        self.variant(LOCATIONW::LOC6)
+        self.variant(LOCATION_A::LOC6)
     }
-    #[doc = r" Writes raw bits to the field"]
-    #[inline]
+    #[doc = r"Writes raw bits to the field"]
+    #[inline(always)]
     pub unsafe fn bits(self, value: u8) -> &'a mut W {
-        const MASK: u8 = 7;
-        const OFFSET: u8 = 16;
-        self.w.bits &= !((MASK as u32) << OFFSET);
-        self.w.bits |= ((value & MASK) as u32) << OFFSET;
+        self.w.bits = (self.w.bits & !(0x07 << 16)) | (((value as u32) & 0x07) << 16);
         self.w
     }
 }
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - CC Channel 0 Pin Enable"]
-    #[inline]
-    pub fn cc0pen(&self) -> CC0PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CC0PENR { bits }
+    #[inline(always)]
+    pub fn cc0pen(&self) -> CC0PEN_R {
+        CC0PEN_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - CC Channel 1 Pin Enable"]
-    #[inline]
-    pub fn cc1pen(&self) -> CC1PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CC1PENR { bits }
+    #[inline(always)]
+    pub fn cc1pen(&self) -> CC1PEN_R {
+        CC1PEN_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - CC Channel 2 Pin Enable"]
-    #[inline]
-    pub fn cc2pen(&self) -> CC2PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CC2PENR { bits }
+    #[inline(always)]
+    pub fn cc2pen(&self) -> CC2PEN_R {
+        CC2PEN_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 8 - CC Channel 0 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti0pen(&self) -> CDTI0PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 8;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CDTI0PENR { bits }
+    #[inline(always)]
+    pub fn cdti0pen(&self) -> CDTI0PEN_R {
+        CDTI0PEN_R::new(((self.bits >> 8) & 0x01) != 0)
     }
     #[doc = "Bit 9 - CC Channel 1 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti1pen(&self) -> CDTI1PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 9;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CDTI1PENR { bits }
+    #[inline(always)]
+    pub fn cdti1pen(&self) -> CDTI1PEN_R {
+        CDTI1PEN_R::new(((self.bits >> 9) & 0x01) != 0)
     }
     #[doc = "Bit 10 - CC Channel 2 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti2pen(&self) -> CDTI2PENR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 10;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CDTI2PENR { bits }
+    #[inline(always)]
+    pub fn cdti2pen(&self) -> CDTI2PEN_R {
+        CDTI2PEN_R::new(((self.bits >> 10) & 0x01) != 0)
     }
     #[doc = "Bits 16:18 - I/O Location"]
-    #[inline]
-    pub fn location(&self) -> LOCATIONR {
-        LOCATIONR::_from({
-            const MASK: u8 = 7;
-            const OFFSET: u8 = 16;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn location(&self) -> LOCATION_R {
+        LOCATION_R::new(((self.bits >> 16) & 0x07) as u8)
     }
 }
 impl W {
-    #[doc = r" Reset value of the register"]
-    #[inline]
-    pub fn reset_value() -> W {
-        W { bits: 0 }
-    }
-    #[doc = r" Writes raw bits to the register"]
-    #[inline]
-    pub unsafe fn bits(&mut self, bits: u32) -> &mut Self {
-        self.bits = bits;
-        self
-    }
     #[doc = "Bit 0 - CC Channel 0 Pin Enable"]
-    #[inline]
-    pub fn cc0pen(&mut self) -> _CC0PENW {
-        _CC0PENW { w: self }
+    #[inline(always)]
+    pub fn cc0pen(&mut self) -> CC0PEN_W {
+        CC0PEN_W { w: self }
     }
     #[doc = "Bit 1 - CC Channel 1 Pin Enable"]
-    #[inline]
-    pub fn cc1pen(&mut self) -> _CC1PENW {
-        _CC1PENW { w: self }
+    #[inline(always)]
+    pub fn cc1pen(&mut self) -> CC1PEN_W {
+        CC1PEN_W { w: self }
     }
     #[doc = "Bit 2 - CC Channel 2 Pin Enable"]
-    #[inline]
-    pub fn cc2pen(&mut self) -> _CC2PENW {
-        _CC2PENW { w: self }
+    #[inline(always)]
+    pub fn cc2pen(&mut self) -> CC2PEN_W {
+        CC2PEN_W { w: self }
     }
     #[doc = "Bit 8 - CC Channel 0 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti0pen(&mut self) -> _CDTI0PENW {
-        _CDTI0PENW { w: self }
+    #[inline(always)]
+    pub fn cdti0pen(&mut self) -> CDTI0PEN_W {
+        CDTI0PEN_W { w: self }
     }
     #[doc = "Bit 9 - CC Channel 1 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti1pen(&mut self) -> _CDTI1PENW {
-        _CDTI1PENW { w: self }
+    #[inline(always)]
+    pub fn cdti1pen(&mut self) -> CDTI1PEN_W {
+        CDTI1PEN_W { w: self }
     }
     #[doc = "Bit 10 - CC Channel 2 Complementary Dead-Time Insertion Pin Enable"]
-    #[inline]
-    pub fn cdti2pen(&mut self) -> _CDTI2PENW {
-        _CDTI2PENW { w: self }
+    #[inline(always)]
+    pub fn cdti2pen(&mut self) -> CDTI2PEN_W {
+        CDTI2PEN_W { w: self }
     }
     #[doc = "Bits 16:18 - I/O Location"]
-    #[inline]
-    pub fn location(&mut self) -> _LOCATIONW {
-        _LOCATIONW { w: self }
+    #[inline(always)]
+    pub fn location(&mut self) -> LOCATION_W {
+        LOCATION_W { w: self }
     }
 }

@@ -1,206 +1,46 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::CHREQSTATUS {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH0REQSTATUSR {
-    bits: bool,
-}
-impl CH0REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH1REQSTATUSR {
-    bits: bool,
-}
-impl CH1REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH2REQSTATUSR {
-    bits: bool,
-}
-impl CH2REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH3REQSTATUSR {
-    bits: bool,
-}
-impl CH3REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH4REQSTATUSR {
-    bits: bool,
-}
-impl CH4REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH5REQSTATUSR {
-    bits: bool,
-}
-impl CH5REQSTATUSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
+#[doc = "Reader of register CHREQSTATUS"]
+pub type R = crate::R<u32, super::CHREQSTATUS>;
+#[doc = "Reader of field `CH0REQSTATUS`"]
+pub type CH0REQSTATUS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH1REQSTATUS`"]
+pub type CH1REQSTATUS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH2REQSTATUS`"]
+pub type CH2REQSTATUS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH3REQSTATUS`"]
+pub type CH3REQSTATUS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH4REQSTATUS`"]
+pub type CH4REQSTATUS_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH5REQSTATUS`"]
+pub type CH5REQSTATUS_R = crate::R<bool, bool>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - Channel 0 Request Status"]
-    #[inline]
-    pub fn ch0reqstatus(&self) -> CH0REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH0REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch0reqstatus(&self) -> CH0REQSTATUS_R {
+        CH0REQSTATUS_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - Channel 1 Request Status"]
-    #[inline]
-    pub fn ch1reqstatus(&self) -> CH1REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH1REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch1reqstatus(&self) -> CH1REQSTATUS_R {
+        CH1REQSTATUS_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - Channel 2 Request Status"]
-    #[inline]
-    pub fn ch2reqstatus(&self) -> CH2REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH2REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch2reqstatus(&self) -> CH2REQSTATUS_R {
+        CH2REQSTATUS_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - Channel 3 Request Status"]
-    #[inline]
-    pub fn ch3reqstatus(&self) -> CH3REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH3REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch3reqstatus(&self) -> CH3REQSTATUS_R {
+        CH3REQSTATUS_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - Channel 4 Request Status"]
-    #[inline]
-    pub fn ch4reqstatus(&self) -> CH4REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH4REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch4reqstatus(&self) -> CH4REQSTATUS_R {
+        CH4REQSTATUS_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - Channel 5 Request Status"]
-    #[inline]
-    pub fn ch5reqstatus(&self) -> CH5REQSTATUSR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH5REQSTATUSR { bits }
+    #[inline(always)]
+    pub fn ch5reqstatus(&self) -> CH5REQSTATUS_R {
+        CH5REQSTATUS_R::new(((self.bits >> 5) & 0x01) != 0)
     }
 }

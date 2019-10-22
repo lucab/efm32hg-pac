@@ -1,243 +1,179 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::GRXSTSR {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CHEPNUMR {
-    bits: u8,
-}
-impl CHEPNUMR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
-#[doc = r" Value of the field"]
-pub struct BCNTR {
-    bits: u16,
-}
-impl BCNTR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u16 {
-        self.bits
-    }
-}
-#[doc = "Possible values of the field `DPID`"]
+#[doc = "Reader of register GRXSTSR"]
+pub type R = crate::R<u32, super::GRXSTSR>;
+#[doc = "Reader of field `CHEPNUM`"]
+pub type CHEPNUM_R = crate::R<u8, u8>;
+#[doc = "Reader of field `BCNT`"]
+pub type BCNT_R = crate::R<u16, u16>;
+#[doc = "Data PID (host or device)\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum DPIDR {
-    #[doc = "DATA0 PID."]
+pub enum DPID_A {
+    #[doc = "0: DATA0 PID."]
     DATA0,
-    #[doc = "DATA1 PID."]
+    #[doc = "1: DATA1 PID."]
     DATA1,
-    #[doc = "DATA2 PID."]
+    #[doc = "2: DATA2 PID."]
     DATA2,
-    #[doc = "MDATA PID."]
+    #[doc = "3: MDATA PID."]
     MDATA,
 }
-impl DPIDR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            DPIDR::DATA0 => 0,
-            DPIDR::DATA1 => 1,
-            DPIDR::DATA2 => 2,
-            DPIDR::MDATA => 3,
+impl From<DPID_A> for u8 {
+    #[inline(always)]
+    fn from(variant: DPID_A) -> Self {
+        match variant {
+            DPID_A::DATA0 => 0,
+            DPID_A::DATA1 => 1,
+            DPID_A::DATA2 => 2,
+            DPID_A::MDATA => 3,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> DPIDR {
-        match value {
-            0 => DPIDR::DATA0,
-            1 => DPIDR::DATA1,
-            2 => DPIDR::DATA2,
-            3 => DPIDR::MDATA,
+}
+#[doc = "Reader of field `DPID`"]
+pub type DPID_R = crate::R<u8, DPID_A>;
+impl DPID_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> DPID_A {
+        match self.bits {
+            0 => DPID_A::DATA0,
+            1 => DPID_A::DATA1,
+            2 => DPID_A::DATA2,
+            3 => DPID_A::MDATA,
             _ => unreachable!(),
         }
     }
     #[doc = "Checks if the value of the field is `DATA0`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_data0(&self) -> bool {
-        *self == DPIDR::DATA0
+        *self == DPID_A::DATA0
     }
     #[doc = "Checks if the value of the field is `DATA1`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_data1(&self) -> bool {
-        *self == DPIDR::DATA1
+        *self == DPID_A::DATA1
     }
     #[doc = "Checks if the value of the field is `DATA2`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_data2(&self) -> bool {
-        *self == DPIDR::DATA2
+        *self == DPID_A::DATA2
     }
     #[doc = "Checks if the value of the field is `MDATA`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_mdata(&self) -> bool {
-        *self == DPIDR::MDATA
+        *self == DPID_A::MDATA
     }
 }
-#[doc = "Possible values of the field `PKTSTS`"]
+#[doc = "Packet Status (host or device)\n\nValue on reset: 0"]
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub enum PKTSTSR {
-    #[doc = "Device mode: Global OUT NAK (triggers an interrupt)."]
+pub enum PKTSTS_A {
+    #[doc = "1: Device mode: Global OUT NAK (triggers an interrupt)."]
     GOUTNAK,
-    #[doc = "Host mode: IN data packet received. Device mode: OUT data packet received."]
+    #[doc = "2: Host mode: IN data packet received. Device mode: OUT data packet received."]
     PKTRCV,
-    #[doc = "Host mode: IN transfer completed (triggers an interrupt). Device mode: OUT transfer completed (triggers an interrupt)."]
+    #[doc = "3: Host mode: IN transfer completed (triggers an interrupt). Device mode: OUT transfer completed (triggers an interrupt)."]
     XFERCOMPL,
-    #[doc = "Device mode: SETUP transaction completed (triggers an interrupt)."]
+    #[doc = "4: Device mode: SETUP transaction completed (triggers an interrupt)."]
     SETUPCOMPL,
-    #[doc = "Host mode: Data toggle error (triggers an interrupt)."]
+    #[doc = "5: Host mode: Data toggle error (triggers an interrupt)."]
     TGLERR,
-    #[doc = "Device mode: SETUP data packet received."]
+    #[doc = "6: Device mode: SETUP data packet received."]
     SETUPRCV,
-    #[doc = "Host mode: Channel halted (triggers an interrupt)."]
+    #[doc = "7: Host mode: Channel halted (triggers an interrupt)."]
     CHLT,
-    #[doc = r" Reserved"]
-    _Reserved(u8),
 }
-impl PKTSTSR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        match *self {
-            PKTSTSR::GOUTNAK => 1,
-            PKTSTSR::PKTRCV => 2,
-            PKTSTSR::XFERCOMPL => 3,
-            PKTSTSR::SETUPCOMPL => 4,
-            PKTSTSR::TGLERR => 5,
-            PKTSTSR::SETUPRCV => 6,
-            PKTSTSR::CHLT => 7,
-            PKTSTSR::_Reserved(bits) => bits,
+impl From<PKTSTS_A> for u8 {
+    #[inline(always)]
+    fn from(variant: PKTSTS_A) -> Self {
+        match variant {
+            PKTSTS_A::GOUTNAK => 1,
+            PKTSTS_A::PKTRCV => 2,
+            PKTSTS_A::XFERCOMPL => 3,
+            PKTSTS_A::SETUPCOMPL => 4,
+            PKTSTS_A::TGLERR => 5,
+            PKTSTS_A::SETUPRCV => 6,
+            PKTSTS_A::CHLT => 7,
         }
     }
-    #[allow(missing_docs)]
-    #[doc(hidden)]
-    #[inline]
-    pub fn _from(value: u8) -> PKTSTSR {
-        match value {
-            1 => PKTSTSR::GOUTNAK,
-            2 => PKTSTSR::PKTRCV,
-            3 => PKTSTSR::XFERCOMPL,
-            4 => PKTSTSR::SETUPCOMPL,
-            5 => PKTSTSR::TGLERR,
-            6 => PKTSTSR::SETUPRCV,
-            7 => PKTSTSR::CHLT,
-            i => PKTSTSR::_Reserved(i),
+}
+#[doc = "Reader of field `PKTSTS`"]
+pub type PKTSTS_R = crate::R<u8, PKTSTS_A>;
+impl PKTSTS_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<u8, PKTSTS_A> {
+        use crate::Variant::*;
+        match self.bits {
+            1 => Val(PKTSTS_A::GOUTNAK),
+            2 => Val(PKTSTS_A::PKTRCV),
+            3 => Val(PKTSTS_A::XFERCOMPL),
+            4 => Val(PKTSTS_A::SETUPCOMPL),
+            5 => Val(PKTSTS_A::TGLERR),
+            6 => Val(PKTSTS_A::SETUPRCV),
+            7 => Val(PKTSTS_A::CHLT),
+            i => Res(i),
         }
     }
     #[doc = "Checks if the value of the field is `GOUTNAK`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_goutnak(&self) -> bool {
-        *self == PKTSTSR::GOUTNAK
+        *self == PKTSTS_A::GOUTNAK
     }
     #[doc = "Checks if the value of the field is `PKTRCV`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_pktrcv(&self) -> bool {
-        *self == PKTSTSR::PKTRCV
+        *self == PKTSTS_A::PKTRCV
     }
     #[doc = "Checks if the value of the field is `XFERCOMPL`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_xfercompl(&self) -> bool {
-        *self == PKTSTSR::XFERCOMPL
+        *self == PKTSTS_A::XFERCOMPL
     }
     #[doc = "Checks if the value of the field is `SETUPCOMPL`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_setupcompl(&self) -> bool {
-        *self == PKTSTSR::SETUPCOMPL
+        *self == PKTSTS_A::SETUPCOMPL
     }
     #[doc = "Checks if the value of the field is `TGLERR`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_tglerr(&self) -> bool {
-        *self == PKTSTSR::TGLERR
+        *self == PKTSTS_A::TGLERR
     }
     #[doc = "Checks if the value of the field is `SETUPRCV`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_setuprcv(&self) -> bool {
-        *self == PKTSTSR::SETUPRCV
+        *self == PKTSTS_A::SETUPRCV
     }
     #[doc = "Checks if the value of the field is `CHLT`"]
-    #[inline]
+    #[inline(always)]
     pub fn is_chlt(&self) -> bool {
-        *self == PKTSTSR::CHLT
+        *self == PKTSTS_A::CHLT
     }
 }
-#[doc = r" Value of the field"]
-pub struct FNR {
-    bits: u8,
-}
-impl FNR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u8 {
-        self.bits
-    }
-}
+#[doc = "Reader of field `FN`"]
+pub type FN_R = crate::R<u8, u8>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bits 0:3 - Channel Number host only / Endpoint Number"]
-    #[inline]
-    pub fn chepnum(&self) -> CHEPNUMR {
-        let bits = {
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        CHEPNUMR { bits }
+    #[inline(always)]
+    pub fn chepnum(&self) -> CHEPNUM_R {
+        CHEPNUM_R::new((self.bits & 0x0f) as u8)
     }
     #[doc = "Bits 4:14 - Byte Count (host or device)"]
-    #[inline]
-    pub fn bcnt(&self) -> BCNTR {
-        let bits = {
-            const MASK: u16 = 2047;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) as u16
-        };
-        BCNTR { bits }
+    #[inline(always)]
+    pub fn bcnt(&self) -> BCNT_R {
+        BCNT_R::new(((self.bits >> 4) & 0x07ff) as u16)
     }
     #[doc = "Bits 15:16 - Data PID (host or device)"]
-    #[inline]
-    pub fn dpid(&self) -> DPIDR {
-        DPIDR::_from({
-            const MASK: u8 = 3;
-            const OFFSET: u8 = 15;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn dpid(&self) -> DPID_R {
+        DPID_R::new(((self.bits >> 15) & 0x03) as u8)
     }
     #[doc = "Bits 17:20 - Packet Status (host or device)"]
-    #[inline]
-    pub fn pktsts(&self) -> PKTSTSR {
-        PKTSTSR::_from({
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 17;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        })
+    #[inline(always)]
+    pub fn pktsts(&self) -> PKTSTS_R {
+        PKTSTS_R::new(((self.bits >> 17) & 0x0f) as u8)
     }
     #[doc = "Bits 21:24 - Frame Number"]
-    #[inline]
-    pub fn fn_(&self) -> FNR {
-        let bits = {
-            const MASK: u8 = 15;
-            const OFFSET: u8 = 21;
-            ((self.bits >> OFFSET) & MASK as u32) as u8
-        };
-        FNR { bits }
+    #[inline(always)]
+    pub fn fn_(&self) -> FN_R {
+        FN_R::new(((self.bits >> 21) & 0x0f) as u8)
     }
 }

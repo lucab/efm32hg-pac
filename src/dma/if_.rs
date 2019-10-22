@@ -1,237 +1,53 @@
-#[doc = r" Value read from the register"]
-pub struct R {
-    bits: u32,
-}
-impl super::IF {
-    #[doc = r" Reads the contents of the register"]
-    #[inline]
-    pub fn read(&self) -> R {
-        R {
-            bits: self.register.get(),
-        }
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH0DONER {
-    bits: bool,
-}
-impl CH0DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH1DONER {
-    bits: bool,
-}
-impl CH1DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH2DONER {
-    bits: bool,
-}
-impl CH2DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH3DONER {
-    bits: bool,
-}
-impl CH3DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH4DONER {
-    bits: bool,
-}
-impl CH4DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct CH5DONER {
-    bits: bool,
-}
-impl CH5DONER {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
-#[doc = r" Value of the field"]
-pub struct ERRR {
-    bits: bool,
-}
-impl ERRR {
-    #[doc = r" Value of the field as raw bits"]
-    #[inline]
-    pub fn bit(&self) -> bool {
-        self.bits
-    }
-    #[doc = r" Returns `true` if the bit is clear (0)"]
-    #[inline]
-    pub fn bit_is_clear(&self) -> bool {
-        !self.bit()
-    }
-    #[doc = r" Returns `true` if the bit is set (1)"]
-    #[inline]
-    pub fn bit_is_set(&self) -> bool {
-        self.bit()
-    }
-}
+#[doc = "Reader of register IF"]
+pub type R = crate::R<u32, super::IF>;
+#[doc = "Reader of field `CH0DONE`"]
+pub type CH0DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH1DONE`"]
+pub type CH1DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH2DONE`"]
+pub type CH2DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH3DONE`"]
+pub type CH3DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH4DONE`"]
+pub type CH4DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `CH5DONE`"]
+pub type CH5DONE_R = crate::R<bool, bool>;
+#[doc = "Reader of field `ERR`"]
+pub type ERR_R = crate::R<bool, bool>;
 impl R {
-    #[doc = r" Value of the register as raw bits"]
-    #[inline]
-    pub fn bits(&self) -> u32 {
-        self.bits
-    }
     #[doc = "Bit 0 - DMA Channel 0 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch0done(&self) -> CH0DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 0;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH0DONER { bits }
+    #[inline(always)]
+    pub fn ch0done(&self) -> CH0DONE_R {
+        CH0DONE_R::new((self.bits & 0x01) != 0)
     }
     #[doc = "Bit 1 - DMA Channel 1 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch1done(&self) -> CH1DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 1;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH1DONER { bits }
+    #[inline(always)]
+    pub fn ch1done(&self) -> CH1DONE_R {
+        CH1DONE_R::new(((self.bits >> 1) & 0x01) != 0)
     }
     #[doc = "Bit 2 - DMA Channel 2 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch2done(&self) -> CH2DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 2;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH2DONER { bits }
+    #[inline(always)]
+    pub fn ch2done(&self) -> CH2DONE_R {
+        CH2DONE_R::new(((self.bits >> 2) & 0x01) != 0)
     }
     #[doc = "Bit 3 - DMA Channel 3 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch3done(&self) -> CH3DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 3;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH3DONER { bits }
+    #[inline(always)]
+    pub fn ch3done(&self) -> CH3DONE_R {
+        CH3DONE_R::new(((self.bits >> 3) & 0x01) != 0)
     }
     #[doc = "Bit 4 - DMA Channel 4 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch4done(&self) -> CH4DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 4;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH4DONER { bits }
+    #[inline(always)]
+    pub fn ch4done(&self) -> CH4DONE_R {
+        CH4DONE_R::new(((self.bits >> 4) & 0x01) != 0)
     }
     #[doc = "Bit 5 - DMA Channel 5 Complete Interrupt Flag"]
-    #[inline]
-    pub fn ch5done(&self) -> CH5DONER {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 5;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        CH5DONER { bits }
+    #[inline(always)]
+    pub fn ch5done(&self) -> CH5DONE_R {
+        CH5DONE_R::new(((self.bits >> 5) & 0x01) != 0)
     }
     #[doc = "Bit 31 - DMA Error Interrupt Flag"]
-    #[inline]
-    pub fn err(&self) -> ERRR {
-        let bits = {
-            const MASK: bool = true;
-            const OFFSET: u8 = 31;
-            ((self.bits >> OFFSET) & MASK as u32) != 0
-        };
-        ERRR { bits }
+    #[inline(always)]
+    pub fn err(&self) -> ERR_R {
+        ERR_R::new(((self.bits >> 31) & 0x01) != 0)
     }
 }
