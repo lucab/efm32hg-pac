@@ -7,3 +7,323 @@ PRS:
     _modify:
       ASYNC:
         name: ASYNC_
+
+_add:
+  DEVINFO:
+    description: The DI page contains calibration values, a unique identification number and other useful data
+    baseAddress: 0x0FE081B0
+    addressBlock:
+      offset: 0
+      size: 0x280
+      usage: registers
+    registers:
+      CAL:
+        description: Calibration temperature and checksum
+        addressOffset: 0x0
+        size: 0x20
+        fields:
+          CRC:
+            description: Integrity CRC checksum
+            bitOffset: 0
+            bitWidth: 16
+            access: read-only
+          TEMP:
+            description: Calibration temperature, DegC
+            bitOffset: 16
+            bitWidth: 8
+            access: read-only
+      ADC0CAL0:
+        description: ADC0 Calibration register 0
+        addressOffset: 0x20
+        size: 0x20
+        fields:
+          1V25_OFFSET:
+            description: Offset for 1V25 reference
+            bitOffset: 0
+            bitWidth: 7
+            access: read-only
+          1V25_GAIN:
+            description: Gain for 1V25 reference
+            bitOffset: 8
+            bitWidth: 7
+            access: read-only
+          2V5_OFFSET:
+            description: Offset for 2V5 reference
+            bitOffset: 16
+            bitWidth: 7
+            access: read-only
+          2V5_GAIN:
+            description: Gain for 2V5 reference
+            bitOffset: 24
+            bitWidth: 7
+            access: read-only
+      ADC0CAL1:
+        description: ADC0 Calibration register 1
+        addressOffset: 0x40
+        size: 0x20
+        fields:
+          VDD_OFFSET:
+            description: Offset for VDD reference
+            bitOffset: 0
+            bitWidth: 7
+            access: read-only
+          VDD_GAIN:
+            description: Gain for VDD reference
+            bitOffset: 8
+            bitWidth: 7
+            access: read-only
+          5VDIFF_OFFSET:
+            description: Offset for 5VDIFF reference
+            bitOffset: 16
+            bitWidth: 7
+            access: read-only
+          5VDIFF_GAIN:
+            description: Gain for 5VDIFF reference
+            bitOffset: 24
+            bitWidth: 7
+            access: read-only
+      ADC0CAL2:
+        description: ADC0 Calibration register 2
+        addressOffset: 0x60
+        size: 0x20
+        fields:
+          2XVDDVSS_OFFSET:
+            description: Offset for 2XVDDVSS reference
+            bitOffset: 0
+            bitWidth: 7
+            access: read-only
+          TEMP1V25:
+            description: Temperature reading at 1V25 reference
+            bitOffset: 20
+            bitWidth: 12
+            access: read-only
+      _RESERVED:
+        description: Reserved
+        addressOffset: 0x80
+        size: 0x20
+        fields:
+          _RESERVED:
+            description: Reserved
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      _RESERVED:
+        description: Reserved
+        addressOffset: 0xA0
+        size: 0x20
+        fields:
+          _RESERVED:
+            description: Reserved
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      IDAC0CAL0:
+        description: IDAC0 calibration register
+        addressOffset: 0xC0
+        size: 0x20
+        fields:
+          RANGE0:
+            description: Current range 0 tuning value for IDAC0
+            bitOffset: 0
+            bitWidth: 8
+            access: read-only
+          RANGE1:
+            description: Current range 1 tuning value for IDAC0
+            bitOffset: 8
+            bitWidth: 8
+            access: read-only
+          RANGE2:
+            description: Current range 2 tuning value for IDAC0
+            bitOffset: 16
+            bitWidth: 8
+            access: read-only
+          RANGE3:
+            description: Current range 3 tuning value for IDAC0
+            bitOffset: 24
+            bitWidth: 8
+            access: read-only
+      USHFRCOCAL0:
+        description: USHFRCO calibration register
+        addressOffset: 0xE0
+        size: 0x20
+        fields:
+          BAND24_TUNING:
+            description: 24 MHz TUNING value for USFRCO
+            bitOffset: 0
+            bitWidth: 7
+            access: read-only
+          BAND24_FINETUNING:
+            description: 24 MHz FINETUNING value for USFRCO
+            bitOffset: 8
+            bitWidth: 6
+            access: read-only
+          BAND48_TUNING:
+            description: 24 MHz TUNING value for USFRCO
+            bitOffset: 16
+            bitWidth: 7
+            access: read-only
+          BAND48_FINETUNING:
+            description: 24 MHz FINETUNING value for USFRCO
+            bitOffset: 24
+            bitWidth: 6
+            access: read-only
+      _RESERVED:
+        description: Reserved
+        addressOffset: 0x100
+        size: 0x20
+        fields:
+          _RESERVED:
+            description: Reserved
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      AUXHFRCOCAL0:
+        description: AUXHFRCO calibration register 0
+        addressOffset: 0x120
+        size: 0x20
+        fields:
+          BAND1:
+            description: 1MHz tuning value for AUXHFRCO
+            bitOffset: 0
+            bitWidth: 8
+            access: read-only
+          BAND7:
+            description: 7MHz tuning value for AUXHFRCO
+            bitOffset: 8
+            bitWidth: 8
+            access: read-only
+          BAND11:
+            description: 11MHz tuning value for AUXHFRCO
+            bitOffset: 16
+            bitWidth: 8
+            access: read-only
+          BAND14:
+            description: 14MHz tuning value for AUXHFRCO
+            bitOffset: 24
+            bitWidth: 8
+            access: read-only
+      AUXHFRCOCAL1:
+        description: AUXHFRCO calibration register 1
+        addressOffset: 0x140
+        size: 0x20
+        fields:
+          BAND21:
+            description: 21MHz tuning value for AUXHFRCO
+            bitOffset: 0
+            bitWidth: 8
+            access: read-only
+      HFRCOCAL0:
+        description: HFRCO calibration register 0
+        addressOffset: 0x160
+        size: 0x20
+        fields:
+          BAND1:
+            description: 1MHz tuning value for HFRCO
+            bitOffset: 0
+            bitWidth: 8
+            access: read-only
+          BAND7:
+            description: 7MHz tuning value for HFRCO
+            bitOffset: 8
+            bitWidth: 8
+            access: read-only
+          BAND11:
+            description: 11MHz tuning value for HFRCO
+            bitOffset: 16
+            bitWidth: 8
+            access: read-only
+          BAND14:
+            description: 14MHz tuning value for HFRCO
+            bitOffset: 24
+            bitWidth: 8
+            access: read-only
+      HFRCOCAL1:
+        description: HFRCO calibration register 1
+        addressOffset: 0x180
+        size: 0x20
+        fields:
+          BAND21:
+            description: 21MHz tuning value for HFRCO
+            bitOffset: 0
+            bitWidth: 8
+            access: read-only
+      MEMINFO:
+        description: Memory information
+        addressOffset: 0x1A0
+        size: 0x20
+        fields:
+          FLASH_PAGE_SIZE:
+            description: Flash page size (refer to ref.man for encoding)
+            bitOffset: 24
+            bitWidth: 8
+            access: read-only
+      _RESERVED:
+        description: Reserved
+        addressOffset: 0x1C0
+        size: 0x20
+        fields:
+          _RESERVED:
+            description: Reserved
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      _RESERVED:
+        description: Reserved
+        addressOffset: 0x1E0
+        size: 0x20
+        fields:
+          _RESERVED:
+            description: Reserved
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      UNIQUEL:
+        description: Low 32 bits of device unique number
+        addressOffset: 0x200
+        size: 0x20
+        fields:
+          UNIQUEL:
+            description: Lower part of 64-bit device unique number
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      UNIQUEH:
+        description: High 32 bits of device unique number
+        addressOffset: 0x220
+        size: 0x20
+        fields:
+          UNIQUEH:
+            description: High part of 64-bit device unique number
+            bitOffset: 0
+            bitWidth: 32
+            access: read-only
+      MSIZE:
+        description: Flash and SRAM Memory size in KiloBytes
+        addressOffset: 0x240
+        size: 0x20
+        fields:
+          FLASH:
+            description: SRAM size in kilobytes
+            bitOffset: 0
+            bitWidth: 16
+            access: read-only
+          SRAM:
+            description: Flash size in kilobytes
+            bitOffset: 16
+            bitWidth: 16
+            access: read-only
+      PART:
+        description: Part description
+        addressOffset: 0x260
+        size: 0x20
+        fields:
+          DEVICE_FAMILY:
+            description: Device Family, 0x47 for Gecko
+            bitOffset: 16
+            bitWidth: 8
+            access: read-only
+          PROD_REV:
+            description: Production revision
+            bitOffset: 24
+            bitWidth: 8
+            access: read-only
