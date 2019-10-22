@@ -1,0 +1,9 @@
+# efm32hg_devinfo.h 5.5
+
+_svd: ../svd/EFM32HG309F64.svd
+
+PRS:
+  "CH*_CTRL":
+    _modify:
+      ASYNC:
+        name: ASYNC_

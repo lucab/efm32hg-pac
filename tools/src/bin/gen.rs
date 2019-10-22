@@ -8,7 +8,7 @@ use svd2rust::{generate, Generation, Target::CortexM};
 
 pub fn main() -> () {
     //parse xml
-    let xml = read_to_string("svd/EFM32HG309F64.svd").unwrap();
+    let xml = read_to_string("svd/EFM32HG309F64.svd.patched").unwrap();
     let Generation {
         lib_rs,
         device_specific,
