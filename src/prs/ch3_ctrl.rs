@@ -357,13 +357,13 @@ impl<'a> EDSEL_W<'a> {
         self.w
     }
 }
-#[doc = "Reader of field `ASYNC`"]
-pub type ASYNC_R = crate::R<bool, bool>;
-#[doc = "Write proxy for field `ASYNC`"]
-pub struct ASYNC_W<'a> {
+#[doc = "Reader of field `ASYNC_`"]
+pub type ASYNC__R = crate::R<bool, bool>;
+#[doc = "Write proxy for field `ASYNC_`"]
+pub struct ASYNC__W<'a> {
     w: &'a mut W,
 }
-impl<'a> ASYNC_W<'a> {
+impl<'a> ASYNC__W<'a> {
     #[doc = r"Sets the field bit"]
     #[inline(always)]
     pub fn set_bit(self) -> &'a mut W {
@@ -399,8 +399,8 @@ impl R {
     }
     #[doc = "Bit 28 - Asynchronous reflex"]
     #[inline(always)]
-    pub fn async(&self) -> ASYNC_R {
-        ASYNC_R::new(((self.bits >> 28) & 0x01) != 0)
+    pub fn async_(&self) -> ASYNC__R {
+        ASYNC__R::new(((self.bits >> 28) & 0x01) != 0)
     }
 }
 impl W {
@@ -421,7 +421,7 @@ impl W {
     }
     #[doc = "Bit 28 - Asynchronous reflex"]
     #[inline(always)]
-    pub fn async(&mut self) -> ASYNC_W {
-        ASYNC_W { w: self }
+    pub fn async_(&mut self) -> ASYNC__W {
+        ASYNC__W { w: self }
     }
 }
